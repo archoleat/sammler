@@ -65,8 +65,8 @@ class FormValidate {
       formRequiredItem.parentElement.insertAdjacentHTML(
         'beforeend',
         `<div class="${this.formErrorClassElement}">
-					${formRequiredItem.dataset.error}
-				</div>`
+          ${formRequiredItem.dataset.error}
+        </div>`
       )
     }
   }
