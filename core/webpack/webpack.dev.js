@@ -48,7 +48,9 @@ export default {
     minimize: false
   },
   entry: jsSrc,
-  output: outputConfig(join(ASSETS_FOLDER, SCRIPTS_FOLDER, `${entry ?? 'main'}.min.js`)),
+  output: outputConfig(
+    join(ASSETS_FOLDER, SCRIPTS_FOLDER, `${entry ?? 'main'}.min.js`)
+  ),
   devServer: serverConfig({
     port,
     publicFolder,

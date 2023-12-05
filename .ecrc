@@ -6,7 +6,6 @@
     "README.md",
     "Select.js",
     "src/scss/vendors",
-    "stylelintrc.json",
-    "webp.js"
+    "stylelintrc.json"
   ]
 }

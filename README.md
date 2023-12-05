@@ -1,13 +1,4 @@
-<img src="https://github.com/nikkeyl/conqueror/assets/131481562/91695394-437e-43ee-a401-d2f99e8d510c" align="left">
-
 # Conqueror
-
-![EditorConfig](https://github.com/nikkeyl/conqueror/workflows/EditorConfig/badge.svg)
-![Markdown](https://github.com/nikkeyl/conqueror/workflows/Markdown/badge.svg)
-![ESlint](https://github.com/nikkeyl/conqueror/workflows/ESlint/badge.svg)
-![Stylelint](https://github.com/nikkeyl/conqueror/workflows/Stylelint/badge.svg)
-![Release](https://img.shields.io/github/v/release/nikkeyl/conqueror)
-![CodeSize](https://img.shields.io/github/languages/code-size/nikkeyl/conqueror)
 
 Rapid and modular development.
 
