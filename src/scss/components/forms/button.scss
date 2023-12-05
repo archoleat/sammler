@@ -1,0 +1,37 @@
+@use "@scss/abstracts" as *;
+@use "@scss/utilities/placeholders" as *;
+
+.button {
+  $font-size: 18;
+  $line-height: 20;
+
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: to-rem(10) to-rem(15);
+  font-size: to-rem($font-size);
+  text-align: center;
+  line-height: div-round($line-height, $font-size);
+  color: var(--color-primary, #{$color-primary});
+  background-color: var(--color-secondary, #{$color-secondary});
+  transition:
+    background-color
+      var(--transition-duration-default, #{$transition-duration-default}),
+    transform var(--transition-duration-default, #{$transition-duration-default}),
+    color var(--transition-duration-default, #{$transition-duration-default});
+
+  &:active {
+    transform: translateY(to-rem(3));
+  }
+
+  &--full {
+    @include media-max($phone) {
+      inline-size: 100%;
+    }
+  }
+
+  @include media-hover {
+    color: var(--color-secondary, #{$color-secondary});
+    background-color: var(--color-inverse, #{$color-inverse});
+  }
+}

@@ -1,0 +1,57 @@
+@use "@scss/abstracts" as *;
+@use "@scss/utilities/placeholders" as *;
+
+body {
+  font-family: var(--font-family-default, #{$font-family-default});
+  font-size: var(--font-size-default, #{to-rem($font-size-default)});
+  font-weight: var(--font-weight-default, #{$font-weight-default});
+  text-rendering: optimizeLegibility;
+  text-size-adjust: 100%;
+  line-height: 1;
+  color: var(--text-color-primary, #{$color-secondary});
+}
+
+address {
+  font-style: normal;
+}
+
+a {
+  text-decoration: none;
+}
+
+button,
+a {
+  color: inherit;
+}
+
+.title {
+  $font-size: 30;
+  $line-height: 22;
+
+  font-size: to-rem($font-size);
+  line-height: div-round($line-height, $font-size);
+}
+
+.text {
+  $font-size: 18;
+
+  font-size: to-rem($font-size);
+
+  p {
+    &:not(:last-child) {
+      margin-block-end: to-em(5, $font-size);
+    }
+  }
+}
+
+.link {
+  $font-size: 16;
+  $line-height: 20;
+
+  font-size: to-rem($font-size);
+  line-height: div-round($line-height, $font-size);
+
+  @include media-hover {
+    color: var(--color-accent, #{$color-accent});
+  }
+}

@@ -1,0 +1,50 @@
+@use "@scss/abstracts" as *;
+@use "@scss/utilities/placeholders" as *;
+
+.menu {
+  &__body {
+    @include media-max($tablet) {
+      $size: 100%;
+
+      position: fixed;
+      inset-block-start: 0;
+      overflow-block: auto;
+      block-size: $size;
+      inline-size: $size;
+      padding-block: to-rem(80) to-rem(30);
+      background-color: var(--color-primary, #{$color-primary});
+      transform: translateX(
+        calc(
+          -100% - var(--container-padding-inline, #{to-rem($container-padding-inline)})
+        )
+      );
+      transition: transform
+        var(--transition-duration-default, #{$transition-duration-default});
+      overscroll-behavior-block: none;
+
+      &::before {
+        @include pseudo("", fixed);
+        @include responsive-value("height", 70, 40, 3, 768, $min-inline-size);
+
+        inset-block-start: 0;
+        inline-size: 100%;
+        background-color: var(--color-secondary, #{$color-secondary});
+      }
+    }
+  }
+
+  &__list {
+    display: flex;
+
+    @include media-min($tablet) {
+      flex-wrap: wrap;
+      gap: to-rem(10) to-rem(20);
+    }
+
+    @include media-max($tablet) {
+      flex-direction: column;
+      row-gap: to-rem(20);
+      align-items: center;
+    }
+  }
+}

@@ -1,0 +1,49 @@
+@use "@scss/abstracts" as *;
+
+%list-counter {
+  $type: item;
+
+  counter-reset: $type;
+
+  li {
+    position: relative;
+
+    &::before {
+      @include pseudo(counter($type));
+
+      counter-increment: $type;
+      inset: 0;
+    }
+  }
+}
+
+%gray-filter {
+  filter: grayscale(1);
+  transition: filter
+    var(--transition-duration-default, #{$transition-duration-default});
+
+  @include media-hover {
+    filter: grayscale(0);
+  }
+}
+
+%hide-scroll {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+%smooth-scroll {
+  // Set momentum-based scrolling, where the content continues to scroll
+  // for a while after finishing the scroll gesture
+  -webkit-overflow-scrolling: touch;
+}
+
+%mirror {
+  // Mirror effect
+  scale: -1 1;
+}
+
+%user-select-none {
+  user-select: none;
+}

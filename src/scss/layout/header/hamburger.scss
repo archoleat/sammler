@@ -1,0 +1,72 @@
+@use "@scss/abstracts" as *;
+@use "@scss/utilities/placeholders" as *;
+
+.hamburger {
+  @include media-max($tablet) {
+    position: relative;
+    z-index: var(--z-index-1, #{$z-index-1});
+    display: block;
+    block-size: to-rem(20);
+    inline-size: to-rem(30);
+
+    span,
+    &::before,
+    &::after {
+      @include pseudo;
+
+      inset-inline-end: 0;
+      block-size: to-rem(2);
+      inline-size: 100%;
+      background-color: var(--color-secondary, #{$color-secondary});
+      transition:
+        inset-block-start
+          var(--transition-duration-default, #{$transition-duration-default}),
+        inset-block-end
+          var(--transition-duration-default, #{$transition-duration-default}),
+        opacity var(--transition-duration-default, #{$transition-duration-default}),
+        rotate var(--transition-duration-default, #{$transition-duration-default});
+    }
+
+    &::before {
+      inset-block-start: 0;
+    }
+
+    &::after {
+      inset-block-end: 0;
+    }
+
+    span {
+      inset-block-start: calc(50% - to-rem(1));
+    }
+
+    &[aria-expanded="true"] {
+      &::before,
+      &::after {
+        inset-block-start: calc(50% - to-rem(1));
+      }
+
+      $rotate: 45deg;
+
+      &::before {
+        rotate: -$rotate;
+      }
+
+      &::after {
+        rotate: $rotate;
+      }
+
+      span {
+        opacity: 0;
+      }
+
+      + .menu__body {
+        transform: translateX(
+          calc(
+            0% -
+              var(--container-padding-inline, #{to-rem($container-padding-inline)})
+          )
+        );
+      }
+    }
+  }
+}

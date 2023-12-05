@@ -1,0 +1,27 @@
+@use "@scss/abstracts" as *;
+@use "@scss/utilities/placeholders" as *;
+
+.tabs {
+  &__triggers {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  &__trigger {
+    border-width: to-rem(1);
+    border-style: solid;
+    border-color: var(--color-accent, #{$color-accent});
+    padding: to-rem(10) to-rem(15);
+
+    &.active {
+      border-width: to-rem(1);
+      border-style: solid;
+      border-color: var(--color-secondary, #{$color-secondary});
+    }
+  }
+
+  &__panels {
+    padding-block: to-rem(10);
+    padding-inline: to-rem(15);
+  }
+}

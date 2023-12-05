@@ -1,0 +1,81 @@
+@use "@scss/abstracts" as *;
+@use "@scss/utilities/placeholders" as *;
+
+.options {
+  display: grid;
+}
+
+.option {
+  $fix-size: 18;
+
+  display: flex;
+  gap: to-em(10, $fix-size);
+  align-items: center;
+
+  &__box {
+    $box-size: 20;
+
+    display: flex;
+    flex: 0 0 to-em($box-size, $fix-size);
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border-width: to-em(2, $fix-size);
+    border-style: solid;
+    border-color: var(--color-accent, #{$color-secondary});
+    block-size: to-em($box-size, $fix-size);
+    background-color: var(--color-primary, #{$color-primary});
+
+    &::after {
+      $pseudo-size: 14;
+
+      content: "";
+      display: block;
+      border-radius: 50%;
+      block-size: to-em($pseudo-size, $fix-size);
+      inline-size: to-em($pseudo-size, $fix-size);
+      background-color: var(--color-secondary, #{$color-secondary});
+      scale: 0;
+      transition: scale
+        var(--transition-duration-default, #{$transition-duration-default});
+    }
+  }
+
+  &__input {
+    position: absolute;
+
+    &:disabled + .option__box {
+      border-color: var(--color-gray, #{$color-gray});
+    }
+
+    &:checked {
+      &:disabled + .option__box {
+        border-color: var(--color-gray, #{$color-gray});
+
+        &::after {
+          background-color: var(--color-gray, #{$color-gray});
+        }
+      }
+
+      &:focus-visible + .option__box,
+      + .option__box {
+        &::after,
+        svg {
+          scale: 1;
+        }
+      }
+    }
+
+    &:focus-visible + .option__box {
+      &::after,
+      svg {
+        scale: 1;
+      }
+    }
+  }
+
+  &:not(:last-child) {
+    margin-block-end: to-em(5, $fix-size);
+  }
+}

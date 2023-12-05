@@ -1,0 +1,91 @@
+@use "@scss/abstracts" as *;
+@use "@scss/utilities/placeholders" as *;
+
+.checkboxes {
+  display: grid;
+}
+
+.checkbox {
+  $fix-size: 18;
+
+  display: flex;
+  flex-wrap: nowrap;
+  gap: to-em(10, $fix-size);
+  align-items: center;
+
+  &__box {
+    $box-size: 20;
+
+    position: relative;
+    flex: 0 0 to-em($box-size, $fix-size);
+    overflow: hidden;
+    border-radius: to-em(5, $fix-size);
+    border-width: to-em(5, $fix-size);
+    border-style: solid;
+    border-color: var(--color-accent, #{$color-accent});
+    block-size: to-em($box-size, $fix-size);
+    background-color: var(--color-primary, #{$color-primary});
+
+    &::after {
+      @include pseudo;
+
+      inset: 0;
+      border-radius: to-em(3, $fix-size);
+      background-color: var(--color-secondary, #{$color-secondary});
+      scale: 0;
+      transition: scale
+        var(--transition-duration-default, #{$transition-duration-default});
+    }
+
+    svg {
+      $svg-size: 10;
+
+      position: absolute;
+      inset: to-em(3, $fix-size);
+      z-index: var(--z-index-1, #{$z-index-1});
+      block-size: to-em($svg-size, $fix-size);
+      inline-size: to-em($svg-size, $fix-size);
+      fill: var(--color-primary, #{$color-primary});
+      scale: 0;
+      transition: scale
+        var(--transition-duration-default, #{$transition-duration-default});
+    }
+  }
+
+  &__input {
+    position: absolute;
+
+    &:disabled + .checkbox__box {
+      border-color: var(--color-gray, #{$color-gray});
+    }
+
+    &:checked {
+      &:disabled + .checkbox__box {
+        border-color: var(--color-gray, #{$color-gray});
+
+        &::after {
+          background-color: var(--color-gray, #{$color-gray});
+        }
+      }
+
+      &:focus-visible + .checkbox__box,
+      + .checkbox__box {
+        &::after,
+        svg {
+          scale: 1;
+        }
+      }
+    }
+
+    &:focus-visible + .checkbox__box {
+      &::after,
+      svg {
+        scale: 1;
+      }
+    }
+  }
+
+  &:not(:last-child) {
+    margin-block-end: to-em(5, $fix-size);
+  }
+}

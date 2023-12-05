@@ -1,0 +1,97 @@
+- const projectConfig = require('/core/configs/project.config.js')
+
+- const pagination = require('/src/views/data/pagination.json')
+
+- const {
+-		default: {
+-			entry,
+- 		language,
+-			html: {
+-				hasScriptInHead,
+-				meta: {
+-					description,
+-					hasDirection
+-				}
+-			}
+- 	}
+-	} = projectConfig
+- const production = self.htmlWebpackPlugin.options.production
+
+block variables
+  - let title
+  - let pageMod
+  - let fullPage
+  - let customScroll
+  - let sidebar
+  - let popups
+  - let preloader
+
+doctype html
+html(lang=language || 'en-US' dir=hasDirection)
+  head
+    meta(charset='UTF-8')
+    meta(
+      name='viewport'
+      content='width=device-width, initial-scale=1'
+    )
+    title=title
+    meta(
+      name='description'
+      content=description || 'Please add description!'
+    )
+    meta(
+      name='format-detection'
+      content='telephone=no'
+    )
+    meta(
+      name='apple-mobile-web-app-capable'
+      content='yes'
+    )
+    meta(
+      name='apple-mobile-web-app-status-bar-style'
+      content='black'
+    )
+    link(
+      href='/favicon.ico'
+      type='image/x-icon'
+      rel='icon'
+    )
+    link(
+      href='/apple-touch-icon.png'
+      rel='apple-touch-icon'
+    )
+
+    if production
+      link(
+        rel='stylesheet'
+        href='/assets/css/style.min.css'
+      )
+
+    if hasScriptInHead
+      script(src=`/assets/js/${entry || 'main'}.min.js` defer)
+  body
+    .wrapper(data-simplebar=customScroll)
+      include header
+
+      main(
+        class=[
+          'page',
+          pageMod
+        ]
+        data-fp=fullPage
+      )
+        if sidebar
+          .layout.container
+            block content
+        else
+          block content
+
+      include footer
+
+  if preloader
+    include ../components/preloader
+  if popups
+    include ../components/popup
+
+  if !hasScriptInHead
+    script(src=`/assets/js/${entry || 'main'}.min.js`)

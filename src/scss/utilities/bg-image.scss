@@ -1,0 +1,23 @@
+.bg-image {
+  position: relative;
+  overflow: hidden;
+
+  iframe,
+  object,
+  video,
+  embed,
+  img {
+    position: absolute;
+    inset: 0;
+  }
+
+  &--contain {
+    iframe,
+    object,
+    video,
+    embed,
+    img {
+      object-fit: contain;
+    }
+  }
+}

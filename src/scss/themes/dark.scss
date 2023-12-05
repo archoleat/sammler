@@ -1,0 +1,8 @@
+@use "@scss/abstracts" as *;
+
+.dark {
+  --color-primary: #{$color-accent};
+  --color-secondary: #{$color-primary};
+
+  color-scheme: dark;
+}

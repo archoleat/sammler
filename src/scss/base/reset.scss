@@ -1,0 +1,84 @@
+@use "@scss/abstracts" as *;
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+  padding: 0;
+  font: inherit;
+
+  @include media-motion(reduce) {
+    transition: none;
+    animation: none;
+  }
+}
+
+html {
+  color-scheme: light dark;
+  scroll-padding-block-start: calc(
+    var(--header-min-block-size, #{to-rem($header-min-block-size)})
+  );
+  scrollbar-gutter: stable;
+
+  @include media-motion(no-preference) {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  min-inline-size: $min-inline-size + px;
+  background-color: var(--background-color-primary, #{$color-primary});
+  overscroll-behavior: none;
+}
+
+:focus-visible {
+  outline: to-rem(2) solid var(--color-inverse, #{$color-inverse});
+  outline-offset: to-rem(2);
+}
+
+summary,
+ul,
+ol {
+  list-style-type: none;
+}
+
+picture,
+img {
+  $size: 100%;
+
+  vertical-align: middle;
+  shape-margin: to-rem(16);
+  block-size: $size;
+  inline-size: $size;
+  font-style: italic;
+  background-repeat: no-repeat;
+  object-fit: cover;
+  object-position: top;
+}
+
+input,
+svg {
+  display: block;
+  inline-size: 100%;
+}
+
+input {
+  appearance: none;
+}
+
+textarea {
+  resize: none;
+}
+
+button {
+  background-color: transparent;
+}
+
+button,
+label {
+  @media (any-hover: hover) {
+    cursor: pointer;
+  }
+}

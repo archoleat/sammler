@@ -1,0 +1,30 @@
+@use "@scss/abstracts" as *;
+@use "@scss/utilities/placeholders" as *;
+
+.breadcrumb {
+  &__list {
+    display: flex;
+    overflow-block: hidden;
+    overflow-inline: auto;
+    overscroll-behavior-inline: none;
+
+    li {
+      $font-size: 18;
+
+      display: flex;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+
+      [aria-current="page"] {
+        color: var(--color-gray, #{$color-gray});
+      }
+
+      &:not(:last-child) {
+        &::after {
+          content: "→";
+          margin-inline: to-em(5, $font-size);
+        }
+      }
+    }
+  }
+}

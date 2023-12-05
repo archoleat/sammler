@@ -1,0 +1,23 @@
+mixin pagination(classMod)
+  nav(
+    class=[
+      'pagination',
+      classMod
+    ]
+    aria-label='pagination'
+  )
+    a.pagination__arrow.pagination__arrow--prev(href='#')
+      span.sr-only
+        | previous page
+      svg
+        use(href='@img/icons/sprite.svg#arrow')
+    ul.pagination__list
+      each button in pagination.buttons
+        li(class=button.current ? 'active' : false)
+          a(href='#' aria-current=button.current ? 'page' : false)
+            =button.value
+    a.pagination__arrow.pagination__arrow--next(href='#')
+      span.sr-only
+        | next page
+      svg
+        use(href='@img/icons/sprite.svg#arrow')

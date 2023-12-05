@@ -1,0 +1,48 @@
+@use "@scss/abstracts" as *;
+@use "@scss/utilities/placeholders" as *;
+
+.popup {
+  position: fixed;
+  inset: 0;
+  padding-block: to-rem(30);
+  padding-inline: to-rem($container-padding-inline);
+  opacity: 0;
+  pointer-events: none;
+
+  &__wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    min-block-size: 100%;
+  }
+
+  &__content {
+    border-radius: to-rem(20);
+    inline-size: max(56.25rem);
+    padding: to-rem(20);
+    background-color: var(--color-accent, #{$color-accent});
+    opacity: 0;
+    scale: 0;
+    transition:
+      opacity var(--transition-duration-default, #{$transition-duration-default}),
+      scale var(--transition-duration-default, #{$transition-duration-default});
+
+    .lock & {
+      opacity: 1;
+    }
+  }
+
+  &--show {
+    z-index: var(--z-index-3, #{$z-index-3});
+    overflow-block: auto;
+    opacity: 1;
+    pointer-events: auto;
+    overscroll-behavior-block: none;
+
+    .popup__content {
+      opacity: 1;
+      scale: 1;
+    }
+  }
+}

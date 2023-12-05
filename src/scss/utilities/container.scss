@@ -1,0 +1,19 @@
+@use "@scss/abstracts" as *;
+
+.container {
+  @if $container-max-inline-size > 0 {
+    margin-inline: auto;
+    max-inline-size: var(--container-inline-size, #{to-rem($container-inline-size)});
+  }
+
+  @if $container-padding-inline > 0 {
+    @if $container-max-inline-size > 0 {
+      padding-inline: var(
+        --container-padding-inline,
+        #{to-rem($container-padding-inline)}
+      );
+    } @else {
+      @include responsive-value("padding-inline", $container-padding-inline, 15);
+    }
+  }
+}

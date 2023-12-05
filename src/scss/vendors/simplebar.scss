@@ -1,0 +1,206 @@
+[data-simplebar] {
+  position: relative;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: flex-start;
+}
+
+.simplebar-wrapper {
+  overflow: hidden;
+  height: inherit;
+  width: inherit;
+  max-height: inherit;
+  max-width: inherit;
+}
+
+.simplebar-mask {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  margin: 0;
+  height: auto !important;
+  width: auto !important;
+  padding: 0;
+  direction: inherit;
+}
+
+.simplebar-offset {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  box-sizing: inherit !important;
+  padding: 0;
+  direction: inherit !important;
+  resize: none !important;
+}
+
+.simplebar-content-wrapper {
+  position: relative;
+  display: block;
+  overflow: auto;
+  // Required for horizontal native scrollbar to not appear if parent is taller than natural height
+  height: 100%;
+  width: auto;
+  // Needed for vertical scroll to trigger
+  max-height: 100%;
+  // Not required for horizontal scroll to trigger
+  max-width: 100%;
+  box-sizing: border-box !important;
+  direction: inherit;
+  scrollbar-width: none;
+}
+
+.simplebar-content-wrapper::-webkit-scrollbar,
+.simplebar-hide-scrollbar::-webkit-scrollbar {
+  display: none;
+  height: 0;
+  width: 0;
+}
+
+.simplebar-content::before,
+.simplebar-content::after {
+  content: " ";
+  display: table;
+}
+
+.simplebar-placeholder {
+  width: 100%;
+  max-height: 100%;
+  max-width: 100%;
+  pointer-events: none;
+}
+
+.simplebar-height-auto-observer-wrapper {
+  position: relative;
+  z-index: -1;
+  float: left;
+  flex-grow: inherit;
+  flex-shrink: 0;
+  flex-basis: 0;
+  overflow: hidden;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  max-height: 1px;
+  max-width: 1px;
+  box-sizing: inherit !important;
+  padding: 0;
+  pointer-events: none;
+}
+
+.simplebar-height-auto-observer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  display: block;
+  overflow: hidden;
+  height: 1000%;
+  width: 1000%;
+  min-height: 1px;
+  min-width: 1px;
+  box-sizing: inherit;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.simplebar-track {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+[data-simplebar].simplebar-dragging {
+  pointer-events: none;
+  user-select: none;
+}
+
+[data-simplebar].simplebar-dragging .simplebar-content {
+  pointer-events: none;
+  user-select: none;
+}
+
+[data-simplebar].simplebar-dragging .simplebar-track {
+  pointer-events: all;
+}
+
+.simplebar-scrollbar {
+  position: absolute;
+  right: 0;
+  left: 0;
+  min-height: 10px;
+}
+
+.simplebar-scrollbar::before {
+  content: "";
+  position: absolute;
+  right: 2px;
+  left: 2px;
+  border-radius: 7px;
+  background: black;
+  opacity: 0;
+  transition: opacity 0.2s 0.5s linear;
+}
+
+.simplebar-scrollbar.simplebar-visible::before {
+  opacity: 0.5;
+  transition-duration: 0s;
+  transition-delay: 0s;
+}
+
+.simplebar-track.simplebar-vertical {
+  top: 0;
+  width: 11px;
+}
+
+.simplebar-scrollbar::before {
+  inset: 2px;
+}
+
+.simplebar-track.simplebar-horizontal {
+  left: 0;
+  height: 11px;
+}
+
+.simplebar-track.simplebar-horizontal .simplebar-scrollbar {
+  inset: 0 auto 0 0;
+  width: auto;
+  min-height: 0;
+  min-width: 10px;
+}
+
+// Rtl support
+[data-simplebar-direction="rtl"] .simplebar-track.simplebar-vertical {
+  right: auto;
+  left: 0;
+}
+
+.simplebar-dummy-scrollbar-size {
+  position: fixed;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  height: 500px;
+  width: 500px;
+  direction: rtl;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.simplebar-dummy-scrollbar-size > div {
+  margin: 10px 0;
+  height: 200%;
+  width: 200%;
+}
+
+.simplebar-hide-scrollbar {
+  position: fixed;
+  left: 0;
+  overflow-y: scroll;
+  visibility: hidden;
+  scrollbar-width: none;
+}

@@ -1,0 +1,142 @@
+#preloader
+  style.
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      border: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      overflow: hidden;
+      touch-action: none;
+    }
+
+    .loading body {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loaded body {
+      opacity: 1;
+      visibility: visible;
+      transition: opacity .5s;
+    }
+
+    .preloader {
+      position: fixed;
+      inset: 0;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+
+    .preloader__body {
+      display: flex;
+      flex-direction: column;
+      padding: 0.93rem;
+      max-inline-size: 31.25rem;
+    }
+
+    .preloader__counter {
+      font-size: 10rem;
+    }
+
+    .preloader__line span {
+      display: inline-block;
+      block-size: 0.8rem;
+      background-color: #80f;
+      transition: max-inline-size 0.2s;
+    }
+  script.
+    const preloader = () => {
+      const preloaderImages =
+        document.querySelectorAll('[data-preloader] img')
+        || document.querySelectorAll('img');
+      const preloaderContainer = document.querySelector('#preloader');
+
+      if (preloaderImages) {
+        const preloaderTemplate =
+          `
+            <div class="preloader">
+              <div class="preloader__body">
+                <div class="preloader__counter">0%</div>
+                <div class="preloader__line"><span></span></div>
+              </div>
+            </div>
+          `;
+
+        document.querySelector('html').insertAdjacentHTML(
+          "beforeend",
+          preloaderTemplate
+        );
+
+        const preloader = document.querySelector('.preloader');
+        const	showPercentLoad = document.querySelector('.preloader__counter');
+        const	showLineLoad = document.querySelector('.preloader__line span');
+        const	html = document.documentElement;
+
+        let imagesLoadedCount = counter = progress = 0;
+
+        html.classList.add('loading');
+        html.classList.add('lock');
+
+        const imageLoaded = () => {
+          imagesLoadedCount++;
+          progress = Math.round((100 / preloaderImages) * imagesLoadedCount);
+
+          const intervalId = setInterval(() => {
+            counter >= progress
+              ? clearInterval(intervalId)
+              : setValueProgress(++counter);
+
+            if (counter >= 100) {
+              addLoadedClass();
+            }
+          }, 10);
+        };
+
+        preloaderImages.forEach((preloaderImage) => {
+          const imgClone = document.createElement('img');
+
+          if (imgClone) {
+            imgClone.onload = imageLoaded;
+            imgClone.onerror = imageLoaded;
+            imgClone.src = preloaderImage.src;
+          }
+        });
+
+        const setValueProgress = (progress) => {
+          if (showPercentLoad) {
+            showPercentLoad.innerText = `${progress}%`;
+          };
+
+          if (showLineLoad) {
+            showLineLoad.style.width = `${progress}%`;
+          };
+        }
+
+        if (showPercentLoad) {
+          setValueProgress(progress);
+        };
+
+        const addLoadedClass = () => {
+          html.classList.add('loaded');
+          html.classList.remove('lock');
+          html.classList.remove('loading');
+
+          setInterval(() => {
+            preloader.remove();
+            preloaderContainer.remove();
+          }, 500);
+        }
+      } else {
+        preloaderContainer.remove();
+      };
+    }
+
+    preloader();

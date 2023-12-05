@@ -1,0 +1,22 @@
+@use "@scss/abstracts" as *;
+@use "@scss/utilities/placeholders" as *;
+
+body {
+  &::after {
+    @include pseudo("", fixed);
+
+    inset: 0;
+    z-index: var(--z-index-2, #{$z-index-2});
+    background-color: rgb(var(--color-secondary-rgb, #{$color-secondary-rgb}) / 0.5);
+    opacity: 0;
+    transition: opacity
+      var(--transition-duration-default, #{$transition-duration-default});
+    pointer-events: none;
+  }
+
+  .overlay-show & {
+    &::after {
+      opacity: 1;
+    }
+  }
+}

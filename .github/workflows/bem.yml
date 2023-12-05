@@ -1,0 +1,35 @@
+name: BEM naming
+
+on:
+  workflow_run:
+    workflows:
+      - Broken link checker
+    types:
+      - completed
+  pull_request:
+  push:
+    branches:
+      - gh-pages
+
+jobs:
+  bem-naming:
+    name: Lint
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: BEM
+        run: npm run bem:lint

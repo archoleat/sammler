@@ -1,0 +1,19 @@
+@use "sass:math" as *;
+
+@function div-round($divisible, $divisor) {
+  $divide: div($divisible, $divisor);
+
+  @return div(round($divide * 10000), 10000);
+}
+
+@function to-em($px, $default: 16) {
+  @return div-round($px, $default) + em;
+}
+
+@function to-percent($px, $from) {
+  @return div-round($px, $from) * 100%;
+}
+
+@function to-rem($px) {
+  @return div-round($px, 16) + rem;
+}

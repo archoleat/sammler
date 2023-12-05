@@ -1,0 +1,25 @@
+@use "@scss/abstracts" as *;
+@use "@scss/utilities/placeholders" as *;
+
+[data-showmore] {
+  display: grid;
+  gap: to-rem(10);
+}
+
+[data-showmore-button] {
+  span {
+    &:last-child {
+      display: none;
+    }
+  }
+
+  &[aria-expanded="true"] {
+    span {
+      display: none;
+
+      &:last-child {
+        display: block;
+      }
+    }
+  }
+}

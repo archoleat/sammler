@@ -1,0 +1,11 @@
+@use "@scss/abstracts" as *;
+@use "@scss/utilities/placeholders" as *;
+
+[role="switch"] {
+  $size: 30;
+
+  block-size: to-rem($size);
+  inline-size: to-rem($size);
+  transition: background-color
+    var(--transition-duration-default, #{$transition-duration-default});
+}

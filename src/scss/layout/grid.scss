@@ -1,0 +1,17 @@
+@use "@scss/abstracts" as *;
+
+.layout {
+  display: grid;
+  gap: to-rem(30);
+
+  @include media-min($laptop) {
+    grid-template-columns: 1fr minmax(to-rem(290), to-rem(400));
+  }
+}
+
+.grid {
+  @include grid(fill, to-rem(290), 1fr, $phone) {
+    gap: to-rem(30);
+    justify-items: center;
+  }
+}

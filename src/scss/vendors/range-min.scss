@@ -1,0 +1,88 @@
+@use "@scss/abstracts" as *;
+@use "@scss/utilities/placeholders" as *;
+
+.noUi-target {
+  position: relative;
+  border: to-rem(1) solid #d3d3d3;
+  border-radius: to-rem(30);
+  background-color: #fafafa;
+}
+
+.noUi-target,
+.noUi-target * {
+  box-sizing: border-box;
+  user-select: none;
+}
+
+.noUi-base,
+.noUi-connects {
+  height: 100%;
+  width: 100%;
+}
+
+// Wrapper for all connect elements.
+.noUi-connect,
+.noUi-origin {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+  transform-origin: 0 0;
+  will-change: transform;
+}
+
+.noUi-connect {
+  background-color: #add8e6;
+}
+
+.noUi-state-tap {
+  .noUi-connect,
+  .noUi-origin {
+    transition: transform 0.3s;
+  }
+}
+
+.noUi-handle {
+  position: absolute;
+  border: to-rem(1) solid #d9d9d9;
+  border-radius: 50%;
+  background-color: var(--color-secondary, #{$color-secondary});
+  backface-visibility: hidden;
+  transition: background-color 0.1s;
+  cursor: grab;
+}
+
+// Handles and cursors
+.noUi-active {
+  background-color: #d9d9d9;
+  cursor: grabbing;
+}
+
+.noUi-tooltip {
+  position: absolute;
+  display: block;
+  border: to-rem(1) solid #d9d9d9;
+  border-radius: to-rem(3);
+  padding: to-rem(5);
+  white-space: nowrap;
+  text-align: center;
+  color: var(--color-primary, #{$color-primary});
+  background-color: var(--color-secondary, #{$color-secondary});
+}
+
+// Slider size and handle placement
+.noUi-horizontal {
+  height: to-rem(10);
+
+  .noUi-handle {
+    inset: to-rem(-3) to-rem(-7.5) 0 0;
+    height: to-rem(15);
+    width: to-rem(15);
+  }
+
+  .noUi-tooltip {
+    bottom: 120%;
+    left: 50%;
+    transform: translateY(-50%);
+  }
+}

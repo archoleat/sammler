@@ -1,0 +1,7 @@
+@use "@scss/abstracts" as *;
+
+.fullscreen {
+  min-block-size: calc(
+    100svb - var(--header-min-block-size, #{to-rem($header-min-block-size)})
+  );
+}

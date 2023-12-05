@@ -1,0 +1,54 @@
+@use "@scss/abstracts" as *;
+@use "@scss/utilities/placeholders" as *;
+
+.quantity {
+  display: flex;
+  flex-wrap: nowrap;
+  border-radius: to-rem(5);
+  border-width: to-rem(2);
+  border-style: solid;
+  border-color: var(--color-secondary, #{$color-secondary});
+  block-size: to-rem(40);
+  inline-size: to-rem(90);
+
+  &__button {
+    position: relative;
+    flex: 0 0 to-rem(30);
+
+    &::before,
+    &::after {
+      @include pseudo;
+
+      inset: 50%;
+      border-radius: to-rem(1);
+      block-size: to-rem(1);
+      inline-size: to-rem(10);
+      background-color: var(--color-secondary, #{$color-secondary});
+      translate: -50% -50%;
+      transition: background-color
+        var(--transition-duration-default, #{$transition-duration-default});
+
+      @include media-hover {
+        background-color: var(--color-gray, #{$color-gray});
+      }
+    }
+
+    &--plus {
+      &::before {
+        rotate: -90deg;
+      }
+    }
+  }
+
+  &__input {
+    flex: 1;
+
+    input {
+      $font-size: 18;
+
+      block-size: 100%;
+      font-size: to-rem($font-size);
+      text-align: center;
+    }
+  }
+}

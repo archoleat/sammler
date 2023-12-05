@@ -1,0 +1,69 @@
+@use "@scss/abstracts" as *;
+@use "@scss/utilities/placeholders" as *;
+
+.rating {
+  $font-size: 18;
+  $stars: "★★★★★";
+
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  font-size: to-rem($font-size);
+
+  &__group {
+    position: relative;
+
+    &::before {
+      content: $stars;
+      display: block;
+    }
+
+    &:focus-within {
+      outline: to-rem(2) solid var(--color-inverse, #{$color-inverse});
+      outline-offset: to-rem(2);
+    }
+  }
+
+  &__active {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    transition: inline-size
+      var(--transition-duration-default, #{$transition-duration-default});
+
+    &::before {
+      @include pseudo($stars);
+
+      inset: 0;
+      color: var(--color-inverse, #{$color-inverse});
+    }
+  }
+
+  &__stars {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  &__star {
+    flex: 0 0 20%;
+    opacity: 0;
+  }
+
+  &__value {
+    padding-inline-start: to-em(10, $font-size);
+    font-size: to-rem($font-size);
+  }
+
+  &--sending {
+    opacity: 0.2;
+  }
+
+  &--set {
+    .rating__active,
+    .rating__star {
+      cursor: pointer;
+    }
+  }
+}

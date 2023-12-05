@@ -1,0 +1,24 @@
+@use "@scss/abstracts" as *;
+@use "@scss/utilities/placeholders" as *;
+
+.input {
+  border-radius: to-rem(5);
+  border-width: to-rem(1);
+  border-style: solid;
+  border-color: var(--color-accent, #{$color-accent});
+  padding: to-rem(5);
+  color: var(--color-accent, #{$color-accent});
+
+  &:not([data-placeholder-unhidden]) {
+    &::placeholder {
+      transition: opacity
+        var(--transition-duration-default, #{$transition-duration-default});
+    }
+
+    &:focus-visible {
+      &::placeholder {
+        opacity: 0;
+      }
+    }
+  }
+}
