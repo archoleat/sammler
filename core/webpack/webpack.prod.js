@@ -21,8 +21,8 @@ const {
 const {
   ASSETS_FOLDER,
   babelConfigFile,
-  SRC_FOLDER,
   PAGES_FOLDER,
+  SRC_FOLDER,
   src: {
     favicon: faviconSrc,
     htaccess: htaccessSrc,

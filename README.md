@@ -6,11 +6,7 @@ Rapid and modular development.
 
 -   [Getting Started](#getting-started)
     -   [Prerequisites](#prerequisites)
-    -   [NPM Scripts](#npm-scripts)
-    -   [Possibilities](#possibilities)
-<!--  -->
--   [Architecture](#architecture)
--   [Built With](#built-with)
+
 -   [Contributing](#contributing)
 -   [Versioning](#versioning)
 -   [Authors](#authors)
@@ -32,49 +28,6 @@ For **conqueror** to work properly, you need the following programs:
 -   Git
 -   IDE or Code Editor
 
-### NPM Scripts
-
-After the dependencies are installed,
-the following commands are available to you:
-
--   `build:dev` - Developer mode, this mode runs the `fonts.js`,
-    `sprite.js` and `webpack-dev-server` tasks.
-<!-- -->
--   `build:prod` - Build mode, in this mode, tasks are run to optimize,
-    compress and check the code.
-<!-- -->
--   `deploy:gh-pages` - After running the `build` script
-    you can run `deploy` and the `dist/` folder will be
-    Pushed to your repository in the `gh-pages` branch,
-    which will be created automatically.
-<!-- -->
--   `stylelint:fix` - Checks and fix `*.scss` files,
-    automatically starts with `stylelint.yml`
-    on Push and Pull Request.
-    Also runs with the `build` script.
-<!-- -->
--   `eslint:fix` - Checks and fix `*.js` files,
-    automatically starts with `eslint.yml`
-    on Push and Pull Request.
-    Also runs with the `build` script.
-<!-- -->
--   `editorconfig:lint` - Checks all files,
-    automatically starts with `editorconfig.yml`
-    on Push and Pull Request.
-<!-- -->
--   `markdown:lint` - Checks `*.md` files,
-    automatically starts with `markdown.yml`
-    on Push and Pull Request.
-<!-- -->
--   `sprite:update` - Creating an SVG sprite, to do this,
-    put your SVG icons in the `img/sprite/` folder,
-    this task can be run both separately and in build mode.
-<!-- -->
--   `fonts:update` - Converting font files to `.woff2` format,
-    to do this, put your fonts in the `fonts/` folder,
-    this task can be run both separately with `--update` flag and
-    in build/developer mode without `--update` flag.
-
 ## Contributing
 
 Please read [Contributing](CONTRIBUTING.md)
@@ -85,7 +38,7 @@ and the process for submitting Pull Requests to us.
 
 We use [SemVer](http://semver.org) for versioning.
 For the versions available, see the
-[tags on this repository](https://github.com/nikkeyl/conqueror/tags).
+[tags on this repository](https://github.com/Conqueror-Site-Builder/conqueror/tags).
 
 ## Authors
 
