@@ -3,7 +3,6 @@
     "generateFontFace.js",
     "mixins.scss",
     "Popup.js",
-    "README.md",
     "Select.js",
     "src/scss/vendors",
     "stylelintrc.json"
