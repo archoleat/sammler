@@ -18,6 +18,7 @@ const {
   ASSETS_FOLDER,
   IMAGES_FOLDER,
   PAGES_FOLDER,
+  SCRIPTS_FOLDER,
   SRC_FOLDER,
   src: {
     favicon: faviconSrc,
