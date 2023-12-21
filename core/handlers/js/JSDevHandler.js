@@ -21,11 +21,11 @@ import PLUGINS from '../../settings/plugins.js'
 import webpackConfig from '../../webpack/webpack.prod.js'
 
 import outputConfig from '../../configs/output.config.js'
-import projectConfig from '../../configs/project.config.js'
+import PROJECT_CONFIG from '../../configs/project.config.js'
 
 import formatterJS from '../../formatters/formatterJS.js'
 
-const { entry } = projectConfig
+const { entry } = PROJECT_CONFIG
 const { TerserPlugin } = PLUGINS
 
 const webPackBeautifyConfig = Object.assign({}, webpackConfig)
