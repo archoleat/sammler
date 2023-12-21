@@ -17,11 +17,11 @@ import imageHandler from './core/handlers/images/imageHandler.js'
 import CSSHandler from './core/handlers/CSSHandler.js'
 import HTMLHandler from './core/handlers/HTMLHandler.js'
 
-import projectConfig from './core/configs/project.config.js'
+import PROJECT_CONFIG from './core/configs/project.config.js'
 
 const {
   images: { isWebp }
-} = projectConfig
+} = PROJECT_CONFIG
 const {
   FLAGS: { isUpdate }
 } = HELPERS
