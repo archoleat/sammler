@@ -26,7 +26,7 @@ const { GIT_KEEP_FILE, buildFolder, cacheFolder } = PATHS
 const { deleteAsync } = PLUGINS
 
 const reset = () => {
-	return deleteAsync([GIT_KEEP_FILE, cacheFolder, buildFolder, ...removes ?? []])
+  return deleteAsync([GIT_KEEP_FILE, cacheFolder, buildFolder, ...removes ?? []])
 }
 
 export default reset
