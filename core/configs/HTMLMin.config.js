@@ -1,8 +1,8 @@
-import projectConfig from './project.config.js'
+import PROJECT_CONFIG from './project.config.js'
 
 const {
   html: { isMinify }
-} = projectConfig
+} = PROJECT_CONFIG
 
 const HTMLMinConfig = {
   collapseBooleanAttributes: true,

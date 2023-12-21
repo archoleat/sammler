@@ -18,13 +18,13 @@
 
 import PLUGINS from '../settings/plugins.js'
 
-import projectConfig from '../configs/project.config.js'
+import PROJECT_CONFIG from '../configs/project.config.js'
 
 import FormatterMessage from '../formatters/FormatterMessage.js'
 
 const {
   notifier: { isNotify, sound }
-} = projectConfig
+} = PROJECT_CONFIG
 const { onError, plumber } = PLUGINS
 
 class Notifier extends FormatterMessage {

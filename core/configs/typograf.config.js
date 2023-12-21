@@ -1,6 +1,6 @@
-import projectConfig from './project.config.js'
+import PROJECT_CONFIG from './project.config.js'
 
-const { language } = projectConfig
+const { language } = PROJECT_CONFIG
 
 const typografConfig = {
   locale: language ?? 'en-US' === 'ru' ? ['ru', 'en-US'] : ['en-US'],

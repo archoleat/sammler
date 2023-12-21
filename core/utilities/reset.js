@@ -19,14 +19,14 @@
 import PATHS from '../settings/paths.js'
 import PLUGINS from '../settings/plugins.js'
 
-import projectConfig from '../configs/project.config.js'
+import PROJECT_CONFIG from '../configs/project.config.js'
 
-const { removes } = projectConfig
-const { buildFolder, GIT_KEEP_FILE, cacheFolder } = PATHS
+const { removes } = PROJECT_CONFIG
+const { GIT_KEEP_FILE, buildFolder, cacheFolder } = PATHS
 const { deleteAsync } = PLUGINS
 
 const reset = () => {
-  return deleteAsync([cacheFolder, buildFolder, GIT_KEEP_FILE, ...removes ?? []])
+	return deleteAsync([GIT_KEEP_FILE, cacheFolder, buildFolder, ...removes ?? []])
 }
 
 export default reset

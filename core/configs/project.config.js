@@ -16,24 +16,32 @@
 //
 ////////////////////////////////////////////////////////////////////////////
 
-const projectConfig = {
+import { resolve } from 'path'
+
+const PROJECT_CONFIG = {
   entry: 'main',
   isBabel: true,
   language: 'en-US',
   cache: {
     location: '.cache',
     settings: {
-      type: 'filesystem'
+      type: 'filesystem',
+      cacheDirectory: resolve('.cache'),
+      // compression
+      // idletimeout
+      // maxAge: 86400000
+      // memoryCacheUnaffected
+      // store: 'pack',
     }
   },
   formatters: {
+    isTypography: true,
     languages: {
       isPugPretty: true,
       sassOutputStyle: 'expanded'
     }
   },
   html: {
-    accessibilityLevel: 'WCAG2AAA',
     hasScriptInHead: true,
     isMinify: false,
     meta: {
@@ -66,7 +74,6 @@ const projectConfig = {
   removes: ['*.md']
 }
 
-// typograf
 // two files: .min.css и .css
 
-export default projectConfig
+export default PROJECT_CONFIG

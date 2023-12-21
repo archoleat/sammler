@@ -18,7 +18,7 @@
 
 import { basename, resolve } from 'path'
 
-import projectConfig from '../configs/project.config.js'
+import PROJECT_CONFIG from '../configs/project.config.js'
 
 import PLUGINS from './plugins.js'
 
@@ -27,30 +27,33 @@ const {
   cache: { location },
   images: { extensions, spriteFileName },
   server: { publicFolder }
-} = projectConfig
+} = PROJECT_CONFIG
 const { join } = PLUGINS
 
 const ASSETS_FOLDER = 'assets'
-const buildFolder = resolve(publicFolder ?? 'dist')
-const cacheFolder = location ?? '.cache'
 const IMAGES_FOLDER = 'img'
 const PAGES_FOLDER = 'views'
-const rootFolder = basename(resolve())
 const SCRIPTS_FOLDER = 'js'
 const SRC_FOLDER = resolve('src')
 const SVG_SPRITE_FOLDER = 'sprite'
+
+const buildFolder = resolve(publicFolder ?? 'dist')
+const cacheFolder = location ?? '.cache'
+const rootFolder = basename(resolve())
+const svgSpriteFiles = join(SRC_FOLDER, IMAGES_FOLDER, SVG_SPRITE_FOLDER, '*.svg')
+
 const PATHS = {
   ASSETS_FOLDER,
-  buildFolder,
-  cacheFolder,
   IMAGES_FOLDER,
   PAGES_FOLDER,
-  rootFolder,
   SCRIPTS_FOLDER,
   SRC_FOLDER,
+  buildFolder,
+  cacheFolder,
+  rootFolder,
+  GIT_KEEP_FILE: '**/.gitkeep',
   babelConfigFile: resolve('core/configs/babel.config.js'),
   fontFacesFile: join(SRC_FOLDER, 'scss/base/font-faces.scss'),
-  GIT_KEEP_FILE: '**/.gitkeep',
   spriteFile: `../${IMAGES_FOLDER}/icons/${spriteFileName ?? 'sprite'}.svg`,
   versionFile: join(cacheFolder, 'version.json'),
   build: {
@@ -74,11 +77,8 @@ const PATHS = {
     markdown: join(SRC_FOLDER, PAGES_FOLDER, 'markdown/**/*.md'),
     pug: join(SRC_FOLDER, PAGES_FOLDER, '**/*.pug'),
     robots: join(SRC_FOLDER, 'robots.txt'),
-    sprite: join(SRC_FOLDER, IMAGES_FOLDER, SVG_SPRITE_FOLDER, '*.svg'),
-    svg: [
-      join(SRC_FOLDER, IMAGES_FOLDER, '**/*.svg'),
-      join(`!${SRC_FOLDER}`, IMAGES_FOLDER, SVG_SPRITE_FOLDER, '*.svg')
-    ]
+    sprite: svgSpriteFiles,
+    svg: [join(SRC_FOLDER, IMAGES_FOLDER, '**/*.svg'), `!${svgSpriteFiles}`]
   }
 }
 

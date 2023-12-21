@@ -23,8 +23,8 @@ import PLUGINS from '../settings/plugins.js'
 import SVGSpriteConfig from '../configs/SVGSprite.config.js'
 
 const {
-  spriteFile,
   SRC_FOLDER,
+  spriteFile,
   src: { sprite: spriteSrc }
 } = PATHS
 const { notifier, status } = HELPERS

@@ -1,8 +1,8 @@
-import projectConfig from './project.config.js'
+import PROJECT_CONFIG from './project.config.js'
 
 const {
   images: { optimizationLevel }
-} = projectConfig
+} = PROJECT_CONFIG
 
 const imageMinConfig = {
   optimizationLevel: optimizationLevel ?? 3,
