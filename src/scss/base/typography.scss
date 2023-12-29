@@ -29,7 +29,7 @@ a {
   $line-height: 22;
 
   font-size: to-rem($font-size);
-  line-height: div-round($line-height, $font-size);
+  line-height: decimal-round($line-height, $font-size);
 }
 
 .text {
@@ -49,7 +49,7 @@ a {
   $line-height: 20;
 
   font-size: to-rem($font-size);
-  line-height: div-round($line-height, $font-size);
+  line-height: decimal-round($line-height, $font-size);
 
   @include media-hover {
     color: var(--color-accent, #{$color-accent});

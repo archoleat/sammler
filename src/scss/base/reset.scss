@@ -15,6 +15,11 @@
   }
 }
 
+:focus-visible {
+  outline: to-rem(2) solid var(--color-inverse, #{$color-inverse});
+  outline-offset: to-rem(2);
+}
+
 html {
   color-scheme: light dark;
   scroll-padding-block-start: calc(
@@ -31,11 +36,6 @@ body {
   min-inline-size: $min-inline-size + px;
   background-color: var(--background-color-primary, #{$color-primary});
   overscroll-behavior: none;
-}
-
-:focus-visible {
-  outline: to-rem(2) solid var(--color-inverse, #{$color-inverse});
-  outline-offset: to-rem(2);
 }
 
 summary,
