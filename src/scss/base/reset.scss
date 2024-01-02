@@ -78,7 +78,7 @@ button {
 
 button,
 label {
-  @media (any-hover: hover) {
+  @include media-hover {
     cursor: pointer;
   }
 }
