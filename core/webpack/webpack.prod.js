@@ -6,7 +6,7 @@ import PLUGINS from '../settings/plugins.js'
 
 import CSSLoaderConfig from '../configs/CSSLoader.config.js'
 import outputConfig from '../configs/output.config.js'
-import projectConfig from '../configs/project.config.js'
+import PROJECT_CONFIG from '../configs/project.config.js'
 import replaceLoaderConfig from '../configs/replaceLoader.config.js'
 import resolveConfig from '../configs/resolve.config.js'
 
@@ -17,12 +17,12 @@ const {
   formatters: {
     languages: { isPugPretty, sassOutputStyle }
   }
-} = projectConfig
+} = PROJECT_CONFIG
 const {
   ASSETS_FOLDER,
-  babelConfigFile,
   PAGES_FOLDER,
   SRC_FOLDER,
+  babelConfigFile,
   src: {
     favicon: faviconSrc,
     htaccess: htaccessSrc,

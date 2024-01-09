@@ -4,7 +4,7 @@ import PLUGINS from '../settings/plugins.js'
 
 import CSSLoaderConfig from '../configs/CSSLoader.config.js'
 import outputConfig from '../configs/output.config.js'
-import projectConfig from '../configs/project.config.js'
+import PROJECT_CONFIG from '../configs/project.config.js'
 import replaceLoaderConfig from '../configs/replaceLoader.config.js'
 import resolveConfig from '../configs/resolve.config.js'
 
@@ -13,7 +13,7 @@ import serverConfig from './webpack.server.js'
 const {
   entry,
   server: { port, publicFolder, sourceMapType, stats, watchFiles }
-} = projectConfig
+} = PROJECT_CONFIG
 const {
   ASSETS_FOLDER,
   IMAGES_FOLDER,

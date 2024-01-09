@@ -11,7 +11,7 @@
   padding: to-rem(10) to-rem(15);
   font-size: to-rem($font-size);
   text-align: center;
-  line-height: div-round($line-height, $font-size);
+  line-height: decimal-round($line-height, $font-size);
   color: var(--color-primary, #{$color-primary});
   background-color: var(--color-secondary, #{$color-secondary});
   transition:

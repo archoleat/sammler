@@ -15,16 +15,15 @@
   }
 }
 
-html {
-  color-scheme: light dark;
-  scroll-padding-block-start: calc(
-    var(--header-min-block-size, #{to-rem($header-min-block-size)})
-  );
-  scrollbar-gutter: stable;
+:focus-visible {
+  outline: to-rem(2) solid var(--color-inverse, #{$color-inverse});
+  outline-offset: to-rem(2);
+}
 
-  @include media-motion(no-preference) {
-    scroll-behavior: smooth;
-  }
+html {
+  color-scheme: dark light;
+  hanging-punctuation: first last;
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -33,17 +32,19 @@ body {
   overscroll-behavior: none;
 }
 
-:focus-visible {
-  outline: to-rem(2) solid var(--color-inverse, #{$color-inverse});
-  outline-offset: to-rem(2);
+summary {
+  // Reset marker on Safari
+  &::-webkit-details-marker {
+    display: none;
+  }
 }
 
-summary,
 ul,
 ol {
   list-style-type: none;
 }
 
+video,
 picture,
 img {
   $size: 100%;
@@ -65,6 +66,7 @@ svg {
 }
 
 input {
+  border: 0;
   appearance: none;
 }
 
@@ -78,7 +80,16 @@ button {
 
 button,
 label {
-  @media (any-hover: hover) {
+  @include media-hover {
     cursor: pointer;
+  }
+}
+
+@include media-motion(no-preference) {
+  :has(:target) {
+    scroll-behavior: smooth;
+    scroll-padding-block-start: calc(
+      var(--header-min-block-size, #{to-rem($header-min-block-size)})
+    );
   }
 }

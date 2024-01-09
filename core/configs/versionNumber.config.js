@@ -1,12 +1,12 @@
 import PATHS from '../settings/paths.js'
 
-import projectConfig from './project.config.js'
+import PROJECT_CONFIG from './project.config.js'
 
 const {
   html: {
     version: { assets, format }
   }
-} = projectConfig
+} = PROJECT_CONFIG
 const { versionFile } = PATHS
 
 const versionNumberConfig = {

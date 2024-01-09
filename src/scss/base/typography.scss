@@ -11,6 +11,21 @@ body {
   color: var(--text-color-primary, #{$color-secondary});
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+p,
+li {
+  max-inline-size: var(--p-max-inline-size, #{$p-max-inline-size});
+  text-wrap: pretty;
+}
+
 address {
   font-style: normal;
 }
@@ -29,7 +44,7 @@ a {
   $line-height: 22;
 
   font-size: to-rem($font-size);
-  line-height: div-round($line-height, $font-size);
+  line-height: decimal-round($line-height, $font-size);
 }
 
 .text {
@@ -49,7 +64,7 @@ a {
   $line-height: 20;
 
   font-size: to-rem($font-size);
-  line-height: div-round($line-height, $font-size);
+  line-height: decimal-round($line-height, $font-size);
 
   @include media-hover {
     color: var(--color-accent, #{$color-accent});

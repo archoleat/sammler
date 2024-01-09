@@ -21,9 +21,13 @@ import HELPERS from '../settings/helpers.js'
 import PLUGINS from '../settings/plugins.js'
 
 import HTMLMinConfig from '../configs/HTMLMin.config.js'
+import PROJECT_CONFIG from '../configs/project.config.js'
 import typografConfig from '../configs/typograf.config.js'
 import versionNumberConfig from '../configs/versionNumber.config.js'
 
+const {
+  formatters: { isTypography }
+} = PROJECT_CONFIG
 const {
   buildFolder,
   build: { HTML }
@@ -44,7 +48,7 @@ const HTMLHandler = (isWebp) => {
     .pipe(notifier.errorHandler('HTMLHandler'))
     .pipe(when(isWebp, webpHtmlNoSvg()))
     .pipe(versionNumber(versionNumberConfig))
-    .pipe(typograf(typografConfig))
+    .pipe(when(isTypography, typograf(typografConfig)))
     .pipe(htmlMin(HTMLMinConfig))
     .pipe(dest(buildFolder))
 }

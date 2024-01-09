@@ -1,11 +1,11 @@
 import PATHS from '../settings/paths.js'
 
-import projectConfig from './project.config.js'
+import PROJECT_CONFIG from './project.config.js'
 
 const { buildFolder } = PATHS
 const {
   server: { publicPath }
-} = projectConfig
+} = PROJECT_CONFIG
 
 const outputConfig = (fileName) => {
   return {
