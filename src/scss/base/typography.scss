@@ -11,6 +11,21 @@ body {
   color: var(--text-color-primary, #{$color-secondary});
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+p,
+li {
+  max-inline-size: var(--p-max-inline-size, #{$p-max-inline-size});
+  text-wrap: pretty;
+}
+
 address {
   font-style: normal;
 }

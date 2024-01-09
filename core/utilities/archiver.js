@@ -29,7 +29,7 @@ const {
 } = PLUGINS
 
 const archiver = () => {
-  return src(join(buildFolder, '**/*.*'))
+  return src(join(buildFolder, '**/*'))
     .pipe(notifier.errorHandler('zip'))
     .pipe(zipPlugin(`${rootFolder}.zip`))
     .pipe(dest(cacheFolder))

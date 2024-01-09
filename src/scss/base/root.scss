@@ -40,6 +40,9 @@
   --font-weight-950: #{$font-weight-950};
   --font-weight-default: var(--font-weight-400, #{$font-weight-default});
 
+  // Text
+  --p-max-inline-size: #{$p-max-inline-size};
+
   // Colors
   --color-primary: #{$color-primary};
   --color-secondary: #{$color-secondary};

@@ -21,15 +21,9 @@
 }
 
 html {
-  color-scheme: light dark;
-  scroll-padding-block-start: calc(
-    var(--header-min-block-size, #{to-rem($header-min-block-size)})
-  );
+  color-scheme: dark light;
+  hanging-punctuation: first last;
   scrollbar-gutter: stable;
-
-  @include media-motion(no-preference) {
-    scroll-behavior: smooth;
-  }
 }
 
 body {
@@ -38,12 +32,19 @@ body {
   overscroll-behavior: none;
 }
 
-summary,
+summary {
+  // Reset marker on Safari
+  &::-webkit-details-marker {
+    display: none;
+  }
+}
+
 ul,
 ol {
   list-style-type: none;
 }
 
+video,
 picture,
 img {
   $size: 100%;
@@ -65,6 +66,7 @@ svg {
 }
 
 input {
+  border: 0;
   appearance: none;
 }
 
@@ -80,5 +82,14 @@ button,
 label {
   @include media-hover {
     cursor: pointer;
+  }
+}
+
+@include media-motion(no-preference) {
+  :has(:target) {
+    scroll-behavior: smooth;
+    scroll-padding-block-start: calc(
+      var(--header-min-block-size, #{to-rem($header-min-block-size)})
+    );
   }
 }

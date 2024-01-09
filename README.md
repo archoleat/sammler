@@ -6,12 +6,16 @@ Rapid and modular development.
 
 -   [Getting Started](#getting-started)
     -   [Prerequisites](#prerequisites)
+<!-- -   [Features](#features) -->
+<!-- -   [Package.json scripts](#packagejson-scripts) -->
 
 <!-- -   [Zenitt](#zenitt) -->
+-   [Awesome Browser Testing](#awesome-browser-testing)
 -   [Helpers](#helpers)
+-   [Authors](#authors)
+-   [Contributors](#contributors)
 -   [Contributing](#contributing)
 -   [Versioning](#versioning)
--   [Authors](#authors)
 -   [License](#license)
 -   [Acknowledgments](#acknowledgments)
 
@@ -40,6 +44,14 @@ mixins.scss, etc. only if you don't have your own developments. -->
 > For more comfortable work with the library you can download
 > [**Conqueror Helpers**](https://github.com/Conqueror-Site-Builder/conqueror-helpers). -->
 
+## Awesome Browser Testing
+
+[**Browtest**](https://github.com/Conqueror-Site-Builder/browtest)
+is an application for testing in (**WebKit**) Safari, (**Gecko**) Firefox and
+(**Chromium**) Edge and Chrome, will allow you to quickly and easily view
+the site in all the necessary browsers, also it will be a salvation for
+those who do not have the opportunity to buy Apple products.
+
 ## Helpers
 
 If you want to further customize your repository or vscode,
@@ -61,6 +73,14 @@ this package holds:
 > or code editor please create an [**issue**](https://github.com/Conqueror-Site-Builder/conqueror-helpers/issues/new/choose)
 > or **Pull Request** with the new files.
 
+## Authors
+
+See also the list of [Authors](AUTHORS.md)
+
+## Contributors
+
+See the list of [Contributors](CONTRIBUTORS.md)
+
 ## Contributing
 
 Please read [Contributing](CONTRIBUTING.md)
@@ -72,14 +92,6 @@ and the process for submitting Pull Requests to us.
 We use [SemVer](http://semver.org) for versioning.
 For the versions available, see the
 [tags on this repository](https://github.com/Conqueror-Site-Builder/conqueror/tags).
-
-## Authors
-
-See also the list of [Authors](AUTHORS.md)
-
-## Contributors
-
-See the list of [Contributors](CONTRIBUTORS.md)
 
 ## License
 
