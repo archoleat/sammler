@@ -3,6 +3,7 @@
   "scripts": {
     "init": "npm i && husky install",
     "dev": "gulp && webpack serve -c core/webpack/webpack.dev.js",
+    "test:browsers": "git clone https://github.com/Conqueror-Site-Builder/browtest.git && cd browtest && npm i && npm run test:multiple:desktop",
     "build": "gulp build",
     "zip": "gulp archiver",
     "sprite:update": "gulp generateSprite --update",
