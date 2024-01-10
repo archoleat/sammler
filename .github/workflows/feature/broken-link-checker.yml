@@ -1,14 +1,21 @@
-name: Lighthouse
+name: Broken Link Checker
 
 on:
+  workflow_run:
+    workflows:
+      - Lighthouse
+    types:
+      - completed
   pull_request:
+    branches:
+      - gh-pages
   push:
     branches:
       - gh-pages
 
 jobs:
-  lighthouse:
-    name: Analyze
+  broken-link-checker:
+    name: Lint
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
@@ -26,5 +33,5 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
-      - name: Check stats
+      - name: Check Links
         run: npm run w3c:lint

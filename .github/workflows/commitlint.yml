@@ -1,20 +1,20 @@
-name: Commit Lint Messages
+name: Commit Lint
 
 on:
   pull_request:
   push:
-    branches:
-      - main
 
 jobs:
-  commit-lint-messages:
+  commit-lint:
     name: Lint
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
+    if: ${{ github.actor != 'dependabot[bot]' }}
+
     steps:
-      - name: Checkout
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Commit
+      - name: Lint
         uses: wagoid/commitlint-github-action@v5

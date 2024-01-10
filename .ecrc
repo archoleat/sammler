@@ -1,10 +1,11 @@
 {
   "exclude": [
+    ".stylelintrc.json",
+    "config.yml",
     "generateFontFace.js",
     "mixins.scss",
     "Popup.js",
     "Select.js",
-    "src/scss/vendors",
-    "stylelintrc.json"
+    "src/scss/vendors"
   ]
 }

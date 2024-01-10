@@ -1,4 +1,4 @@
-name: HTML accessibility
+name: W3C html
 
 on:
   workflow_run:
@@ -7,12 +7,14 @@ on:
     types:
       - completed
   pull_request:
+    branches:
+      - gh-pages
   push:
     branches:
       - gh-pages
 
 jobs:
-  accessibility:
+  w3c-html:
     name: Lint
     runs-on: ubuntu-latest
     timeout-minutes: 10
@@ -31,5 +33,5 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
-      - name: Accessibility
-        run: npm run a11y:lint
+      - name: W3C
+        run: npm run w3c:lint
