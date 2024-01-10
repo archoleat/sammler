@@ -1,7 +1,5 @@
 {
-  "extends": [
-    "stylelint-config-standard-scss"
-  ],
+  "extends": ["stylelint-config-standard-scss"],
   "plugins": [
     "stylelint-prettier",
     "stylelint-plugin-logical-css",
@@ -765,27 +763,21 @@
     "selector-no-qualifying-type": [
       true,
       {
-        "ignore": [
-          "attribute"
-        ]
+        "ignore": ["attribute"]
       }
     ],
     "no-descending-specificity": null,
     "max-nesting-depth": [
       4,
       {
-        "ignore": [
-          "blockless-at-rules"
-        ]
+        "ignore": ["blockless-at-rules"]
       }
     ],
     "function-url-no-scheme-relative": true,
     "value-keyword-case": [
       "lower",
       {
-        "ignoreProperties": [
-          "text-rendering"
-        ]
+        "ignoreProperties": ["text-rendering"]
       }
     ],
     "declaration-no-important": true,
@@ -798,9 +790,7 @@
     "time-min-milliseconds": [
       100,
       {
-        "ignore": [
-          "delay"
-        ]
+        "ignore": ["delay"]
       }
     ],
     "plugin/use-defensive-css": [

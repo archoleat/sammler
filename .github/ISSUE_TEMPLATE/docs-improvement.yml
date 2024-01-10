@@ -1,0 +1,36 @@
+name: Docs Improvement
+description: Create a report to help us improve this project!
+title: 'documentation: '
+labels:
+  - documentation
+assignees:
+  - nikkeyl
+
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for taking the time to fill out this docs request!
+
+  - type: textarea
+    id: describe
+    attributes:
+      label: Describe
+      description: Describe your improvements!
+      placeholder: Awesome improvement
+    validations:
+      required: true
+
+  - type: textarea
+    id: add
+    attributes:
+      label: Add Documentation
+      description: What documentation did you want to add?
+      placeholder: Document name and description
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      options:
+        - label: I Agree to Follow This Project's Code of Conduct
+          required: true

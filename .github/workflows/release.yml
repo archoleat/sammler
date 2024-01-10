@@ -1,25 +1,16 @@
-name: Markdown
+name: Release
 
 on:
-  workflow_run:
-    workflows:
-      - CodeQL
-    types:
-      - completed
-  pull_request:
-    branches:
-      - main
-    paths:
-      - '**/*.md'
-  push:
-    branches:
-      - main
-    paths:
-      - '**/*.md'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
 
 jobs:
-  markdown:
-    name: Lint
+  release:
+    name: Bump Version
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
@@ -37,5 +28,8 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
-      - name: Lint
-        run: npm run lint:remark
+      - name: Create Release
+        run: npx semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SEMANTIC_RELEASE_PACKAGE: ${{ github.event.repository.name }}

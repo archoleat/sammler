@@ -9,6 +9,15 @@
   padding: 0;
   font: inherit;
 
+  @include media-motion(no-preference) {
+    &:has(:target) {
+      scroll-behavior: smooth;
+      scroll-padding-block-start: calc(
+        var(--header-min-block-size, #{to-rem($header-min-block-size)})
+      );
+    }
+  }
+
   @include media-motion(reduce) {
     transition: none;
     animation: none;
@@ -82,14 +91,5 @@ button,
 label {
   @include media-hover {
     cursor: pointer;
-  }
-}
-
-@include media-motion(no-preference) {
-  :has(:target) {
-    scroll-behavior: smooth;
-    scroll-padding-block-start: calc(
-      var(--header-min-block-size, #{to-rem($header-min-block-size)})
-    );
   }
 }

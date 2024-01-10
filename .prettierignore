@@ -1,0 +1,6 @@
+.ecrc
+.eslintignore
+.gitignore
+.prettierignore
+.stylelintignore
+*.md
