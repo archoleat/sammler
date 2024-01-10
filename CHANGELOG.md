@@ -14,17 +14,3 @@
 * **path:** add `SCRIPTS_FOLDER` ([#9](https://github.com/Conqueror-Site-Builder/conqueror/issues/9)) ([093ffd9](https://github.com/Conqueror-Site-Builder/conqueror/commit/093ffd92863d256609fe22b2c56674d33be656bc))
 * **root.scss:** font-system ([#16](https://github.com/Conqueror-Site-Builder/conqueror/issues/16)) ([1b242fc](https://github.com/Conqueror-Site-Builder/conqueror/commit/1b242fccaa5b440eab6996cd3426da13318e6423))
 * spaces ([#1](https://github.com/Conqueror-Site-Builder/conqueror/issues/1)) ([7be3f8b](https://github.com/Conqueror-Site-Builder/conqueror/commit/7be3f8b310126794eab75d625e2276254f552bbf))
-
-## [1.0.0](https://github.com/Conqueror-Site-Builder/conqueror/tags/v1.0.0)
-
--   Added:
-<!--  -->
--   Changed:
-<!--  -->
--   Deprecated: https://github.com/nikkeyl/conqueror/wiki/Deprecated
-<!--  -->
--   Fixed:
-<!--  -->
--   Removed:
-<!--  -->
--   Security: https://github.com/nikkeyl/conqueror/security.
