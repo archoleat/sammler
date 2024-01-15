@@ -9,7 +9,7 @@ Rapid and modular development.
 <!-- -   [Features](#features) -->
 <!-- -   [Package.json scripts](#packagejson-scripts) -->
 
-<!-- -   [Zenitt](#zenitt) -->
+<!-- -   [ArchUI](#archui) -->
 -   [Awesome Browser Testing](#awesome-browser-testing)
 -   [Helpers](#helpers)
 -   [Authors](#authors)
@@ -34,9 +34,9 @@ For **conqueror** to work properly, you need the following programs:
 -   **Git**
 -   **IDE or Code Editor**
 
-<!-- ## Zenitt
+<!-- ## ArchUI
 
-This project uses the [**Zenitt**](https://github.com/Conqueror-Site-Builder/zenitt)
+This project uses the [**ArchUI**](https://github.com/Conqueror-Site-Builder/arch-ui)
 library, so there is no need to create files like reset.scss, typography.scss,
 mixins.scss, etc. only if you don't have your own developments. -->
 
