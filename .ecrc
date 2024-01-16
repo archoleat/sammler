@@ -1,6 +1,9 @@
 {
   "exclude": [
+    ".gitmodules",
+    ".releaserc.json",
     ".stylelintrc.json",
+    "CHANGELOG.md",
     "config.yml",
     "CONTRIBUTING.md",
     "generateFontFace.js",
@@ -8,6 +11,7 @@
     "package.json",
     "Popup.js",
     "PULL_REQUEST_TEMPLATE.md",
+    "README.md",
     "Select.js",
     "src/scss/vendors"
   ]
