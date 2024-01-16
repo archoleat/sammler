@@ -1,7 +1,7 @@
 {
   "type": "module",
   "scripts": {
-    "init": "npm i && husky install",
+    "init": "npm i && husky install && git submodule init && git submodule update",
     "dev": "gulp && webpack serve -c core/src/webpack/webpack.dev.js",
     "test:browsers": "git clone https://github.com/Conqueror-Site-Builder/browtest.git && cd browtest && npm i && npm run test:multiple:desktop",
     "build": "gulp build",
