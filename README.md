@@ -54,7 +54,7 @@ those who do not have the opportunity to buy Apple products.
 
 ## Helpers
 
-If you want to further customize your repository or vscode,
+If you want to further customize your repository or Visual Studio Code,
 you can download [**Conqueror Helpers**](https://github.com/Conqueror-Site-Builder/conqueror-helpers),
 this package holds:
 
@@ -64,13 +64,13 @@ this package holds:
 -   **`.gitconfig`**.
 -   **`.gitignore_global`**.
 -   **`.gitmessage.txt`**.
--   **`settings.json`** and **`extensions.json`** for vscode.
--   Snippets for **js**, **ts**, **scss**, **pug** and **json**.
+-   **`settings.json`** for Visual Studio Code.
 
 > [!WARNING]
-> **Conqueror Helpers** contains configuration and snippets for **vscode only**,
-> if you want configuration and snippet files to be added for your IDE
-> or code editor please create an [**issue**](https://github.com/Conqueror-Site-Builder/conqueror-helpers/issues/new/choose)
+> **Conqueror Helpers** contains configuration and snippets for
+> **Visual Studio Code only**, if you want configuration and snippet
+> files to be added for your IDE or code editor please create an
+> [**issue**](https://github.com/Conqueror-Site-Builder/conqueror-helpers/issues/new/choose)
 > or **Pull Request** with the new files.
 
 ## Authors
