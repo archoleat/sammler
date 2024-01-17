@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.0](https://github.com/Conqueror-Site-Builder/conqueror/compare/v1.1.0...v1.2.0) (2024-01-17)
+
+
+### Features
+
+* `browtest` submodule ([#63](https://github.com/Conqueror-Site-Builder/conqueror/issues/63)) ([b295b69](https://github.com/Conqueror-Site-Builder/conqueror/commit/b295b694a618bf6ea4c280baf80f02b9d8298bd0))
+* add submodule `core` ([#59](https://github.com/Conqueror-Site-Builder/conqueror/issues/59)) ([ba4e1b4](https://github.com/Conqueror-Site-Builder/conqueror/commit/ba4e1b45858f6e0dbb485f65620feb3506b71559))
+
 ## [1.1.0](https://github.com/Conqueror-Site-Builder/conqueror/compare/v1.0.0...v1.1.0) (2024-01-10)
 
 
