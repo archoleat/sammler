@@ -4,3 +4,6 @@
 [submodule "browtest"]
 	path = browtest
 	url = https://github.com/Conqueror-Site-Builder/browtest.git
+[submodule ".vscode"]
+	path = .vscode
+	url = https://github.com/Conqueror-Site-Builder/.vscode.git
