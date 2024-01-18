@@ -9,14 +9,14 @@
   padding: 0;
   font: inherit;
 
-  @include media-motion(no-preference) {
-    &:has(:target) {
-      scroll-behavior: smooth;
-      scroll-padding-block-start: calc(
-        var(--header-min-block-size, #{to-rem($header-min-block-size)})
-      );
-    }
-  }
+  // @include media-motion(no-preference) {
+  //   &:has(:target) {
+  //     scroll-behavior: smooth;
+  //     scroll-padding-block-start: calc(
+  //       var(--header-min-block-size, #{to-rem($header-min-block-size)})
+  //     );
+  //   }
+  // }
 
   @include media-motion(reduce) {
     transition: none;
@@ -42,7 +42,7 @@ body {
 }
 
 summary {
-  // Reset marker on Safari
+  /* Remove spoiler's marker in Safari */
   &::-webkit-details-marker {
     display: none;
   }
@@ -74,8 +74,13 @@ svg {
   inline-size: 100%;
 }
 
+input,
+textarea {
+  /* Removes rounded corners from input fields in Safari */
+  border-radius: 0;
+}
+
 input {
-  border: 0;
   appearance: none;
 }
 
