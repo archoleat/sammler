@@ -7,3 +7,6 @@
 [submodule ".vscode"]
 	path = .vscode
 	url = https://github.com/Conqueror-Site-Builder/.vscode.git
+[submodule ".husky"]
+	path = .husky
+	url = https://github.com/Conqueror-Site-Builder/.husky.git
