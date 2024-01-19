@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/Conqueror-Site-Builder/conqueror/compare/v1.2.0...v1.3.0) (2024-01-17)
+
+
+### Features
+
+* add `.vscode` submodule ([#67](https://github.com/Conqueror-Site-Builder/conqueror/issues/67)) ([b09ee4c](https://github.com/Conqueror-Site-Builder/conqueror/commit/b09ee4cebe37e4f07e4fcc1a6d9758ff08cb8957))
+
 ## [1.2.0](https://github.com/Conqueror-Site-Builder/conqueror/compare/v1.1.0...v1.2.0) (2024-01-17)
 
 

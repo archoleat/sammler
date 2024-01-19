@@ -42,7 +42,7 @@ mixins.scss, etc. only if you don't have your own developments. -->
 
 <!-- > [!TIP]
 > For more comfortable work with the library you can download
-> [**Conqueror Helpers**](https://github.com/Conqueror-Site-Builder/conqueror-helpers). -->
+> [**.helpers**](https://github.com/Conqueror-Site-Builder/.helpers). -->
 
 ## Awesome Browser Testing
 
@@ -54,8 +54,8 @@ those who do not have the opportunity to buy Apple products.
 
 ## Helpers
 
-If you want to further customize your repository or vscode,
-you can download [**Conqueror Helpers**](https://github.com/Conqueror-Site-Builder/conqueror-helpers),
+If you want to further customize your repository or Visual Studio Code,
+you can download [**.helpers**](https://github.com/Conqueror-Site-Builder/.helpers),
 this package holds:
 
 -   GitHub branch and tag protection rules.
@@ -64,14 +64,7 @@ this package holds:
 -   **`.gitconfig`**.
 -   **`.gitignore_global`**.
 -   **`.gitmessage.txt`**.
--   **`settings.json`** and **`extensions.json`** for vscode.
--   Snippets for **js**, **ts**, **scss**, **pug** and **json**.
-
-> [!WARNING]
-> **Conqueror Helpers** contains configuration and snippets for **vscode only**,
-> if you want configuration and snippet files to be added for your IDE
-> or code editor please create an [**issue**](https://github.com/Conqueror-Site-Builder/conqueror-helpers/issues/new/choose)
-> or **Pull Request** with the new files.
+-   **`settings.json`** for Visual Studio Code.
 
 ## Authors
 
