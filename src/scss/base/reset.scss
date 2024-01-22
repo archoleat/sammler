@@ -86,6 +86,10 @@ input {
 
 textarea {
   resize: none;
+
+  &::-webkit-resizer {
+    appearance: none;
+  }
 }
 
 button {
