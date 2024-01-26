@@ -2,7 +2,7 @@
   "type": "module",
   "scripts": {
     "init": "npm i && husky install && git submodule init && git submodule update",
-    "dev": "gulp && webpack serve -c core/src/webpack/webpack.dev.js",
+    "dev": "gulp && webpack serve -c core/src/webpack/webpack.development.js",
     "test:browsers": "cd browtest && npm i && npm run test:multiple:desktop",
     "build": "gulp build",
     "zip": "gulp archiver",
@@ -10,9 +10,9 @@
     "fonts:update": "gulp fonts --update",
     "fix:prettier": "prettier . --write",
     "lint:editorconfig": "editorconfig-checker",
-    "lint:remark": "remark . --quiet",
-    "lint:eslint": "eslint src/js/**/*.js --fix",
-    "lint:stylelint": "stylelint src/scss/**/*.scss --fix",
+    "lint:markdown": "remark . --quiet",
+    "lint:js": "eslint src/js/**/*.js --fix",
+    "lint:scss": "stylelint src/scss/**/*.scss --fix",
     "test": "mocha",
     "cm": "cz"
   },
