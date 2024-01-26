@@ -4,50 +4,49 @@
     [
       "@semantic-release/commit-analyzer",
       {
-        "preset": "conventionalcommits",
         "releaseRules": [
           {
-            "tag": "build",
+            "type": "build",
             "release": false
           },
           {
-            "tag": "chore",
+            "type": "chore",
             "release": false
           },
           {
-            "tag": "ci",
+            "type": "ci",
             "release": false
           },
           {
-            "tag": "docs",
+            "type": "docs",
             "release": false
           },
           {
-            "tag": "feat",
+            "type": "feat",
             "release": "minor"
           },
           {
-            "tag": "fix",
+            "type": "fix",
             "release": "patch"
           },
           {
-            "tag": "perf",
+            "type": "perf",
             "release": "patch"
           },
           {
-            "tag": "refactor",
+            "type": "refactor",
             "release": "patch"
           },
           {
-            "tag": "revert",
+            "type": "revert",
             "release": "patch"
           },
           {
-            "tag": "style",
+            "type": "style",
             "release": "patch"
           },
           {
-            "tag": "test",
+            "type": "test",
             "release": false
           }
         ],
@@ -59,7 +58,21 @@
     [
       "@semantic-release/release-notes-generator",
       {
-        "preset": "conventionalcommits",
+        "presetConfig": {
+          "types": [
+            { "type": "feat", "section": "Features" },
+            { "type": "fix", "section": "Bug Fixes" },
+            { "type": "refactor", "section": "Code Refactoring" },
+            { "type": "perf", "section": "Performance Improvements" },
+            { "type": "revert", "section": "Reverts" },
+            { "type": "docs", "section": "Documentation" },
+            { "type": "style", "section": "Styles" },
+            { "type": "test", "section": "Tests" },
+            { "type": "build", "section": "Build System", "hidden": true },
+            { "type": "chore", "section": "Miscellaneous Chores", "hidden": true },
+            { "type": "ci", "section": "Continuous Integration", "hidden": true }
+          ]
+        },
         "writerOpts": {
           "commitsSort": ["scope", "subject"]
         }
@@ -71,13 +84,8 @@
         "changelogTitle": "# Changelog"
       }
     ],
-    [
-      "@semantic-release/git",
-      {
-        "assets": ["CHANGELOG.md"],
-        "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
-      }
-    ],
+    "@semantic-release/git",
     "@semantic-release/github"
-  ]
+  ],
+  "preset": "conventionalcommits"
 }
