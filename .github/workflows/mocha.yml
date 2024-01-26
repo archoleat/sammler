@@ -3,10 +3,7 @@ name: Mocha
 on:
   workflow_run:
     workflows:
-      - EditorConfig
       - ESLint
-      - Prettier
-      - Stylelint
     types:
       - completed
   pull_request:
