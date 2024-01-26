@@ -4,18 +4,18 @@ import PLUGINS from './core/src/settings/plugins.js';
 import archiver from './core/src/utilities/archiver.js';
 import reset from './core/src/utilities/reset.js';
 
-import convertOTFToTTF from './core/src/converters/convertOTFToTTF.js';
-import convertTTFToWOFF2 from './core/src/converters/convertTTFToWOFF2.js';
-import generateFontFacesFile from './core/src/generators/generateFontFacesFile.js';
+import convertOTFToTTF from './core/src/converters/otf-to-ttf.js';
+import convertTTFToWOFF2 from './core/src/converters/ttf-to-woff2.js';
+import generateFontFacesFile from './core/src/generators/font-faces-file.js';
 
-import JSDevHandler from './core/src/handlers/js/JSDevHandler.js';
-import JSProdHandler from './core/src/handlers/js/JSProdHandler.js';
+import JSDevelopmentHandler from './core/src/handlers/js/js-development.js';
+import JSProductionHandler from './core/src/handlers/js/js-production.js';
 
-import generateSprite from './core/src/generators/generateSprite.js';
-import imageHandler from './core/src/handlers/images/imageHandler.js';
+import generateSprite from './core/src/generators/sprite.js';
+import imageHandler from './core/src/handlers/images/images.js';
 
-import CSSHandler from './core/src/handlers/CSSHandler.js';
-import HTMLHandler from './core/src/handlers/HTMLHandler.js';
+import CSSHandler from './core/src/handlers/css.js';
+import HTMLHandler from './core/src/handlers/html.js';
 
 import PROJECT_CONFIG from './core/src/configs/project.config.js';
 
@@ -38,8 +38,8 @@ const dev = parallel(reset, fonts, generateSprite.bind(null, isUpdate));
 const build = series(
   reset,
   fonts,
-  JSDevHandler,
-  JSProdHandler,
+  JSDevelopmentHandler,
+  JSProductionHandler,
   parallel(
     CSSHandler.bind(null, isWebp),
     HTMLHandler.bind(null, isWebp),

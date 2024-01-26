@@ -1,12 +1,9 @@
 {
   "exclude": [
-    ".gitmodules",
-    ".releaserc.json",
     ".stylelintrc.json",
     "CHANGELOG.md",
     "config.yml",
     "CONTRIBUTING.md",
-    "generateFontFace.js",
     "mixins.scss",
     "Popup.js",
     "PULL_REQUEST_TEMPLATE.md",
