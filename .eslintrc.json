@@ -1,13 +1,14 @@
 {
+  "root": true,
   "env": {
     "browser": true,
     "es6": true
   },
-  "extends": ["airbnb-base"],
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
+  "extends": ["airbnb-base", "plugin:unicorn/recommended"],
   "plugins": ["import", "unicorn"],
   "rules": {
     "import/exports-last": "error",
