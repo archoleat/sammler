@@ -14,7 +14,7 @@
     "lint:js": "eslint src/js/**/*.js --fix",
     "lint:scss": "stylelint src/scss/**/*.scss --fix",
     "test": "mocha",
-    "cm": "cz"
+    "commit": "cz"
   },
   "dependencies": {
     "inputmask": "*",
