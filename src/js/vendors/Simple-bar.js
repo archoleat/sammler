@@ -1,4 +1,3 @@
-// https://github.com/Grsmto/simplebar/tree/master/packages/simplebar
 import SimpleBar from 'simplebar'
 
 const scrollBars = document.querySelectorAll('[data-simplebar]')

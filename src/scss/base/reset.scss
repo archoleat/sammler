@@ -9,14 +9,14 @@
   padding: 0;
   font: inherit;
 
-  // @include media-motion(no-preference) {
-  //   &:has(:target) {
-  //     scroll-behavior: smooth;
-  //     scroll-padding-block-start: calc(
-  //       var(--header-min-block-size, #{to-rem($header-min-block-size)})
-  //     );
-  //   }
-  // }
+  @include media-motion(no-preference) {
+    &:has(:target) {
+      scroll-behavior: smooth;
+      scroll-padding-block-start: calc(
+        var(--header-min-block-size, #{to-rem($header-min-block-size)})
+      );
+    }
+  }
 
   @include media-motion(reduce) {
     transition: none;
@@ -30,8 +30,8 @@
 }
 
 html {
-  color-scheme: dark light;
   hanging-punctuation: first last;
+  color-scheme: dark light;
   scrollbar-gutter: stable;
 }
 

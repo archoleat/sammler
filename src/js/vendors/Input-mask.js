@@ -1,4 +1,3 @@
-// https://robinherbots.github.io/Inputmask/#/documentation
 import InputMask from 'inputmask/dist/inputmask.es6.js'
 
 const initInputMasks = () => {

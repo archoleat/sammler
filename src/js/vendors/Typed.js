@@ -1,4 +1,3 @@
-// https://mattboldt.github.io/typed
 import Typed from 'typed.js'
 
 const initTyped = () => {

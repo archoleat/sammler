@@ -12,6 +12,7 @@ Rapid and modular development.
 <!-- -   [ArchUI](#archui) -->
 -   [Awesome Browser Testing](#awesome-browser-testing)
 -   [Helpers](#helpers)
+-   [Husky](#husky)
 -   [Authors](#authors)
 -   [Contributors](#contributors)
 -   [Contributing](#contributing)
@@ -65,6 +66,11 @@ this package holds:
 -   **`.gitignore_global`**.
 -   **`.gitmessage.txt`**.
 -   **`settings.json`** for Visual Studio Code.
+
+## Husky
+
+This repository uses **.husky** as a submodule.
+**.husky** runs `pre-commit` hook and `commit-msg`.
 
 ## Authors
 

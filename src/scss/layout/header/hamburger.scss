@@ -40,12 +40,12 @@
     }
 
     &[aria-expanded="true"] {
+      $rotate: 45deg;
+
       &::before,
       &::after {
         inset-block-start: calc(50% - to-rem(1));
       }
-
-      $rotate: 45deg;
 
       &::before {
         rotate: -$rotate;
@@ -62,8 +62,10 @@
       + .menu__body {
         transform: translateX(
           calc(
-            0% -
-              var(--container-padding-inline, #{to-rem($container-padding-inline)})
+            0% - var(
+                --container-padding-inline,
+                #{to-rem($container-padding-inline)}
+              )
           )
         );
       }

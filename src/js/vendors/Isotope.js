@@ -1,4 +1,3 @@
-// https://isotope.metafizzy.co
 import Isotope from 'isotope-layout'
 
 const filter = () => {
