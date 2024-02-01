@@ -1,4 +1,3 @@
-// https://www.lightgalleryjs.com
 import lightGallery from 'lightgallery'
 
 const gallery = () => {

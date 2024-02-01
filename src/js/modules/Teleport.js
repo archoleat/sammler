@@ -1,4 +1,3 @@
-// https://github.com/FreelancerLifeStyle/dynamic_adapt
 class Teleport {
   constructor(type) {
     this.type = type

@@ -1,4 +1,3 @@
-// https://refreshless.com/nouislider
 import noUiSlider from 'nouislider'
 import wNumb from 'wnumb'
 
