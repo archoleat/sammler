@@ -1,4 +1,3 @@
-// https://atomiks.github.io/tippyjs
 import tippy from 'tippy.js'
 
 const initTippy = () => {

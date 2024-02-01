@@ -1,4 +1,3 @@
-// https://www.npmjs.com/package/js-datepicker
 import datepicker from 'js-datepicker'
 
 const initCalendar = () => {
