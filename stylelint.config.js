@@ -1,3 +1,3 @@
 export default {
-  extends: ['stylelint-conqueror-config-scss'],
+  extends: ['stylelint-config-conqueror-scss'],
 };
