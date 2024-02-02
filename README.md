@@ -7,17 +7,28 @@ Rapid and modular development.
 -   [Getting Started](#getting-started)
     -   [Prerequisites](#prerequisites)
 <!-- -   [Features](#features) -->
-<!-- -   [Package.json scripts](#packagejson-scripts) -->
+<!-- -   [Scripts](#scripts) -->
 
 <!-- -   [ArchUI](#archui) -->
--   [Awesome Browser Testing](#awesome-browser-testing)
--   [Helpers](#helpers)
--   [Husky](#husky)
+-   [Building a Website](#building-a-website)
+    -   [Browtest](#browtest)
+    -   [Stylelint Config Conqueror SCSS](#stylelint-config-conqueror-scss)
+
+-   [Additions](#additions)
+    -   [Visual Studio Code](#visual-studio-code)
+    -   [Helpers](#helpers)
+    -   [Husky](#husky)
+
 -   [Authors](#authors)
+
 -   [Contributors](#contributors)
+
 -   [Contributing](#contributing)
+
 -   [Versioning](#versioning)
+
 -   [License](#license)
+
 -   [Acknowledgments](#acknowledgments)
 
 ## Getting Started
@@ -35,6 +46,16 @@ For **conqueror** to work properly, you need the following programs:
 -   **Git**
 -   **IDE or Code Editor**
 
+## Building a Website
+
+### Browtest
+
+[**Browtest**](https://github.com/Conqueror-Site-Builder/browtest)
+is an application for testing in (**WebKit**) Safari, (**Gecko**) Firefox and
+(**Chromium**) Edge and Chrome, will allow you to quickly and easily view
+the site in all the necessary browsers, also it will be a salvation for
+those who do not have the opportunity to buy Apple products.
+
 <!-- ## ArchUI
 
 This project uses the [**ArchUI**](https://github.com/Conqueror-Site-Builder/arch-ui)
@@ -45,32 +66,36 @@ mixins.scss, etc. only if you don't have your own developments. -->
 > For more comfortable work with the library you can download
 > [**.helpers**](https://github.com/Conqueror-Site-Builder/.helpers). -->
 
-## Awesome Browser Testing
+### Stylelint Config Conqueror SCSS
 
-[**Browtest**](https://github.com/Conqueror-Site-Builder/browtest)
-is an application for testing in (**WebKit**) Safari, (**Gecko**) Firefox and
-(**Chromium**) Edge and Chrome, will allow you to quickly and easily view
-the site in all the necessary browsers, also it will be a salvation for
-those who do not have the opportunity to buy Apple products.
+Extended [**shareable config**](https://github.com/Conqueror-Site-Builder/stylelint-config-conqueror-scss)
+for **Stylelint** by **Conqueror Site Builder**.
 
-## Helpers
+## Additions
+
+### Helpers
 
 If you want to further customize your repository or Visual Studio Code,
 you can download [**.helpers**](https://github.com/Conqueror-Site-Builder/.helpers),
 this package holds:
 
--   GitHub branch and tag protection rules.
--   Extended version of the `.npmrc` file.
+-   **GitHub branch** and **tag protection** rules.
+-   Extended version of the **`.npmrc`** file.
 -   Bash console theme.
 -   **`.gitconfig`**.
 -   **`.gitignore_global`**.
 -   **`.gitmessage.txt`**.
 -   **`settings.json`** for Visual Studio Code.
 
-## Husky
+### Visual Studio Code
+
+Plugins and snippets for Visual Studio Code in
+[**.vscode**](https://github.com/Conqueror-Site-Builder/.vscode).
+
+### Husky
 
 This repository uses **.husky** as a submodule.
-**.husky** runs `pre-commit` hook and `commit-msg`.
+**.husky** runs **`pre-commit`** hook and **`commit-msg`**.
 
 ## Authors
 

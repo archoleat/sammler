@@ -63,6 +63,7 @@ img {
   block-size: $size;
   inline-size: $size;
   font-style: italic;
+  background-origin: border-box;
   background-repeat: no-repeat;
   object-fit: cover;
   object-position: top;
