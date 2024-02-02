@@ -1,12 +1,12 @@
 [submodule "core"]
   path = core
-  url = https://github.com/Conqueror-Site-Builder/core.git
+  url = https://github.com/Archoleat/core.git
 [submodule "browtest"]
   path = browtest
-  url = https://github.com/Conqueror-Site-Builder/browtest.git
+  url = https://github.com/Archoleat/browtest.git
 [submodule ".vscode"]
   path = .vscode
-  url = https://github.com/Conqueror-Site-Builder/.vscode.git
+  url = https://github.com/Archoleat/.vscode.git
 [submodule ".husky"]
   path = .husky
-  url = https://github.com/Conqueror-Site-Builder/.husky.git
+  url = https://github.com/Archoleat/.husky.git
