@@ -30,6 +30,7 @@
     "wnumb": "*"
   },
   "devDependencies": {
+    "@archoleat/stylelint-config-extended-scss": "*",
     "@babel/core": "*",
     "@babel/preset-env": "*",
     "@commitlint/cli": "*",
@@ -90,7 +91,6 @@
     "string-replace-loader": "*",
     "style-loader": "*",
     "stylelint": "*",
-    "stylelint-config-archoleat-scss": "*",
     "terser-webpack-plugin": "*",
     "webp-converter": "2.2.3",
     "webpack": "*",

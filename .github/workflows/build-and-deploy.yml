@@ -27,7 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
-    if: ${{ github.repository != 'archoleat/archoleat' && github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.repository != 'archoleat/archoleat-builder' && github.event.workflow_run.conclusion == 'success' }}
 
     steps:
       - name: Checkout

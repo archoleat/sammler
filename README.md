@@ -12,7 +12,7 @@ Rapid and modular development.
 <!-- -   [ArchUI](#archui) -->
 -   [Building a Website](#building-a-website)
     -   [Browtest](#browtest)
-    -   [Stylelint Config Archoleat SCSS](#stylelint-config-archoleat-scss)
+    -   [Archoleat Stylelint Config Extended SCSS](#archoleat-stylelint-config-extended-scss)
 
 -   [Additions](#additions)
     -   [Visual Studio Code](#visual-studio-code)
@@ -28,8 +28,6 @@ Rapid and modular development.
 -   [Versioning](#versioning)
 
 -   [License](#license)
-
--   [Acknowledgments](#acknowledgments)
 
 ## Getting Started
 
@@ -66,30 +64,30 @@ mixins.scss, etc. only if you don't have your own developments. -->
 > For more comfortable work with the library you can download
 > [**.helpers**](https://github.com/Archoleat/.helpers). -->
 
-### Stylelint Config Archoleat SCSS
+### Archoleat Stylelint Config Extended SCSS
 
-Extended [**shareable config**](https://github.com/Archoleat/stylelint-config-archoleat-scss)
-for **Stylelint** by **Archoleat Site Builder**.
+Extended [**shareable config**](https://github.com/Archoleat/stylelint-config-extended-scss)
+for **Stylelint** by **Archoleat**.
 
 ## Additions
 
 ### Helpers
 
-If you want to further customize your repository or Visual Studio Code,
+If you want to further customize your repository or **Visual Studio Code**,
 you can download [**.helpers**](https://github.com/Archoleat/.helpers),
 this package holds:
 
--   **GitHub branch** and **tag protection** rules.
+-   **GitHub Branch** and **Tag Protection** rules.
 -   Extended version of the **`.npmrc`** file.
 -   Bash console theme.
 -   **`.gitconfig`**.
 -   **`.gitignore_global`**.
 -   **`.gitmessage.txt`**.
--   **`settings.json`** for Visual Studio Code.
+-   **`settings.json`** for **Visual Studio Code**.
 
 ### Visual Studio Code
 
-Plugins and snippets for Visual Studio Code in
+Plugins and snippets for **Visual Studio Code** in
 [**.vscode**](https://github.com/Archoleat/.vscode).
 
 ### Husky
@@ -104,7 +102,7 @@ See also the list of [**Authors**](AUTHORS.md).
 ## Contributors
 
 If you want to improve something, you can write about it
-[**here**](https://github.com/Archoleat/archoleat/issues/new/choose).
+[**here**](https://github.com/Archoleat/archoleat-builder/issues/new/choose).
 
 You can also view a list of [**Contributors**](CONTRIBUTORS.md).
 
@@ -118,13 +116,9 @@ and the process for submitting **Pull Request** to us.
 
 We use [**SemVer**](https://semver.org) for versioning.
 You can see the available versions
-[**here**](https://github.com/Archoleat/archoleat/tags).
+[**here**](https://github.com/Archoleat/archoleat-builder/tags).
 
 ## License
 
 This project is licensed under the MIT license - see the
 [**LICENSE**](LICENSE) for details.
-
-## Acknowledgments
-
-Thanks to everyone who takes part in the development of the project.

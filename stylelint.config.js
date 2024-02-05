@@ -1,3 +1,3 @@
 export default {
-  extends: ['stylelint-config-archoleat-scss'],
+  extends: ['@archoleat/stylelint-config-extended-scss'],
 };
