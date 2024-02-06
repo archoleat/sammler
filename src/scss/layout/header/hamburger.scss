@@ -3,9 +3,9 @@
 
 .hamburger {
   @include media-max($tablet) {
+    display: block;
     position: relative;
     z-index: var(--z-index-1, #{$z-index-1});
-    display: block;
     block-size: to-rem(20);
     inline-size: to-rem(30);
 

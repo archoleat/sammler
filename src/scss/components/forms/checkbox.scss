@@ -19,10 +19,10 @@
     position: relative;
     flex: 0 0 to-em($box-size, $fix-size);
     overflow: hidden;
-    border-radius: to-em(5, $fix-size);
     border-width: to-em(5, $fix-size);
     border-style: solid;
     border-color: var(--color-accent, #{$color-accent});
+    border-radius: to-em(5, $fix-size);
     block-size: to-em($box-size, $fix-size);
     background-color: var(--color-primary, #{$color-primary});
 
@@ -59,6 +59,13 @@
       border-color: var(--color-gray, #{$color-gray});
     }
 
+    &:focus-visible + .checkbox__box {
+      &::after,
+      svg {
+        scale: 1;
+      }
+    }
+
     &:checked {
       &:disabled + .checkbox__box {
         border-color: var(--color-gray, #{$color-gray});
@@ -74,13 +81,6 @@
         svg {
           scale: 1;
         }
-      }
-    }
-
-    &:focus-visible + .checkbox__box {
-      &::after,
-      svg {
-        scale: 1;
       }
     }
   }

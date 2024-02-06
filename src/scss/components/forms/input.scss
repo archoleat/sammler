@@ -2,10 +2,10 @@
 @use "@scss/utilities/placeholders" as *;
 
 .input {
-  border-radius: to-rem(5);
   border-width: to-rem(1);
   border-style: solid;
   border-color: var(--color-accent, #{$color-accent});
+  border-radius: to-rem(5);
   padding: to-rem(5);
   color: var(--color-accent, #{$color-accent});
 
