@@ -3,3 +3,7 @@ contact_links:
   - name: Get Help in GitHub Discussions
     url: https://github.com/Archoleat/archoleat-builder/discussions
     about: Have a question? Not sure if your issue affects everyone reproducibly?
+
+  - name: Report Issues for Archoleat/core
+    url: https://github.com/Archoleat/core/issues/new/choose
+    about: Do you think your issue is more suited for Archoleat/core? Then report it here!
