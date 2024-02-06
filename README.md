@@ -15,6 +15,7 @@ Rapid and modular development.
     -   [Archoleat Stylelint Config Extended SCSS](#archoleat-stylelint-config-extended-scss)
 
 -   [Additions](#additions)
+    -   [Core](#core)
     -   [Visual Studio Code](#visual-studio-code)
     -   [Helpers](#helpers)
     -   [Husky](#husky)
@@ -70,6 +71,11 @@ Extended [**shareable config**](https://github.com/Archoleat/stylelint-config-ex
 for **Stylelint** by **Archoleat**.
 
 ## Additions
+
+### Core
+
+If you think a **bug report** or **enhancement request** is more
+appropriate for **Archoleat/core** then report it [**here**](https://github.com/Archoleat/core/issues/new/choose).
 
 ### Helpers
 

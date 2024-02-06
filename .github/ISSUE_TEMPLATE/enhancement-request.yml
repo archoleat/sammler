@@ -9,7 +9,10 @@ assignees:
 body:
   - type: markdown
     attributes:
-      value: Thanks for taking the time to fill out this enhancement request!
+      value: |
+        Thanks for taking the time to fill out this enhancement request!
+        [Write here](https://github.com/Archoleat/core/issues/new/choose)
+        if you think this enhancement report is more appropriate for Archoleat/core
 
   - type: textarea
     id: describe
