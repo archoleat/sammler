@@ -4,10 +4,10 @@
 .quantity {
   display: flex;
   flex-wrap: nowrap;
-  border-radius: to-rem(5);
   border-width: to-rem(2);
   border-style: solid;
   border-color: var(--color-secondary, #{$color-secondary});
+  border-radius: to-rem(5);
   block-size: to-rem(40);
   inline-size: to-rem(90);
 
@@ -47,8 +47,8 @@
       $font-size: 18;
 
       block-size: 100%;
-      font-size: to-rem($font-size);
       text-align: center;
+      font-size: to-rem($font-size);
     }
   }
 }

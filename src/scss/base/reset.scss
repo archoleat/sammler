@@ -59,14 +59,14 @@ img {
   $size: 100%;
 
   vertical-align: middle;
-  shape-margin: to-rem(16);
   block-size: $size;
   inline-size: $size;
+  shape-margin: to-rem(16);
   font-style: italic;
-  background-origin: border-box;
-  background-repeat: no-repeat;
   object-fit: cover;
   object-position: top;
+  background-origin: border-box;
+  background-repeat: no-repeat;
 }
 
 input,

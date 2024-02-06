@@ -20,18 +20,18 @@
     flex-wrap: nowrap;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
     border-width: to-em(2, $fix-size);
     border-style: solid;
     border-color: var(--color-accent, #{$color-secondary});
+    border-radius: 50%;
     block-size: to-em($box-size, $fix-size);
     background-color: var(--color-primary, #{$color-primary});
 
     &::after {
       $pseudo-size: 14;
 
-      content: "";
       display: block;
+      content: "";
       border-radius: 50%;
       block-size: to-em($pseudo-size, $fix-size);
       inline-size: to-em($pseudo-size, $fix-size);
@@ -49,6 +49,13 @@
       border-color: var(--color-gray, #{$color-gray});
     }
 
+    &:focus-visible + .option__box {
+      &::after,
+      svg {
+        scale: 1;
+      }
+    }
+
     &:checked {
       &:disabled + .option__box {
         border-color: var(--color-gray, #{$color-gray});
@@ -64,13 +71,6 @@
         svg {
           scale: 1;
         }
-      }
-    }
-
-    &:focus-visible + .option__box {
-      &::after,
-      svg {
-        scale: 1;
       }
     }
   }

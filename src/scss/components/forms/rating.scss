@@ -14,8 +14,8 @@
     position: relative;
 
     &::before {
-      content: $stars;
       display: block;
+      content: $stars;
     }
 
     &:focus-within {
@@ -40,15 +40,15 @@
   }
 
   &__stars {
+    display: flex;
     position: absolute;
     inset: 0;
-    display: flex;
     flex-wrap: nowrap;
   }
 
   &__star {
-    flex: 0 0 20%;
     opacity: 0;
+    flex: 0 0 20%;
   }
 
   &__value {
