@@ -1,5 +1,5 @@
-.sr-only,
-.sr-only-focus:not(:focus-visible) {
+.visually-hidden,
+.visually-hidden-focusable:not(:focus, :focus-within) {
   position: fixed;
   scale: 0;
 }

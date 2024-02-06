@@ -5,28 +5,11 @@ Rapid and modular development.
 ## Table of Contents
 
 -   [Getting Started](#getting-started)
-    -   [Prerequisites](#prerequisites)
-<!-- -   [Features](#features) -->
-<!-- -   [Scripts](#scripts) -->
-
-<!-- -   [ArchUI](#archui) -->
--   [Building a Website](#building-a-website)
-    -   [Browtest](#browtest)
-    -   [Archoleat Stylelint Config Extended SCSS](#archoleat-stylelint-config-extended-scss)
 
 -   [Additions](#additions)
     -   [Core](#core)
     -   [Visual Studio Code](#visual-studio-code)
     -   [Helpers](#helpers)
-    -   [Husky](#husky)
-
--   [Authors](#authors)
-
--   [Contributors](#contributors)
-
--   [Contributing](#contributing)
-
--   [Versioning](#versioning)
 
 -   [License](#license)
 
@@ -34,41 +17,8 @@ Rapid and modular development.
 
 You can use this repository as a template to quickly create your project.
 
-Below you will learn how to get started with **Archoleat**
+Below you will learn how to get started with **Archoleat Builder**
 and what features it has.
-
-### Prerequisites
-
-For **Archoleat** to work properly, you need the following programs:
-
--   **Node.js**
--   **Git**
--   **IDE or Code Editor**
-
-## Building a Website
-
-### Browtest
-
-[**Browtest**](https://github.com/Archoleat/browtest)
-is an application for testing in (**WebKit**) Safari, (**Gecko**) Firefox and
-(**Chromium**) Edge and Chrome, will allow you to quickly and easily view
-the site in all the necessary browsers, also it will be a salvation for
-those who do not have the opportunity to buy Apple products.
-
-<!-- ## ArchUI
-
-This project uses the [**ArchUI**](https://github.com/Archoleat/arch-ui)
-library, so there is no need to create files like reset.scss, typography.scss,
-mixins.scss, etc. only if you don't have your own developments. -->
-
-<!-- > [!TIP]
-> For more comfortable work with the library you can download
-> [**.helpers**](https://github.com/Archoleat/.helpers). -->
-
-### Archoleat Stylelint Config Extended SCSS
-
-Extended [**shareable config**](https://github.com/Archoleat/stylelint-config-extended-scss)
-for **Stylelint** by **Archoleat**.
 
 ## Additions
 
@@ -95,34 +45,6 @@ this package holds:
 
 Plugins and snippets for **Visual Studio Code** in
 [**.vscode**](https://github.com/Archoleat/.vscode).
-
-### Husky
-
-This repository uses **.husky** as a submodule.
-**.husky** runs **`pre-commit`** hook and **`commit-msg`**.
-
-## Authors
-
-See also the list of [**Authors**](AUTHORS.md).
-
-## Contributors
-
-If you want to improve something, you can write about it
-[**here**](https://github.com/Archoleat/archoleat-builder/issues/new/choose).
-
-You can also view a list of [**Contributors**](CONTRIBUTORS.md).
-
-## Contributing
-
-Please read [**Contributing**](CONTRIBUTING.md)
-and [**Code of Conduct**](CODE_OF_CONDUCT.md) for details,
-and the process for submitting **Pull Request** to us.
-
-## Versioning
-
-We use [**SemVer**](https://semver.org) for versioning.
-You can see the available versions
-[**here**](https://github.com/Archoleat/archoleat-builder/tags).
 
 ## License
 
