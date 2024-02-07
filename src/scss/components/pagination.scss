@@ -8,6 +8,7 @@
 
   &__list {
     display: flex;
+    flex-wrap: nowrap;
     gap: to-rem(5);
   }
 }

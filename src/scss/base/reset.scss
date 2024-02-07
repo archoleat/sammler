@@ -42,7 +42,7 @@ body {
 }
 
 summary {
-  /* Remove spoiler's marker in Safari */
+  // Remove spoiler's marker in Safari
   &::-webkit-details-marker {
     display: none;
   }
@@ -77,7 +77,7 @@ svg {
 
 input,
 textarea {
-  /* Removes rounded corners from input fields in Safari */
+  // Removes rounded corners from input fields in Safari
   border-radius: 0;
 }
 
