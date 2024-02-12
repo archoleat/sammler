@@ -12,15 +12,17 @@
       @include pseudo(counter($type));
 
       counter-increment: $type;
+
       inset: 0;
     }
   }
 }
 
 %gray-filter {
+  filter: grayscale(1);
+
   transition: filter
     var(--transition-duration-default, #{$transition-duration-default});
-  filter: grayscale(1);
 
   @include media-hover {
     filter: grayscale(0);

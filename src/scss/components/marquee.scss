@@ -3,7 +3,10 @@
 
 [role="marquee"] {
   display: grid;
+
   padding-block: to-rem(10);
-  background-color: var(--color-accent, #{$color-accent});
+
   color: var(--color-primary, #{$color-primary});
+
+  background-color: var(--color-accent, #{$color-accent});
 }

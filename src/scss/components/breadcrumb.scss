@@ -4,15 +4,19 @@
 .breadcrumb {
   &__list {
     display: flex;
+
     overflow-block: hidden;
     overflow-inline: auto;
+
     overscroll-behavior-inline: none;
 
     li {
       $font-size: 18;
 
       display: flex;
+
       flex-wrap: nowrap;
+
       white-space: nowrap;
 
       [aria-current="page"] {
@@ -22,6 +26,7 @@
       &:not(:last-child) {
         &::after {
           content: "→";
+
           margin-inline: to-em(5, $font-size);
         }
       }
