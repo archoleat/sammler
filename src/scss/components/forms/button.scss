@@ -6,14 +6,23 @@
   $line-height: 20;
 
   display: inline-flex;
-  flex-wrap: wrap;
-  justify-content: center;
+
   padding: to-rem(10) to-rem(15);
+
+  flex-wrap: wrap;
+
+  justify-content: center;
+
   line-height: decimal-round($line-height, $font-size);
+
   text-align: center;
+
   font-size: to-rem($font-size);
-  background-color: var(--color-secondary, #{$color-secondary});
+
   color: var(--color-primary, #{$color-primary});
+
+  background-color: var(--color-secondary, #{$color-secondary});
+
   transition:
     background-color
       var(--transition-duration-default, #{$transition-duration-default}),
@@ -31,7 +40,8 @@
   }
 
   @include media-hover {
-    background-color: var(--color-inverse, #{$color-inverse});
     color: var(--color-secondary, #{$color-secondary});
+
+    background-color: var(--color-inverse, #{$color-inverse});
   }
 }

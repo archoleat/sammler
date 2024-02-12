@@ -6,7 +6,9 @@
   border-style: solid;
   border-color: var(--color-accent, #{$color-accent});
   border-radius: to-rem(5);
+
   padding: to-rem(5);
+
   color: var(--color-accent, #{$color-accent});
 
   &:not([data-placeholder-unhidden]) {

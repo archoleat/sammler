@@ -9,34 +9,47 @@
   $fix-size: 18;
 
   display: flex;
+
   gap: to-em(10, $fix-size);
+
   align-items: center;
 
   &__box {
     $box-size: 20;
 
     display: flex;
-    flex: 0 0 to-em($box-size, $fix-size);
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: center;
+
     border-width: to-em(2, $fix-size);
     border-style: solid;
     border-color: var(--color-accent, #{$color-secondary});
     border-radius: 50%;
+
     block-size: to-em($box-size, $fix-size);
+
+    flex: 0 0 to-em($box-size, $fix-size);
+    flex-wrap: nowrap;
+
+    align-items: center;
+    justify-content: center;
+
     background-color: var(--color-primary, #{$color-primary});
 
     &::after {
       $pseudo-size: 14;
 
-      display: block;
       content: "";
+
+      display: block;
+
       border-radius: 50%;
+
       block-size: to-em($pseudo-size, $fix-size);
       inline-size: to-em($pseudo-size, $fix-size);
+
       background-color: var(--color-secondary, #{$color-secondary});
+
       scale: 0;
+
       transition: scale
         var(--transition-duration-default, #{$transition-duration-default});
     }

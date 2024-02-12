@@ -13,9 +13,13 @@
     border-style: solid;
     border-color: var(--color-accent, #{$color-accent});
     border-radius: to-rem(5);
+
     inline-size: 100%;
+
     text-align: start;
+
     background-color: var(--color-primary, #{$color-primary});
+
     transition: border-radius
       var(--transition-duration-default, #{$transition-duration-default});
 
@@ -27,18 +31,26 @@
 
   &__value {
     display: flex;
-    gap: to-rem(10);
-    align-items: center;
+
     block-size: to-rem(30);
+
     padding-inline: to-rem(12.5);
 
+    gap: to-rem(10);
+
+    align-items: center;
+
     &::after {
-      display: flex;
       content: "";
+
+      display: flex;
+
       flex: 0 0 to-rem(10);
       flex-wrap: nowrap;
+
       align-items: center;
       justify-content: center;
+
       transition: rotate
         var(--transition-duration-default, #{$transition-duration-default});
 
@@ -49,8 +61,9 @@
 
     &.select-pseudo-label {
       &::before {
-        opacity: 0.5;
         content: attr(data-pseudo-label);
+
+        opacity: 0.5;
       }
     }
   }
@@ -60,14 +73,18 @@
   }
 
   &__text {
-    flex: 1;
     overflow: hidden;
+
+    flex: 1;
+
     white-space: nowrap;
+
     text-overflow: ellipsis;
   }
 
   &__input {
     block-size: 100%;
+
     background-color: transparent;
   }
 
@@ -78,39 +95,52 @@
     inset-block-start: to-rem(30);
     inset-inline-start: 0;
     z-index: var(--z-index-1, #{$z-index-1});
+
     border-width: to-rem(1);
     border-style: solid;
     border-color: var(--color-accent, #{$color-accent});
     border-end-start-radius: to-rem($border-bottom-radius);
     border-end-end-radius: to-rem($border-bottom-radius);
     border-block-start: 0;
+
     inline-size: 100%;
+
     padding: to-rem(5);
-    background-color: var(--color-primary, #{$color-primary});
+
     color: var(--color-secondary, #{$color-secondary});
+
+    background-color: var(--color-primary, #{$color-primary});
   }
 
   &__scroll {
+    max-block-size: to-rem(200);
+
     overflow-block: hidden;
     overflow-inline: auto;
-    max-block-size: to-rem(200);
+
     overscroll-behavior-block: none;
   }
 
   &__option {
     border-radius: to-rem(5);
+
     inline-size: 100%;
+
     padding: to-rem(5) to-rem(7.5);
+
     text-align: start;
+
     color: inherit;
+
     transition:
       background-color
         var(--transition-duration-default, #{$transition-duration-default}),
       color var(--transition-duration-default, #{$transition-duration-default});
 
     @include media-hover {
-      background-color: var(--color-accent, #{$color-accent});
       color: var(--color-primary, #{$color-primary});
+
+      background-color: var(--color-accent, #{$color-accent});
     }
   }
 
@@ -119,12 +149,14 @@
       $border-bottom-radius: 5;
 
       inset-block: auto calc(100% - to-rem(1));
+
       border-width: to-rem(1);
       border-style: solid;
       border-color: #d9d9d9;
       border-end-start-radius: to-rem($border-bottom-radius);
       border-end-end-radius: to-rem($border-bottom-radius);
       border-block-end: 0;
+
       padding-block: to-rem(5) to-rem(10);
     }
   }

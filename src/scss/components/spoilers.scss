@@ -3,18 +3,22 @@
 
 .spoilers {
   display: grid;
+
   gap: to-rem(15);
 }
 
 .spoiler {
   &__trigger {
     position: relative;
+
     border-width: to-rem(1);
     border-style: solid;
     border-color: var(--color-accent, #{$color-accent});
     border-radius: to-rem(5);
+
     padding-block: to-rem(10);
     padding-inline: to-rem(15);
+
     text-align: start;
 
     .spoiler-init & {
@@ -28,9 +32,12 @@
 
         inset-block-start: 50%;
         inset-inline-end: to-rem(10);
+
         block-size: to-rem(2);
         inline-size: to-rem(15);
+
         background-color: var(--color-secondary, #{$color-secondary});
+
         transition:
           translate
             var(--transition-duration-default, #{$transition-duration-default}),
@@ -68,6 +75,7 @@
     border-width: to-rem(1);
     border-style: solid;
     border-color: var(--color-accent, #{$color-accent});
+
     padding: to-rem(20);
   }
 }

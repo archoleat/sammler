@@ -3,6 +3,7 @@
 .container {
   @if $container-max-inline-size > 0 {
     margin-inline: auto;
+
     max-inline-size: var(--container-inline-size, #{to-rem($container-inline-size)});
   }
 
