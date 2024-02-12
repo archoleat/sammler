@@ -1,4 +1,4 @@
-# Archoleat
+# Archoleat Builder
 
 > Rapid and modular development.
 
