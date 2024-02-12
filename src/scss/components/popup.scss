@@ -2,28 +2,40 @@
 @use "@scss/utilities/placeholders" as *;
 
 .popup {
+  pointer-events: none;
+
   opacity: 0;
+
   position: fixed;
   inset: 0;
+
   padding-block: to-rem(30);
   padding-inline: to-rem($container-padding-inline);
-  pointer-events: none;
 
   &__wrapper {
     display: flex;
+
+    min-block-size: 100%;
+
     flex-wrap: nowrap;
+
     align-items: center;
     justify-content: center;
-    min-block-size: 100%;
   }
 
   &__content {
     opacity: 0;
+
     border-radius: to-rem(20);
+
     inline-size: max(56.25rem);
+
     padding: to-rem(20);
+
     background-color: var(--color-accent, #{$color-accent});
+
     scale: 0;
+
     transition:
       opacity var(--transition-duration-default, #{$transition-duration-default}),
       scale var(--transition-duration-default, #{$transition-duration-default});
@@ -34,14 +46,19 @@
   }
 
   &--show {
-    opacity: 1;
-    z-index: var(--z-index-3, #{$z-index-3});
-    overflow-block: auto;
     pointer-events: auto;
+
+    opacity: 1;
+
+    z-index: var(--z-index-3, #{$z-index-3});
+
+    overflow-block: auto;
+
     overscroll-behavior-block: none;
 
     .popup__content {
       opacity: 1;
+
       scale: 1;
     }
   }

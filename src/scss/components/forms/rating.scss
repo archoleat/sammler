@@ -6,16 +6,20 @@
   $stars: "★★★★★";
 
   display: flex;
+
   flex-wrap: nowrap;
+
   align-items: center;
+
   font-size: to-rem($font-size);
 
   &__group {
     position: relative;
 
     &::before {
-      display: block;
       content: $stars;
+
+      display: block;
     }
 
     &:focus-within {
@@ -27,7 +31,9 @@
   &__active {
     position: absolute;
     inset: 0;
+
     overflow: hidden;
+
     transition: inline-size
       var(--transition-duration-default, #{$transition-duration-default});
 
@@ -35,24 +41,29 @@
       @include pseudo($stars);
 
       inset: 0;
+
       color: var(--color-inverse, #{$color-inverse});
     }
   }
 
   &__stars {
     display: flex;
+
     position: absolute;
     inset: 0;
+
     flex-wrap: nowrap;
   }
 
   &__star {
     opacity: 0;
+
     flex: 0 0 20%;
   }
 
   &__value {
     padding-inline-start: to-em(10, $font-size);
+
     font-size: to-rem($font-size);
   }
 

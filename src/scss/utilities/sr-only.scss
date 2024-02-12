@@ -1,5 +1,6 @@
 .visually-hidden,
 .visually-hidden-focusable:not(:focus, :focus-within) {
   position: fixed;
+
   scale: 0;
 }

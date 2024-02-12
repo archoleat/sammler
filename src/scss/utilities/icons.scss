@@ -6,6 +6,7 @@
 
   block-size: to-rem($size);
   inline-size: to-rem($size);
+
   fill: transparent;
   stroke: var(--color-secondary, #{$color-secondary});
 }

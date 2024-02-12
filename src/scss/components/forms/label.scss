@@ -5,7 +5,9 @@
   $font-size: 18;
   $line-height: 22;
 
-  line-height: decimal-round($line-height, $font-size);
-  font-size: to-rem($font-size);
   user-select: none;
+
+  line-height: decimal-round($line-height, $font-size);
+
+  font-size: to-rem($font-size);
 }

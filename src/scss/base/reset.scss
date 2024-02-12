@@ -4,9 +4,13 @@
 *::before,
 *::after {
   margin: 0;
+
   border: 0;
+
   box-sizing: border-box;
+
   padding: 0;
+
   font: inherit;
 
   @include media-motion(no-preference) {
@@ -20,6 +24,7 @@
 
   @include media-motion(reduce) {
     transition: none;
+
     animation: none;
   }
 }
@@ -30,15 +35,19 @@
 }
 
 html {
-  hanging-punctuation: first last;
-  color-scheme: dark light;
   scrollbar-gutter: stable;
+
+  hanging-punctuation: first last;
+
+  color-scheme: dark light;
 }
 
 body {
   min-inline-size: $min-inline-size + px;
-  background-color: var(--background-color-primary, #{$color-primary});
+
   overscroll-behavior: none;
+
+  background-color: var(--background-color-primary, #{$color-primary});
 }
 
 summary {
@@ -58,13 +67,18 @@ picture,
 img {
   $size: 100%;
 
-  vertical-align: middle;
-  block-size: $size;
-  inline-size: $size;
   shape-margin: to-rem(16);
-  font-style: italic;
+
   object-fit: cover;
   object-position: top;
+
+  block-size: $size;
+  inline-size: $size;
+
+  vertical-align: middle;
+
+  font-style: italic;
+
   background-origin: border-box;
   background-repeat: no-repeat;
 }
@@ -72,6 +86,7 @@ img {
 input,
 svg {
   display: block;
+
   inline-size: 100%;
 }
 
