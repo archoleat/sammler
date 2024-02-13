@@ -119,6 +119,8 @@
     overflow-inline: auto;
 
     overscroll-behavior-block: none;
+
+    scrollbar-gutter: stable;
   }
 
   &__option {
