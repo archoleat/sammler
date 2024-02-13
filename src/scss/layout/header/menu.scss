@@ -18,6 +18,8 @@
 
       overscroll-behavior-block: none;
 
+      scrollbar-gutter: stable;
+
       background-color: var(--color-primary, #{$color-primary});
 
       transform: translateX(

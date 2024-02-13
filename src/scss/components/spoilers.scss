@@ -23,8 +23,8 @@
 
     .spoiler-init & {
       $rotate: 40deg;
-      $degree-y: 75%;
-      $degree-x: 50%;
+      $degree-y: -75%;
+      $degree-x: -50%;
 
       &::before,
       &::after {
@@ -45,18 +45,18 @@
       }
 
       &::before {
-        translate: -$degree-y -$degree-x;
+        translate: $degree-y $degree-x;
         rotate: $rotate;
       }
 
       &::after {
-        translate: 0 -$degree-x;
+        translate: 0 $degree-x;
         rotate: -$rotate;
       }
 
       &.spoiler-active {
         &::before {
-          translate: -$degree-y 0;
+          translate: $degree-y 0;
           rotate: -$rotate;
         }
 
