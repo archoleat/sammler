@@ -1,8 +1,8 @@
 import HELPERS from './core/src/settings/helpers.js';
 import PLUGINS from './core/src/settings/plugins.js';
 
-import archiver from './core/src/utilities/archiver.js';
-import reset from './core/src/utilities/reset.js';
+import archiver from './core/src/utils/archiver.js';
+import reset from './core/src/utils/reset.js';
 
 import convertOTFToTTF from './core/src/converters/otf-to-ttf.js';
 import convertTTFToWOFF2 from './core/src/converters/ttf-to-woff2.js';
