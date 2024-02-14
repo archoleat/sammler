@@ -10,12 +10,12 @@ on:
     branches:
       - main
     paths:
-      - 'src/scss/**/*.scss'
+      - src/scss/**/*.scss
   push:
     branches:
       - main
     paths:
-      - 'src/scss/**/*.scss'
+      - src/scss/**/*.scss
 
 jobs:
   stylelint:

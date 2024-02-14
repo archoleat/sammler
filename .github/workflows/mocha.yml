@@ -10,12 +10,14 @@ on:
     branches:
       - main
     paths:
-      - 'src/js/**/*.js'
+      - specs/**/*.spec.js
+      - src/js/**/*.js
   push:
     branches:
       - main
     paths:
-      - 'src/js/**/*.js'
+      - specs/**/*.spec.js
+      - src/js/**/*.js
 
 jobs:
   test:
