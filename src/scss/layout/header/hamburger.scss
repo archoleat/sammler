@@ -1,5 +1,5 @@
 @use "@scss/abstracts" as *;
-@use "@scss/utilities/placeholders" as *;
+@use "@scss/utils/placeholders" as *;
 
 .hamburger {
   @include media-max($tablet) {
@@ -67,10 +67,8 @@
       + .menu__body {
         transform: translateX(
           calc(
-            0% - var(
-                --container-padding-inline,
-                #{to-rem($container-padding-inline)}
-              )
+            0% -
+              var(--container-padding-inline, #{to-rem($container-padding-inline)})
           )
         );
       }
