@@ -12,7 +12,13 @@
 
   gap: to-em(10, $fix-size);
 
+  flex-wrap: nowrap;
+
   align-items: center;
+
+  &:not(:last-child) {
+    margin-block-end: to-em(5, $fix-size);
+  }
 
   &__box {
     $box-size: 20;
@@ -86,9 +92,5 @@
         }
       }
     }
-  }
-
-  &:not(:last-child) {
-    margin-block-end: to-em(5, $fix-size);
   }
 }
