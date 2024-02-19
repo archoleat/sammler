@@ -1,12 +1,12 @@
-import { formValidate } from '@js/components/forms/Form-validate'
-import { slideToggle } from '@js/helpers/slide-toggle'
-import { slideUp } from '@js/helpers/slide-up'
+import { formValidate } from '@js/components/forms/Form-validate';
+import { slideToggle } from '@js/helpers/slide-toggle';
+import { slideUp } from '@js/helpers/slide-up';
 
 class Select {
   constructor(props, data = null) {
-    const defaultConfig = { init: true }
+    const defaultConfig = { init: true };
 
-    this.config = Object.assign(defaultConfig, props)
+    this.config = Object.assign(defaultConfig, props);
     this.selectClasses = {
       classSelect: 'select',
       classSelectBody: 'select__body',
@@ -30,80 +30,81 @@ class Select {
       classSelectMultiple: 'select-multiple',
       classSelectCheckBox: 'select-checkbox',
       classSelectOptionSelected: 'select-selected',
-      classSelectPseudoLabel: 'select-pseudo-label'
-    }
-    this.that = this
-    this.searchAttribute = 'data-search'
+      classSelectPseudoLabel: 'select-pseudo-label',
+    };
+    this.that = this;
+    this.searchAttribute = 'data-search';
 
     if (this.config.init) {
       const selectItems = data
         ? document.querySelectorAll(data)
-        : document.querySelectorAll('select')
+        : document.querySelectorAll('select');
 
       if (selectItems) {
-        this.selectsInit(selectItems)
+        this.selectsInit(selectItems);
       }
     }
   }
 
   getSelectClass(className) {
-    return `.${className}`
+    return `.${className}`;
   }
 
   getSelectElement(selectItem, className) {
     return {
       originalSelect: selectItem.querySelector('select'),
-      selectElement: selectItem.querySelector(this.getSelectClass(className))
-    }
+      selectElement: selectItem.querySelector(this.getSelectClass(className)),
+    };
   }
 
   selectsInit(selectItems) {
     selectItems.forEach((originalSelect, index) => {
-      this.selectInit(originalSelect, index + 1)
-    })
+      this.selectInit(originalSelect, index + 1);
+    });
     document.addEventListener('click', (event) => {
-      this.selectsActions(event)
-    })
+      this.selectsActions(event);
+    });
     document.addEventListener('keydown', (event) => {
-      this.selectsActions(event)
-    })
+      this.selectsActions(event);
+    });
     document.addEventListener('focusin', (event) => {
-      this.selectsActions(event)
-    })
+      this.selectsActions(event);
+    });
     document.addEventListener('focusout', (event) => {
-      this.selectsActions(event)
-    })
+      this.selectsActions(event);
+    });
   }
 
   selectInit(originalSelect, index) {
-    const that = this
-    const selectItem = document.createElement('div')
+    const that = this;
+    const selectItem = document.createElement('div');
 
-    selectItem.classList.add(this.selectClasses.classSelect)
-    originalSelect.parentNode.insertBefore(selectItem, originalSelect)
-    selectItem.appendChild(originalSelect)
-    originalSelect.hidden = true
+    selectItem.classList.add(this.selectClasses.classSelect);
+    originalSelect.parentNode.insertBefore(selectItem, originalSelect);
+    selectItem.appendChild(originalSelect);
+    originalSelect.hidden = true;
 
     if (index) {
-      originalSelect.dataset.id = index
+      originalSelect.dataset.id = index;
     }
 
     if (this.getSelectPlaceholder(originalSelect)) {
       originalSelect.dataset.placeholder =
-        this.getSelectPlaceholder(originalSelect).value
+        this.getSelectPlaceholder(originalSelect).value;
 
       if (this.getSelectPlaceholder(originalSelect).label.show) {
         const selectItemTitle = this.getSelectElement(
           selectItem,
-          this.selectClasses.classSelectTitle
-        ).selectElement
+          this.selectClasses.classSelectTitle,
+        ).selectElement;
 
         selectItemTitle.insertAdjacentHTML(
           'afterbegin',
-          `<span class="${this.selectClasses.classSelectLabel}">${this.getSelectPlaceholder(originalSelect).label.text ??
-          this.getSelectPlaceholder(originalSelect).value
-          }</span>`
-        )
+          `<span class="${this.selectClasses.classSelectLabel}">${
+            this.getSelectPlaceholder(originalSelect).label.text ??
+            this.getSelectPlaceholder(originalSelect).value
+          }</span>`,
+        );
       }
     }
 
@@ -114,48 +115,48 @@ class Select {
 					<div class="${this.selectClasses.classSelectOptions}" hidden>
 					</div>
 				</div>
-			`
-    )
-    this.selectBuild(originalSelect)
-    originalSelect.dataset.speed ??= 150
+			`,
+    );
+    this.selectBuild(originalSelect);
+    originalSelect.dataset.speed ??= 150;
     originalSelect.addEventListener('change', (event) => {
-      that.selectChange(event)
-    })
+      that.selectChange(event);
+    });
   }
 
   selectBuild(originalSelect) {
-    const selectItem = originalSelect.parentElement
+    const selectItem = originalSelect.parentElement;
 
-    selectItem.dataset.id = originalSelect.dataset.id
-    originalSelect.dataset.classMod
+    selectItem.dataset.id = originalSelect.dataset.id;
+    originalSelect.dataset.classMod;
 
     if (originalSelect.dataset.classMod) {
-      selectItem.classList.add(`select--${originalSelect.dataset.classMod}`)
+      selectItem.classList.add(`select--${originalSelect.dataset.classMod}`);
     }
 
     originalSelect.multiple
       ? selectItem.classList.add(this.selectClasses.classSelectMultiple)
-      : selectItem.classList.remove(this.selectClasses.classSelectMultiple)
+      : selectItem.classList.remove(this.selectClasses.classSelectMultiple);
     originalSelect.hasAttribute('data-checkbox') && originalSelect.multiple
       ? selectItem.classList.add(this.selectClasses.classSelectCheckBox)
-      : selectItem.classList.remove(this.selectClasses.classSelectCheckBox)
-    this.setSelectTitleValue(selectItem, originalSelect)
-    this.setOptions(selectItem, originalSelect)
+      : selectItem.classList.remove(this.selectClasses.classSelectCheckBox);
+    this.setSelectTitleValue(selectItem, originalSelect);
+    this.setOptions(selectItem, originalSelect);
 
     if (originalSelect.hasAttribute(this.searchAttribute)) {
-      this.searchActions(selectItem)
+      this.searchActions(selectItem);
     }
 
     if (originalSelect.hasAttribute('data-open')) {
-      this.selectAction(selectItem)
+      this.selectAction(selectItem);
     }
 
-    this.selectDisabled(selectItem, originalSelect)
+    this.selectDisabled(selectItem, originalSelect);
   }
 
   selectsActions(event) {
-    const targetElement = event.target
-    const targetType = event.type
+    const targetElement = event.target;
+    const targetType = event.type;
 
     if (
       targetElement.closest(this.getSelectClass(this.selectClasses.classSelect)) ??
@@ -164,47 +165,48 @@ class Select {
       const selectItem = targetElement.closest('.select')
         ? targetElement.closest('.select')
         : document.querySelector(
-          `.${this.selectClasses.classSelect}[data-id="${targetElement.closest(
-            this.getSelectClass(this.selectClasses.classSelectTag)
-          ).dataset.selectId
-          }"]`
-        )
-      const originalSelect = this.getSelectElement(selectItem).originalSelect
+            `.${this.selectClasses.classSelect}[data-id="${
+              targetElement.closest(
+                this.getSelectClass(this.selectClasses.classSelectTag),
+              ).dataset.selectId
+            }"]`,
+          );
+      const originalSelect = this.getSelectElement(selectItem).originalSelect;
 
       if (targetType === 'click') {
         if (!originalSelect.disabled) {
           if (
             targetElement.closest(
-              this.getSelectClass(this.selectClasses.classSelectTag)
+              this.getSelectClass(this.selectClasses.classSelectTag),
             )
           ) {
             const targetTag = targetElement.closest(
-              this.getSelectClass(this.selectClasses.classSelectTag)
-            )
+              this.getSelectClass(this.selectClasses.classSelectTag),
+            );
             const optionItem = document.querySelector(
               `.${this.selectClasses.classSelect}
 								[data-id="${targetTag.dataset.selectId}"]
 									.select__option[data-value="${targetTag.dataset.value}"]
-							`
-            )
+							`,
+            );
 
-            this.optionAction(selectItem, originalSelect, optionItem)
+            this.optionAction(selectItem, originalSelect, optionItem);
           } else if (
             targetElement.closest(
-              this.getSelectClass(this.selectClasses.classSelectTitle)
+              this.getSelectClass(this.selectClasses.classSelectTitle),
             )
           ) {
-            this.selectAction(selectItem)
+            this.selectAction(selectItem);
           } else if (
             targetElement.closest(
-              this.getSelectClass(this.selectClasses.classSelectOption)
+              this.getSelectClass(this.selectClasses.classSelectOption),
             )
           ) {
             const optionItem = targetElement.closest(
-              this.getSelectClass(this.selectClasses.classSelectOption)
-            )
+              this.getSelectClass(this.selectClasses.classSelectOption),
+            );
 
-            this.optionAction(selectItem, originalSelect, optionItem)
+            this.optionAction(selectItem, originalSelect, optionItem);
           }
         }
       } else if (targetType === 'focusin' ?? targetType === 'focusout') {
@@ -213,121 +215,122 @@ class Select {
         ) {
           targetType === 'focusin'
             ? selectItem.classList.add(this.selectClasses.classSelectFocus)
-            : selectItem.classList.remove(this.selectClasses.classSelectFocus)
+            : selectItem.classList.remove(this.selectClasses.classSelectFocus);
         }
       } else if (targetType === 'keydown' && event.code === 'Escape') {
-        this.selectsClose()
+        this.selectsClose();
       }
     } else {
-      this.selectsClose()
+      this.selectsClose();
     }
   }
 
   selectsClose(selectOneGroup) {
-    const selectsGroup = selectOneGroup ?? document
+    const selectsGroup = selectOneGroup ?? document;
     const selectActiveItems = selectsGroup.querySelectorAll(
       `${this.getSelectClass(this.selectClasses.classSelect)}${this.getSelectClass(
-        this.selectClasses.classSelectOpen
-      )}`
-    )
+        this.selectClasses.classSelectOpen,
+      )}`,
+    );
 
     selectActiveItems.forEach((selectActiveItem) => {
-      this.selectClose(selectActiveItem)
-    })
+      this.selectClose(selectActiveItem);
+    });
   }
 
   selectClose(selectItem) {
-    const originalSelect = this.getSelectElement(selectItem).originalSelect
+    const originalSelect = this.getSelectElement(selectItem).originalSelect;
     const selectOptions = this.getSelectElement(
       selectItem,
-      this.selectClasses.classSelectOptions
-    ).selectElement
+      this.selectClasses.classSelectOptions,
+    ).selectElement;
 
     if (!selectOptions.classList.contains('slide')) {
-      selectItem.classList.remove(this.selectClasses.classSelectOpen)
-      slideUp(selectOptions, originalSelect.dataset.speed)
+      selectItem.classList.remove(this.selectClasses.classSelectOpen);
+      slideUp(selectOptions, originalSelect.dataset.speed);
     }
   }
 
   selectAction(selectItem) {
-    const originalSelect = this.getSelectElement(selectItem).originalSelect
+    const originalSelect = this.getSelectElement(selectItem).originalSelect;
     const selectOptions = this.getSelectElement(
       selectItem,
-      this.selectClasses.classSelectOptions
-    ).selectElement
+      this.selectClasses.classSelectOptions,
+    ).selectElement;
 
     if (originalSelect.closest('[data-one-select]')) {
-      const selectOneGroup = originalSelect.closest('[data-one-select]')
+      const selectOneGroup = originalSelect.closest('[data-one-select]');
 
-      this.selectsClose(selectOneGroup)
+      this.selectsClose(selectOneGroup);
     }
 
     if (!selectOptions.classList.contains('slide')) {
-      selectItem.classList.toggle(this.selectClasses.classSelectOpen)
-      slideToggle(selectOptions, originalSelect.dataset.speed)
+      selectItem.classList.toggle(this.selectClasses.classSelectOpen);
+      slideToggle(selectOptions, originalSelect.dataset.speed);
     }
   }
 
   setSelectTitleValue(selectItem, originalSelect) {
     const selectItemBody = this.getSelectElement(
       selectItem,
-      this.selectClasses.classSelectBody
-    ).selectElement
+      this.selectClasses.classSelectBody,
+    ).selectElement;
     const selectItemTitle = this.getSelectElement(
       selectItem,
-      this.selectClasses.classSelectTitle
-    ).selectElement
+      this.selectClasses.classSelectTitle,
+    ).selectElement;
 
     if (selectItemTitle) {
-      selectItemTitle.remove()
+      selectItemTitle.remove();
     }
 
     selectItemBody.insertAdjacentHTML(
       'afterbegin',
-      this.getSelectTitleValue(selectItem, originalSelect)
-    )
+      this.getSelectTitleValue(selectItem, originalSelect),
+    );
   }
 
   getSelectTitleValue(selectItem, originalSelect) {
-    let selectTitleValue = this.getSelectedOptionsData(originalSelect, 2).html
+    let selectTitleValue = this.getSelectedOptionsData(originalSelect, 2).html;
 
     if (originalSelect.multiple && originalSelect.hasAttribute('data-tags')) {
       selectTitleValue = this.getSelectedOptionsData(originalSelect)
         .elements.map((option) => {
-          return `<span role="button" data-select-id="${selectItem.dataset.id
-            }" data-value="${option.value}"
-						class="select-tag">${this.getSelectElementContent(option)}</span>`
+          return `<span role="button" data-select-id="${
+            selectItem.dataset.id
+          }" data-value="${option.value}"
+						class="select-tag">${this.getSelectElementContent(option)}</span>`;
         })
-        .join('')
+        .join('');
 
       if (
         originalSelect.dataset.tags &&
         document.querySelector(originalSelect.dataset.tags)
       ) {
         document.querySelector(originalSelect.dataset.tags).innerHTML =
-          selectTitleValue
+          selectTitleValue;
 
         if (originalSelect.hasAttribute(this.searchAttribute)) {
-          selectTitleValue = false
+          selectTitleValue = false;
         }
       }
     }
 
-    selectTitleValue = originalSelect.dataset.placeholder ?? ''
+    selectTitleValue = originalSelect.dataset.placeholder ?? '';
 
-    let pseudoAttribute = ''
-    let pseudoAttributeClass = ''
+    let pseudoAttribute = '';
+    let pseudoAttributeClass = '';
 
     if (originalSelect.hasAttribute('data-pseudo-label')) {
       pseudoAttribute = originalSelect.dataset.pseudoLabel
         ? ` data-pseudo-label="${originalSelect.dataset.pseudoLabel}"`
-        : ' data-pseudo-label="Fill in attribute"'
-      pseudoAttributeClass = ` ${this.selectClasses.classSelectPseudoLabel}`
+        : ' data-pseudo-label="Fill in attribute"';
+      pseudoAttributeClass = ` ${this.selectClasses.classSelectPseudoLabel}`;
     }
 
     this.getSelectedOptionsData(originalSelect).values.length
       ? selectItem.classList.add(this.selectClasses.classSelectActive)
-      : selectItem.classList.remove(this.selectClasses.classSelectActive)
+      : selectItem.classList.remove(this.selectClasses.classSelectActive);
 
     if (originalSelect.hasAttribute(this.searchAttribute)) {
       return `
@@ -339,14 +342,14 @@ class Select {
 							placeholder="${selectTitleValue}">
 					</span>
 				</div>
-			`
+			`;
     }
 
     const customClass =
       this.getSelectedOptionsData(originalSelect).elements.length &&
-        this.getSelectedOptionsData(originalSelect).elements[0].dataset.class
+      this.getSelectedOptionsData(originalSelect).elements[0].dataset.class
         ? ` ${this.getSelectedOptionsData(originalSelect).elements[0].dataset.class}`
-        : ''
+        : '';
 
     return `
 			<button class="${this.selectClasses.classSelectTitle}"
@@ -358,42 +361,42 @@ class Select {
 						</span>
 					</span>
 			</button>
-		`
+		`;
   }
 
   getSelectElementContent(selectOption) {
     const selectOptionData = selectOption.dataset.asset
       ? `${selectOption.dataset.asset}`
-      : ''
+      : '';
     const selectOptionDataHTML =
       selectOptionData.indexOf('img') >= 0
         ? `<img src="${selectOptionData}" alt="">`
-        : selectOptionData
+        : selectOptionData;
 
-    let selectOptionContentHTML = ''
+    let selectOptionContentHTML = '';
 
     selectOptionContentHTML += selectOptionData
       ? `<span class="${this.selectClasses.classSelectRow}">`
-      : ''
+      : '';
     selectOptionContentHTML += selectOptionData
       ? `<span class="${this.selectClasses.classSelectData}">`
-      : ''
-    selectOptionContentHTML += selectOptionData ? selectOptionDataHTML : ''
-    selectOptionContentHTML += selectOptionData ? '</span>' : ''
+      : '';
+    selectOptionContentHTML += selectOptionData ? selectOptionDataHTML : '';
+    selectOptionContentHTML += selectOptionData ? '</span>' : '';
     selectOptionContentHTML += selectOptionData
       ? `<span class="${this.selectClasses.classSelectText}">`
-      : ''
-    selectOptionContentHTML += selectOption.textContent
-    selectOptionContentHTML += selectOptionData ? '</span>' : ''
-    selectOptionContentHTML += selectOptionData ? '</span>' : ''
+      : '';
+    selectOptionContentHTML += selectOption.textContent;
+    selectOptionContentHTML += selectOptionData ? '</span>' : '';
+    selectOptionContentHTML += selectOptionData ? '</span>' : '';
 
-    return selectOptionContentHTML
+    return selectOptionContentHTML;
   }
 
   getSelectPlaceholder(originalSelect) {
     const selectPlaceholder = Array.from(originalSelect.options).find((option) => {
-      return !option.value
-    })
+      return !option.value;
+    });
 
     if (selectPlaceholder) {
       return {
@@ -401,56 +404,56 @@ class Select {
         show: selectPlaceholder.hasAttribute('data-show'),
         label: {
           show: selectPlaceholder.hasAttribute('data-label'),
-          text: selectPlaceholder.dataset.label
-        }
-      }
+          text: selectPlaceholder.dataset.label,
+        },
+      };
     }
   }
 
   getSelectedOptionsData(originalSelect) {
-    let selectedOptions = []
+    let selectedOptions = [];
 
     if (originalSelect.multiple) {
       selectedOptions = Array.from(originalSelect.options)
         .filter((option) => {
-          return option.value
+          return option.value;
         })
         .filter((option) => {
-          return option.selected
-        })
+          return option.selected;
+        });
     } else {
-      selectedOptions.push(originalSelect.options[originalSelect.selectedIndex])
+      selectedOptions.push(originalSelect.options[originalSelect.selectedIndex]);
     }
 
     return {
       elements: selectedOptions.map((option) => {
-        return option
+        return option;
       }),
       values: selectedOptions
         .filter((option) => {
-          return option.value
+          return option.value;
         })
         .map((option) => {
-          return option.value
+          return option.value;
         }),
       html: selectedOptions.map((option) => {
-        return this.getSelectElementContent(option)
-      })
-    }
+        return this.getSelectElementContent(option);
+      }),
+    };
   }
 
   getOptions(originalSelect) {
     const selectOptionsScroll = originalSelect.hasAttribute('data-scroll')
       ? 'data-simplebar'
-      : ''
+      : '';
     const selectOptionsScrollHeight = originalSelect.dataset.scroll
       ? `style="max-height:${originalSelect.dataset.scroll}px"`
-      : ''
+      : '';
 
-    let selectOptions = Array.from(originalSelect.options)
+    let selectOptions = Array.from(originalSelect.options);
 
     if (selectOptions) {
-      let selectOptionsHTML = ''
+      let selectOptionsHTML = '';
 
       if (
         (this.getSelectPlaceholder(originalSelect) &&
@@ -458,20 +461,20 @@ class Select {
         originalSelect.multiple
       ) {
         selectOptions = selectOptions.filter((option) => {
-          return option.value
-        })
+          return option.value;
+        });
       }
 
       selectOptionsHTML += selectOptionsScroll
         ? `<div ${selectOptionsScroll} ${selectOptionsScrollHeight}
 						class="${this.selectClasses.classSelectOptionsScroll}">`
-        : ''
+        : '';
       selectOptions.forEach((selectOption) => {
-        selectOptionsHTML += this.getOption(selectOption, originalSelect)
-      })
-      selectOptionsHTML += selectOptionsScroll ? '</div>' : ''
+        selectOptionsHTML += this.getOption(selectOption, originalSelect);
+      });
+      selectOptionsHTML += selectOptionsScroll ? '</div>' : '';
 
-      return selectOptionsHTML
+      return selectOptionsHTML;
     }
   }
 
@@ -479,20 +482,20 @@ class Select {
     const selectOptionSelected =
       selectOption.selected && originalSelect.multiple
         ? ` ${this.selectClasses.classSelectOptionSelected}`
-        : ''
+        : '';
     const selectOptionHide =
       selectOption.selected &&
-        !originalSelect.hasAttribute('data-show-selected') &&
-        !originalSelect.multiple
+      !originalSelect.hasAttribute('data-show-selected') &&
+      !originalSelect.multiple
         ? 'hidden'
-        : ''
-    const selectOptionClass = selectOption.dataset.class ?? ''
-    const selectOptionLink = selectOption.dataset.href
+        : '';
+    const selectOptionClass = selectOption.dataset.class ?? '';
+    const selectOptionLink = selectOption.dataset.href;
     const selectOptionLinkTarget = selectOption.hasAttribute('data-href-blank')
       ? 'target="_blank"'
-      : ''
+      : '';
 
-    let selectOptionHTML = ''
+    let selectOptionHTML = '';
 
     selectOptionHTML += selectOptionLink
       ? `<a
@@ -507,118 +510,118 @@ class Select {
 					type="button"
 					data-value="${selectOption.value}"
 					${selectOptionHide}
-				>`
-    selectOptionHTML += this.getSelectElementContent(selectOption)
-    selectOptionHTML += selectOptionLink ? '</a>' : '</button>'
+				>`;
+    selectOptionHTML += this.getSelectElementContent(selectOption);
+    selectOptionHTML += selectOptionLink ? '</a>' : '</button>';
 
-    return selectOptionHTML
+    return selectOptionHTML;
   }
 
   setOptions(selectItem, originalSelect) {
     const selectItemOptions = this.getSelectElement(
       selectItem,
-      this.selectClasses.classSelectOptions
-    ).selectElement
+      this.selectClasses.classSelectOptions,
+    ).selectElement;
 
-    selectItemOptions.innerHTML = this.getOptions(originalSelect)
+    selectItemOptions.innerHTML = this.getOptions(originalSelect);
   }
 
   optionAction(selectItem, originalSelect, optionItem) {
     if (originalSelect.multiple) {
-      optionItem.classList.toggle(this.selectClasses.classSelectOptionSelected)
+      optionItem.classList.toggle(this.selectClasses.classSelectOptionSelected);
 
       const originalSelectSelectedItems =
-        this.getSelectedOptionsData(originalSelect).elements
+        this.getSelectedOptionsData(originalSelect).elements;
 
       originalSelectSelectedItems.forEach((originalSelectSelectedItem) => {
-        originalSelectSelectedItem.removeAttribute('selected')
-      })
+        originalSelectSelectedItem.removeAttribute('selected');
+      });
 
       const selectSelectedItems = selectItem.querySelectorAll(
-        this.getSelectClass(this.selectClasses.classSelectOptionSelected)
-      )
+        this.getSelectClass(this.selectClasses.classSelectOptionSelected),
+      );
 
       selectSelectedItems.forEach((selectSelectedItems) => {
         originalSelect
           .querySelector(`option[value="${selectSelectedItems.dataset.value}"]`)
-          .setAttribute('selected', 'selected')
-      })
+          .setAttribute('selected', 'selected');
+      });
     } else {
       if (!originalSelect.hasAttribute('data-show-selected')) {
         if (
           selectItem.querySelector(
-            `${this.getSelectClass(this.selectClasses.classSelectOption)}[hidden]`
+            `${this.getSelectClass(this.selectClasses.classSelectOption)}[hidden]`,
           )
         ) {
           selectItem.querySelector(
-            `${this.getSelectClass(this.selectClasses.classSelectOption)}[hidden]`
-          ).hidden = false
+            `${this.getSelectClass(this.selectClasses.classSelectOption)}[hidden]`,
+          ).hidden = false;
         }
 
-        optionItem.hidden = true
+        optionItem.hidden = true;
       }
 
       originalSelect.value = optionItem.hasAttribute('data-value')
         ? optionItem.dataset.value
-        : optionItem.textContent
-      this.selectAction(selectItem)
+        : optionItem.textContent;
+      this.selectAction(selectItem);
     }
 
-    this.setSelectTitleValue(selectItem, originalSelect)
-    this.setSelectChange(originalSelect)
+    this.setSelectTitleValue(selectItem, originalSelect);
+    this.setSelectChange(originalSelect);
   }
 
   selectChange(event) {
-    const originalSelect = event.target
+    const originalSelect = event.target;
 
-    this.selectBuild(originalSelect)
-    this.setSelectChange(originalSelect)
+    this.selectBuild(originalSelect);
+    this.setSelectChange(originalSelect);
   }
 
   setSelectChange(originalSelect) {
     if (originalSelect.hasAttribute('data-validate')) {
-      formValidate.validateInput(originalSelect)
+      formValidate.validateInput(originalSelect);
     }
 
     if (originalSelect.hasAttribute('data-submit') && originalSelect.value) {
-      const tempButton = document.createElement('button')
+      const tempButton = document.createElement('button');
 
-      tempButton.type = 'submit'
-      originalSelect.closest('form').append(tempButton)
-      tempButton.click()
-      tempButton.remove()
+      tempButton.type = 'submit';
+      originalSelect.closest('form').append(tempButton);
+      tempButton.click();
+      tempButton.remove();
     }
   }
 
   selectDisabled(selectItem, originalSelect) {
     if (originalSelect.disabled) {
-      selectItem.classList.add(this.selectClasses.classSelectDisabled)
+      selectItem.classList.add(this.selectClasses.classSelectDisabled);
       this.getSelectElement(
         selectItem,
-        this.selectClasses.classSelectTitle
-      ).selectElement.disabled = true
+        this.selectClasses.classSelectTitle,
+      ).selectElement.disabled = true;
     } else {
-      selectItem.classList.remove(this.selectClasses.classSelectDisabled)
+      selectItem.classList.remove(this.selectClasses.classSelectDisabled);
       this.getSelectElement(
         selectItem,
-        this.selectClasses.classSelectTitle
-      ).selectElement.disabled = false
+        this.selectClasses.classSelectTitle,
+      ).selectElement.disabled = false;
     }
   }
 
   searchActions(selectItem) {
     const selectInput = this.getSelectElement(
       selectItem,
-      this.selectClasses.classSelectInput
-    ).selectElement
+      this.selectClasses.classSelectInput,
+    ).selectElement;
     const selectOptions = this.getSelectElement(
       selectItem,
-      this.selectClasses.classSelectOptions
-    ).selectElement
+      this.selectClasses.classSelectOptions,
+    ).selectElement;
     const selectOptionsItems = selectOptions.querySelectorAll(
-      `.${this.selectClasses.classSelectOption}`
-    )
-    const that = this
+      `.${this.selectClasses.classSelectOption}`,
+    );
+    const that = this;
 
     selectInput.addEventListener('input', () => {
       selectOptionsItems.forEach((selectOptionsItem) => {
@@ -626,16 +629,16 @@ class Select {
           .toUpperCase()
           .indexOf(selectInput.value.toUpperCase()) >= 0
           ? (selectOptionsItem.hidden = false)
-          : (selectOptionsItem.hidden = true)
-      })
+          : (selectOptionsItem.hidden = true);
+      });
 
       if (selectOptions.hidden) {
-        that.selectAction(selectItem)
+        that.selectAction(selectItem);
       }
-    })
+    });
   }
 }
 
-const select = new Select()
+const select = new Select();
 
-export { select }
+export { select };

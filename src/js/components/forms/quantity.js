@@ -1,8 +1,8 @@
 const quantity = () => {
-  const quantityAttribute = 'data-quantity'
+  const quantityAttribute = 'data-quantity';
 
   document.addEventListener('click', (event) => {
-    const targetElement = event.target
+    const targetElement = event.target;
 
     if (
       targetElement.closest(`[${quantityAttribute}-plus]`) ??
@@ -10,37 +10,37 @@ const quantity = () => {
     ) {
       const valueElement = targetElement
         .closest(`[${quantityAttribute}]`)
-        .querySelector(`[${quantityAttribute}-value]`)
+        .querySelector(`[${quantityAttribute}-value]`);
 
-      let value = parseInt(valueElement.value)
+      let value = parseInt(valueElement.value);
 
       if (targetElement.hasAttribute(`${quantityAttribute}-plus`)) {
-        value++
+        value++;
 
         if (
           Number(valueElement.dataset.quantityMax) &&
           Number(valueElement.dataset.quantityMax) < value
         ) {
-          value = valueElement.dataset.quantityMax
+          value = valueElement.dataset.quantityMax;
         }
       } else {
-        --value
+        --value;
 
         if (
           Number(valueElement.dataset.quantityMin) &&
           Number(valueElement.dataset.quantityMin) > value
         ) {
-          value = valueElement.dataset.quantityMin
+          value = valueElement.dataset.quantityMin;
         } else if (value < 1) {
-          value = 1
+          value = 1;
         }
       }
 
       targetElement
         .closest(`[${quantityAttribute}]`)
-        .querySelector(`[${quantityAttribute}-value]`).value = value
+        .querySelector(`[${quantityAttribute}-value]`).value = value;
     }
-  })
-}
+  });
+};
 
-export { quantity }
+export { quantity };

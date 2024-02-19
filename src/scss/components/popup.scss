@@ -12,6 +12,26 @@
   padding-block: to-rem(30);
   padding-inline: to-rem($container-padding-inline);
 
+  &--show {
+    pointer-events: auto;
+
+    opacity: 1;
+
+    z-index: var(--z-index-3, #{$z-index-3});
+
+    overflow-block: auto;
+
+    overscroll-behavior-block: none;
+
+    scrollbar-gutter: stable;
+
+    .popup__content {
+      opacity: 1;
+
+      scale: 1;
+    }
+  }
+
   &__wrapper {
     display: flex;
 
@@ -42,26 +62,6 @@
 
     .lock & {
       opacity: 1;
-    }
-  }
-
-  &--show {
-    pointer-events: auto;
-
-    opacity: 1;
-
-    z-index: var(--z-index-3, #{$z-index-3});
-
-    overflow-block: auto;
-
-    overscroll-behavior-block: none;
-
-    scrollbar-gutter: stable;
-
-    .popup__content {
-      opacity: 1;
-
-      scale: 1;
     }
   }
 }

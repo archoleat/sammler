@@ -21,16 +21,16 @@
 
       white-space: nowrap;
 
-      [aria-current="page"] {
-        color: var(--color-gray, #{$color-gray});
-      }
-
       &:not(:last-child) {
         &::after {
           content: "→";
 
           margin-inline: to-em(5, $font-size);
         }
+      }
+
+      [aria-current="page"] {
+        color: var(--color-gray, #{$color-gray});
       }
     }
   }

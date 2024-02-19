@@ -8,12 +8,6 @@
 }
 
 [data-showmore-button] {
-  span {
-    &:last-child {
-      display: none;
-    }
-  }
-
   &[aria-expanded="true"] {
     span {
       display: none;
@@ -21,6 +15,12 @@
       &:last-child {
         display: block;
       }
+    }
+  }
+
+  span {
+    &:last-child {
+      display: none;
     }
   }
 }

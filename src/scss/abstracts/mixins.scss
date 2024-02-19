@@ -101,8 +101,7 @@
       flex-basis: calc(
         (
             (
-                100% -
-                  var(
+                100% - var(
                     --container-padding-inline,
                     #{to-rem($container-padding-inline)}
                   )

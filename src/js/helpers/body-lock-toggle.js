@@ -1,33 +1,33 @@
-import { burger } from '@js/components/hamburger'
-import { html } from '@js/helpers/node-list'
+import { burger } from '@js/components/hamburger';
+import { html } from '@js/helpers/node-list';
 
-let bodyLockStatus = true
+let bodyLockStatus = true;
 
 const delayToggle = (delay = 500) => {
-  bodyLockStatus = false
+  bodyLockStatus = false;
 
   setTimeout(() => {
-    bodyLockStatus = true
-  }, delay)
-}
+    bodyLockStatus = true;
+  }, delay);
+};
 const bodyUnlock = (delay) => {
   if (bodyLockStatus) {
-    html.classList.remove('lock')
-    burger.ariaExpanded = false
+    html.classList.remove('lock');
+    burger.ariaExpanded = false;
 
-    delayToggle(delay)
+    delayToggle(delay);
   }
-}
+};
 const bodyLock = (delay) => {
   if (bodyLockStatus) {
-    html.classList.add('lock')
+    html.classList.add('lock');
 
-    delayToggle(delay)
+    delayToggle(delay);
   }
-}
+};
 
 const bodyLockToggle = (delay) => {
-  html.classList.contains('lock') ? bodyUnlock(delay) : bodyLock(delay)
-}
+  html.classList.contains('lock') ? bodyUnlock(delay) : bodyLock(delay);
+};
 
-export { bodyLockStatus, bodyLockToggle, bodyUnlock, bodyLock }
+export { bodyLockStatus, bodyLockToggle, bodyUnlock, bodyLock };

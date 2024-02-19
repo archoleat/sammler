@@ -1,15 +1,15 @@
 const isMobile = {
   android: () => {
-    return navigator.userAgent.match(/android/i)
+    return navigator.userAgent.match(/android/i);
   },
   blackBerry: () => {
-    return navigator.userAgent.match(/blackberry/i)
+    return navigator.userAgent.match(/blackberry/i);
   },
   opera: () => {
-    return navigator.userAgent.match(/opera mini/i)
+    return navigator.userAgent.match(/opera mini/i);
   },
   ios: () => {
-    return navigator.userAgent.match(/iphone|ipad|ipod/i)
+    return navigator.userAgent.match(/iphone|ipad|ipod/i);
   },
   any: () => {
     return (
@@ -17,8 +17,8 @@ const isMobile = {
       isMobile.blackBerry() ??
       isMobile.opera() ??
       isMobile.ios()
-    )
-  }
-}
+    );
+  },
+};
 
-export { isMobile }
+export { isMobile };
