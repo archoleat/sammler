@@ -23,15 +23,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node
+      - name: Set Up PNPM
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
+
+      - name: Set Up NodeJS
         uses: actions/setup-node@v4
         with:
-          node-version-file: .nvmrc
-          cache: npm
-          cache-dependency-path: package-lock.json
+          cache: pnpm
+          node-version: lts/*
 
       - name: Install Dependencies
-        run: npm ci
+        run: pnpm i
 
       - name: Check Links
-        run: npm run w3c:lint
+        run: pnpm run w3c:lint
