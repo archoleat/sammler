@@ -5,3 +5,4 @@
 .prettierignore
 .stylelintignore
 *.md
+pnpm-lock.yaml
