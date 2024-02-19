@@ -15,7 +15,7 @@
     "lint:md": "remark . --quiet",
     "lint:js": "eslint src/js/**/*.js --fix",
     "lint:scss": "stylelint src/scss/**/*.scss --fix",
-    "format": "prettier . --write",
+    "prettify": "prettier . --write",
     "commit": "cz"
   },
   "dependencies": {
