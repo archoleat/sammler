@@ -38,8 +38,8 @@ dependencies:
 
 devDependencies:
   '@archoleat/stylelint-config-extended-scss':
-    specifier: ^1.5.1
-    version: 1.5.1(postcss@8.4.35)(prettier@3.2.5)(stylelint@16.2.1)
+    specifier: ^1.5.2
+    version: 1.5.2(postcss@8.4.35)(prettier@3.2.5)(stylelint@16.2.1)
   '@babel/core':
     specifier: ^7.23.9
     version: 7.23.9
@@ -257,8 +257,8 @@ packages:
       '@jridgewell/trace-mapping': 0.3.22
     dev: true
 
-  /@archoleat/stylelint-config-extended-scss@1.5.1(postcss@8.4.35)(prettier@3.2.5)(stylelint@16.2.1):
-    resolution: {integrity: sha512-VA8Zln8k8H5ALstO00kv+hYV9hfCraKkUPInqFUgI1pljYiN7cDodibhWUNbbPrY/P1a0Ktp2IQQ5ol71Ivlzw==}
+  /@archoleat/stylelint-config-extended-scss@1.5.2(postcss@8.4.35)(prettier@3.2.5)(stylelint@16.2.1):
+    resolution: {integrity: sha512-ms6m7F3L3NqAkp01IIyVU0SD85hVEnyN+HuzMNd2447v5cszm3RN2fmanqYrc/M2289tTV+KrBkU9SpsV9TiYQ==}
     engines: {node: '>=20.11.0', pnpm: '>=8.15.3'}
     peerDependencies:
       stylelint: '*'
@@ -1487,6 +1487,7 @@ packages:
   /@commitlint/config-validator@18.6.1:
     resolution: {integrity: sha512-05uiToBVfPhepcQWE1ZQBR/Io3+tb3gEotZjnI4tTzzPk16NffN6YABgwFQCLmzZefbDcmwWqJWc2XT47q7Znw==}
     engines: {node: '>=v18'}
+    requiresBuild: true
     dependencies:
       '@commitlint/types': 18.6.1
       ajv: 8.12.0
@@ -1507,6 +1508,7 @@ packages:
   /@commitlint/execute-rule@18.6.1:
     resolution: {integrity: sha512-7s37a+iWyJiGUeMFF6qBlyZciUkF8odSAnHijbD36YDctLhGKoYltdvuJ/AFfRm6cBLRtRk9cCVPdsEFtt/2rg==}
     engines: {node: '>=v18'}
+    requiresBuild: true
     dev: true
 
   /@commitlint/format@18.6.1:
@@ -1582,6 +1584,7 @@ packages:
   /@commitlint/resolve-extends@18.6.1:
     resolution: {integrity: sha512-ifRAQtHwK+Gj3Bxj/5chhc4L2LIc3s30lpsyW67yyjsETR6ctHAHRu1FSpt0KqahK5xESqoJ92v6XxoDRtjwEQ==}
     engines: {node: '>=v18'}
+    requiresBuild: true
     dependencies:
       '@commitlint/config-validator': 18.6.1
       '@commitlint/types': 18.6.1
@@ -4525,6 +4528,7 @@ packages:
   /cosmiconfig-typescript-loader@5.0.0(@types/node@20.11.19)(cosmiconfig@8.3.6)(typescript@5.3.3):
     resolution: {integrity: sha512-+8cK7jRAReYkMwMiG+bxhcNKiHJDM6bR9FD/nGBXOWdMLuYawjF5cGrtLilJ+LGd3ZjCXnJjR5DkfWPoIVlqJA==}
     engines: {node: '>=v16'}
+    requiresBuild: true
     peerDependencies:
       '@types/node': '*'
       cosmiconfig: '>=8.2'
@@ -4539,6 +4543,7 @@ packages:
   /cosmiconfig@8.3.6(typescript@5.3.3):
     resolution: {integrity: sha512-kcZ6+W5QzcJ3P1Mt+83OUv/oHFqZHIx8DuxG6eZ5RGMERoLqp4BuGjhHLYGK+Kf5XVkQvqBSmAy/nGWN3qDgEA==}
     engines: {node: '>=14'}
+    requiresBuild: true
     peerDependencies:
       typescript: '>=4.9.5'
     peerDependenciesMeta:
@@ -8554,6 +8559,7 @@ packages:
   /jiti@1.21.0:
     resolution: {integrity: sha512-gFqAIbuKyyso/3G2qhiO2OM6shY6EPP/R0+mkDbyspxKazh8BXDC5FiFsUjlczgdNz/vfra0da2y+aHrusLG/Q==}
     hasBin: true
+    requiresBuild: true
     dev: true
 
   /js-base64@2.6.4:
@@ -9065,6 +9071,7 @@ packages:
 
   /lodash.mergewith@4.6.2:
     resolution: {integrity: sha512-GK3g5RPZWTRSeLSpgP8Xhra+pnjBC56q9FZYe1d5RN3TJ35dbkGy3YqBSMbyCrlbi+CM9Z3Jk5yTL7RCsqboyQ==}
+    requiresBuild: true
     dev: true
 
   /lodash.restparam@3.6.1:
@@ -9131,6 +9138,7 @@ packages:
 
   /lodash.uniq@4.5.0:
     resolution: {integrity: sha512-xfBaXQd9ryd9dlSDvnvI0lvxfLJlYAZzXomUYzLKtUeOQvOP5piqAWuGtrhWeqaXK9hhoM/iyJc5AV+XfsX3HQ==}
+    requiresBuild: true
     dev: true
 
   /lodash.uniqby@4.7.0:
@@ -15849,7 +15857,7 @@ packages:
       require-directory: 2.1.1
       string-width: 4.2.3
       y18n: 5.0.8
-      yargs-parser: 20.2.4
+      yargs-parser: 20.2.9
     dev: true
 
   /yargs@17.7.2:
