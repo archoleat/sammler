@@ -1,4 +1,4 @@
-import tippy from 'tippy.js'
+import tippy from 'tippy.js';
 
 const initTippy = () => {
   if (document.querySelectorAll('[data-tippy-content]')) {
@@ -18,9 +18,9 @@ const initTippy = () => {
       theme: '',
       touch: true,
       trigger: 'click',
-      triggerTarget: null
-    })
+      triggerTarget: null,
+    });
   }
-}
+};
 
-export { initTippy }
+export { initTippy };

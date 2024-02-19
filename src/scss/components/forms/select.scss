@@ -4,6 +4,23 @@
 .select {
   min-inline-size: 0;
 
+  &--show-top {
+    .select__options {
+      $border-bottom-radius: 5;
+
+      inset-block: auto calc(100% - to-rem(1));
+
+      border-width: to-rem(1);
+      border-style: solid;
+      border-color: #d9d9d9;
+      border-end-start-radius: to-rem($border-bottom-radius);
+      border-end-end-radius: to-rem($border-bottom-radius);
+      border-block-end: 0;
+
+      padding-block: to-rem(5) to-rem(10);
+    }
+  }
+
   &__body {
     position: relative;
   }
@@ -143,23 +160,6 @@
       color: var(--color-primary, #{$color-primary});
 
       background-color: var(--color-accent, #{$color-accent});
-    }
-  }
-
-  &--show-top {
-    .select__options {
-      $border-bottom-radius: 5;
-
-      inset-block: auto calc(100% - to-rem(1));
-
-      border-width: to-rem(1);
-      border-style: solid;
-      border-color: #d9d9d9;
-      border-end-start-radius: to-rem($border-bottom-radius);
-      border-end-end-radius: to-rem($border-bottom-radius);
-      border-block-end: 0;
-
-      padding-block: to-rem(5) to-rem(10);
     }
   }
 }

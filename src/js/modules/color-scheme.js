@@ -1,51 +1,53 @@
-import { html } from '@js/helpers/node-list'
+import { html } from '@js/helpers/node-list';
 
 const colorScheme = () => {
-  const saveUserTheme = localStorage.getItem('user-theme')
+  const saveUserTheme = localStorage.getItem('user-theme');
 
-  let userTheme
+  let userTheme;
 
   const changeTheme = (saveTheme = false) => {
-    const currentTheme = html.classList.contains('light') ? 'light' : 'dark'
+    const currentTheme = html.classList.contains('light') ? 'light' : 'dark';
 
-    let newTheme
+    let newTheme;
 
-    currentTheme === 'light' ? (newTheme = 'dark') : (newTheme = 'light')
-    html.classList.remove(currentTheme)
-    html.classList.add(newTheme)
+    currentTheme === 'light' ? (newTheme = 'dark') : (newTheme = 'light');
+    html.classList.remove(currentTheme);
+    html.classList.add(newTheme);
 
     if (saveTheme) {
-      localStorage.setItem('user-theme', newTheme)
+      localStorage.setItem('user-theme', newTheme);
     }
-  }
+  };
 
   if (window.matchMedia) {
     userTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
       ? 'dark'
-      : 'light'
+      : 'light';
   }
 
   window
     .matchMedia('(prefers-color-scheme: dark)')
     .addEventListener('change', () => {
       if (!saveUserTheme) {
-        changeTheme()
+        changeTheme();
       }
-    })
+    });
 
-  const switchThemeButton = document.querySelector('.theme-switch')
+  const switchThemeButton = document.querySelector('.theme-switch');
 
   if (switchThemeButton) {
     switchThemeButton.addEventListener('click', () => {
-      changeTheme(true)
-    })
+      changeTheme(true);
+    });
   }
 
   const setThemeClass = () => {
-    saveUserTheme ? html.classList.add(saveUserTheme) : html.classList.add(userTheme)
-  }
+    saveUserTheme
+      ? html.classList.add(saveUserTheme)
+      : html.classList.add(userTheme);
+  };
 
-  setThemeClass()
-}
+  setThemeClass();
+};
 
-export { colorScheme }
+export { colorScheme };

@@ -1,15 +1,15 @@
-import { select } from '@js/components/forms/Select'
+import { select } from '@js/components/forms/Select';
 
 class FormValidate {
   constructor() {
-    this.formErrorClass = 'form-error'
-    this.formErrorClassElement = 'form__error'
+    this.formErrorClass = 'form-error';
+    this.formErrorClassElement = 'form__error';
   }
 
   getErrors(form) {
-    const formRequiredItems = form.querySelectorAll('*[data-required]')
+    const formRequiredItems = form.querySelectorAll('*[data-required]');
 
-    let error = 0
+    let error = 0;
 
     formRequiredItems.forEach((formRequiredItem) => {
       if (
@@ -17,48 +17,48 @@ class FormValidate {
           formRequiredItem.tagName === 'SELECT') &&
         !formRequiredItem.disabled
       ) {
-        error += this.validateInput(formRequiredItem)
+        error += this.validateInput(formRequiredItem);
       }
-    })
+    });
 
-    return error
+    return error;
   }
 
   validateInput(formRequiredItem) {
-    let error = 0
+    let error = 0;
 
     if (formRequiredItem.dataset.required === 'email') {
-      formRequiredItem.value = formRequiredItem.value.replace(' ', '')
+      formRequiredItem.value = formRequiredItem.value.replace(' ', '');
 
       if (this.emailTest(formRequiredItem)) {
-        this.addError(formRequiredItem)
-        error++
+        this.addError(formRequiredItem);
+        error++;
       } else {
-        this.removeError(formRequiredItem)
+        this.removeError(formRequiredItem);
       }
     } else if (
       (formRequiredItem.type === 'checkbox' && !formRequiredItem.checked) ??
       !formRequiredItem.value.trim()
     ) {
-      this.addError(formRequiredItem)
-      error++
+      this.addError(formRequiredItem);
+      error++;
     } else {
-      this.removeError(formRequiredItem)
+      this.removeError(formRequiredItem);
     }
 
-    return error
+    return error;
   }
 
   addError(formRequiredItem) {
-    formRequiredItem.classList.add(this.formErrorClass)
-    formRequiredItem.parentElement.classList.add(this.formErrorClass)
+    formRequiredItem.classList.add(this.formErrorClass);
+    formRequiredItem.parentElement.classList.add(this.formErrorClass);
 
     const inputError = formRequiredItem.parentElement.querySelector(
-      `.${this.formErrorClassElement}`
-    )
+      `.${this.formErrorClassElement}`,
+    );
 
     if (inputError) {
-      formRequiredItem.parentElement.removeChild(inputError)
+      formRequiredItem.parentElement.removeChild(inputError);
     }
 
     if (formRequiredItem.dataset.error) {
@@ -66,59 +66,59 @@ class FormValidate {
         'beforeend',
         `<div class="${this.formErrorClassElement}">
           ${formRequiredItem.dataset.error}
-        </div>`
-      )
+        </div>`,
+      );
     }
   }
 
   removeError(formRequiredItem) {
-    formRequiredItem.classList.remove(this.formErrorClass)
-    formRequiredItem.parentElement.classList.remove(this.formErrorClass)
+    formRequiredItem.classList.remove(this.formErrorClass);
+    formRequiredItem.parentElement.classList.remove(this.formErrorClass);
 
     if (
       formRequiredItem.parentElement.querySelector(`.${this.formErrorClassElement}`)
     ) {
       formRequiredItem.parentElement.removeChild(
         formRequiredItem.parentElement.querySelector(
-          `.${this.formErrorClassElement}`
-        )
-      )
+          `.${this.formErrorClassElement}`,
+        ),
+      );
     }
   }
 
   formClean(form) {
-    form.reset()
+    form.reset();
     setTimeout(() => {
-      const inputs = form.querySelectorAll('input,textarea')
+      const inputs = form.querySelectorAll('input,textarea');
 
       inputs.forEach((el) => {
-        el.parentElement.classList.remove(this.formErrorClass)
-        el.classList.remove(this.formErrorClass)
-        this.removeError(el)
-      })
+        el.parentElement.classList.remove(this.formErrorClass);
+        el.classList.remove(this.formErrorClass);
+        this.removeError(el);
+      });
 
-      const checkboxes = form.querySelectorAll('.checkbox__input')
+      const checkboxes = form.querySelectorAll('.checkbox__input');
 
       checkboxes.forEach((checkbox) => {
-        checkbox.checked = false
-      })
+        checkbox.checked = false;
+      });
 
-      const selects = form.querySelectorAll('.select')
+      const selects = form.querySelectorAll('.select');
 
       selects.forEach((selectBlock) => {
-        selectBlock.querySelector('select')
-        select().selectBuild(selectBlock)
-      })
-    }, 0)
+        selectBlock.querySelector('select');
+        select().selectBuild(selectBlock);
+      });
+    }, 0);
   }
 
   emailTest(formRequiredItem) {
     return !/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,8})+$/.test(
-      formRequiredItem.value
-    )
+      formRequiredItem.value,
+    );
   }
 }
 
-const formValidate = new FormValidate()
+const formValidate = new FormValidate();
 
-export { formValidate }
+export { formValidate };

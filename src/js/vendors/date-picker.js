@@ -1,4 +1,4 @@
-import datepicker from 'js-datepicker'
+import datepicker from 'js-datepicker';
 
 const initCalendar = () => {
   if (document.querySelector('[data-datepicker]')) {
@@ -16,18 +16,18 @@ const initCalendar = () => {
         'Sen',
         'Oct',
         'Nov',
-        'Dec'
+        'Dec',
       ],
       overlayButton: 'Apply',
       overlayPlaceholder: 'Year (4 digits)',
       startDay: 1,
       formatter: (input, date) => {
-        const value = date.toLocaleDateString()
+        const value = date.toLocaleDateString();
 
-        input.value = value
-      }
-    })
+        input.value = value;
+      },
+    });
   }
-}
+};
 
-export { initCalendar }
+export { initCalendar };

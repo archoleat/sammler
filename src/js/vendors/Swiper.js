@@ -1,5 +1,5 @@
-import Swiper from 'swiper'
-import { Navigation } from 'swiper/modules'
+import Swiper from 'swiper';
+import { Navigation } from 'swiper/modules';
 
 const initSliders = () => {
   if (document.querySelector('.swiper')) {
@@ -16,10 +16,10 @@ const initSliders = () => {
 
       navigation: {
         prevEl: '.swiper-button-prev',
-        nextEl: '.swiper-button-next'
-      }
-    })
+        nextEl: '.swiper-button-next',
+      },
+    });
   }
-}
+};
 
-export { initSliders }
+export { initSliders };

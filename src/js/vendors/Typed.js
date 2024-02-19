@@ -1,4 +1,4 @@
-import Typed from 'typed.js'
+import Typed from 'typed.js';
 
 const initTyped = () => {
   if (document.querySelector('[data-typed]')) {
@@ -11,9 +11,9 @@ const initTyped = () => {
       loop: true,
       fadeOut: false,
       smartBackspace: true,
-      showCursor: false
-    })
+      showCursor: false,
+    });
   }
-}
+};
 
-export { initTyped }
+export { initTyped };
