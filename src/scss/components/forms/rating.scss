@@ -13,6 +13,17 @@
 
   font-size: to-rem($font-size);
 
+  &--sending {
+    opacity: 0.2;
+  }
+
+  &--set {
+    .rating__active,
+    .rating__star {
+      cursor: pointer;
+    }
+  }
+
   &__group {
     position: relative;
 
@@ -65,16 +76,5 @@
     padding-inline-start: to-em(10, $font-size);
 
     font-size: to-rem($font-size);
-  }
-
-  &--sending {
-    opacity: 0.2;
-  }
-
-  &--set {
-    .rating__active,
-    .rating__star {
-      cursor: pointer;
-    }
   }
 }

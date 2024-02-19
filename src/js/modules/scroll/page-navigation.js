@@ -1,69 +1,69 @@
-import { getHash } from '@js/helpers/get-hash'
-import { goToBlock } from '@js/helpers/go-to-block'
+import { getHash } from '@js/helpers/get-hash';
+import { goToBlock } from '@js/helpers/go-to-block';
 
 const pageNavigation = () => {
   const pageNavigationAction = (event) => {
     if (event.type === 'click') {
-      const targetElement = event.target
+      const targetElement = event.target;
 
       if (targetElement.closest('[data-goto]')) {
-        const gotoLink = targetElement.closest('[data-goto]')
-        const gotoLinkSelector = gotoLink.dataset.goto ?? ''
-        const noHeader = gotoLink.hasAttribute('data-goto-header')
-        const offsetTop = parseInt(gotoLink.dataset.gotoTop) ?? 0
+        const gotoLink = targetElement.closest('[data-goto]');
+        const gotoLinkSelector = gotoLink.dataset.goto ?? '';
+        const noHeader = gotoLink.hasAttribute('data-goto-header');
+        const offsetTop = parseInt(gotoLink.dataset.gotoTop) ?? 0;
 
-        goToBlock(gotoLinkSelector, noHeader, offsetTop)
-        event.preventDefault()
+        goToBlock(gotoLinkSelector, noHeader, offsetTop);
+        event.preventDefault();
       }
     } else if (event.type === 'watcherCallback' && event.detail) {
-      const entry = event.detail.entry
-      const targetElement = entry.target
+      const entry = event.detail.entry;
+      const targetElement = entry.target;
 
       if (targetElement.dataset.watch === 'navigator') {
-        let navigatorCurrentItem
+        let navigatorCurrentItem;
 
         if (
           targetElement.id &&
           document.querySelector(`[data-goto="#${targetElement.id}"]`)
         ) {
           navigatorCurrentItem = document.querySelector(
-            `[data-goto="#${targetElement.id}"]`
-          )
+            `[data-goto="#${targetElement.id}"]`,
+          );
         } else if (targetElement.classList.length) {
           for (let index = 0; index < targetElement.classList.length; index++) {
-            const element = targetElement.classList[index]
+            const element = targetElement.classList[index];
 
             if (document.querySelector(`[data-goto=".${element}"]`)) {
               navigatorCurrentItem = document.querySelector(
-                `[data-goto=".${element}"]`
-              )
+                `[data-goto=".${element}"]`,
+              );
 
-              break
+              break;
             }
           }
         }
 
         entry.isIntersecting
           ? navigatorCurrentItem?.classList.add('navigator-active')
-          : navigatorCurrentItem?.classList.remove('navigator-active')
+          : navigatorCurrentItem?.classList.remove('navigator-active');
       }
     }
-  }
+  };
 
-  document.addEventListener('click', pageNavigationAction)
-  document.addEventListener('watcherCallback', pageNavigationAction)
+  document.addEventListener('click', pageNavigationAction);
+  document.addEventListener('watcherCallback', pageNavigationAction);
 
   if (getHash()) {
-    let goToHash
+    let goToHash;
 
     document.querySelector(`#${getHash()}`)
       ? (goToHash = `#${getHash()}`)
-      : (goToHash = `.${getHash()}`)
+      : (goToHash = `.${getHash()}`);
 
     if (goToHash) {
-      goToBlock(goToHash, true, 20)
+      goToBlock(goToHash, true, 20);
     }
   }
-}
+};
 
-export { pageNavigation }
+export { pageNavigation };

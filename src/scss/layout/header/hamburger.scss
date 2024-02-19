@@ -40,10 +40,6 @@
       inset-block-end: 0;
     }
 
-    span {
-      inset-block-start: calc(50% - to-rem(1));
-    }
-
     &[aria-expanded="true"] {
       $rotate: 45deg;
 
@@ -67,11 +63,17 @@
       + .menu__body {
         transform: translateX(
           calc(
-            0% -
-              var(--container-padding-inline, #{to-rem($container-padding-inline)})
+            0% - var(
+                --container-padding-inline,
+                #{to-rem($container-padding-inline)}
+              )
           )
         );
       }
+    }
+
+    span {
+      inset-block-start: calc(50% - to-rem(1));
     }
   }
 }

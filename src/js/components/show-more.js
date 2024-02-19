@@ -1,164 +1,164 @@
-import { dataMediaQueries } from '@js/helpers/data-media'
-import { slideDown } from '@js/helpers/slide-down'
-import { slideUp } from '@js/helpers/slide-up'
+import { dataMediaQueries } from '@js/helpers/data-media';
+import { slideDown } from '@js/helpers/slide-down';
+import { slideUp } from '@js/helpers/slide-up';
 
 const showMore = () => {
-  const showMoreAttribute = 'data-showmore'
-  const showMoreBlocksArray = document.querySelectorAll(`[${showMoreAttribute}]`)
+  const showMoreAttribute = 'data-showmore';
+  const showMoreBlocksArray = document.querySelectorAll(`[${showMoreAttribute}]`);
 
-  let showMoreBlocksRegular
-  let mdQueriesArray
+  let showMoreBlocksRegular;
+  let mdQueriesArray;
 
   const getHeight = (showMoreBlock, showMoreContent) => {
-    const showMoreType = showMoreBlock.dataset.showmore ?? 'size'
+    const showMoreType = showMoreBlock.dataset.showmore ?? 'size';
 
-    let hiddenHeight = 0
+    let hiddenHeight = 0;
 
     if (showMoreType === 'items') {
-      const showMoreTypeValue = showMoreContent.dataset.showmoreContent ?? 3
+      const showMoreTypeValue = showMoreContent.dataset.showmoreContent ?? 3;
 
-      const showMoreItems = showMoreContent.children
+      const showMoreItems = showMoreContent.children;
 
       for (let index = 1; index < showMoreItems.length; index++) {
-        const showMoreItem = showMoreItems[index - 1]
+        const showMoreItem = showMoreItems[index - 1];
 
-        hiddenHeight += showMoreItem.offsetHeight
+        hiddenHeight += showMoreItem.offsetHeight;
 
         if (i === showMoreTypeValue) {
-          break
+          break;
         }
       }
     } else {
-      const showMoreTypeValue = showMoreContent.dataset.showmoreContent ?? 150
+      const showMoreTypeValue = showMoreContent.dataset.showmoreContent ?? 150;
 
-      hiddenHeight = showMoreTypeValue
+      hiddenHeight = showMoreTypeValue;
     }
 
-    return hiddenHeight
-  }
+    return hiddenHeight;
+  };
 
   const getOriginalHeight = (showMoreContent) => {
-    const hiddenHeight = showMoreContent.offsetHeight
+    const hiddenHeight = showMoreContent.offsetHeight;
 
-    let parentHidden
+    let parentHidden;
 
-    showMoreContent.style.removeProperty('height')
+    showMoreContent.style.removeProperty('height');
 
     if (showMoreContent.closest('[hidden]')) {
-      parentHidden = showMoreContent.closest('[hidden]')
-      parentHidden.hidden = false
+      parentHidden = showMoreContent.closest('[hidden]');
+      parentHidden.hidden = false;
     }
 
-    const originalHeight = showMoreContent.offsetHeight
+    const originalHeight = showMoreContent.offsetHeight;
 
     if (parentHidden) {
-      parentHidden.hidden = true
+      parentHidden.hidden = true;
     }
 
-    showMoreContent.style.height = `${hiddenHeight}px`
+    showMoreContent.style.height = `${hiddenHeight}px`;
 
-    return originalHeight
-  }
+    return originalHeight;
+  };
 
   const initItem = (showMoreBlock, matchMedia = false) => {
-    showMoreBlock = matchMedia ? showMoreBlock.item : showMoreBlock
+    showMoreBlock = matchMedia ? showMoreBlock.item : showMoreBlock;
 
     let showMoreContent = showMoreBlock.querySelectorAll(
-      `[${showMoreAttribute}-content]`
-    )
+      `[${showMoreAttribute}-content]`,
+    );
     let showMoreButton = showMoreBlock.querySelectorAll(
-      `[${showMoreAttribute}-button]`
-    )
+      `[${showMoreAttribute}-button]`,
+    );
 
     showMoreContent = Array.from(showMoreContent).filter((item) => {
-      return item.closest(`[${showMoreAttribute}]`) === showMoreBlock
-    })[0]
+      return item.closest(`[${showMoreAttribute}]`) === showMoreBlock;
+    })[0];
     showMoreButton = Array.from(showMoreButton).filter((item) => {
-      return item.closest(`[${showMoreAttribute}]`) === showMoreBlock
-    })[0]
+      return item.closest(`[${showMoreAttribute}]`) === showMoreBlock;
+    })[0];
 
-    const hiddenHeight = getHeight(showMoreBlock, showMoreContent)
+    const hiddenHeight = getHeight(showMoreBlock, showMoreContent);
 
     if (matchMedia.matches ?? !matchMedia) {
       if (hiddenHeight < getOriginalHeight(showMoreContent)) {
-        slideUp(showMoreContent, 0, hiddenHeight)
-        showMoreButton.hidden = false
+        slideUp(showMoreContent, 0, hiddenHeight);
+        showMoreButton.hidden = false;
       } else {
-        slideDown(showMoreContent, 0, hiddenHeight)
-        showMoreButton.hidden = true
+        slideDown(showMoreContent, 0, hiddenHeight);
+        showMoreButton.hidden = true;
       }
     }
-  }
+  };
 
   const initItems = (showMoreBlocksArray, matchMedia) => {
     showMoreBlocksArray.forEach((showMoreBlock) => {
-      return initItem(showMoreBlock, matchMedia)
-    })
-  }
+      return initItem(showMoreBlock, matchMedia);
+    });
+  };
 
   const initItemsMedia = (mdQueriesArray) => {
     mdQueriesArray.forEach((mdQueriesItem) => {
-      return initItems(mdQueriesItem.itemsArray, mdQueriesItem.matchMedia)
-    })
-  }
+      return initItems(mdQueriesItem.itemsArray, mdQueriesItem.matchMedia);
+    });
+  };
 
   const showMoreActions = (event) => {
-    const targetEvent = event.target
-    const targetType = event.type
+    const targetEvent = event.target;
+    const targetType = event.type;
 
     if (targetType === 'click') {
       if (targetEvent.closest(`[${showMoreAttribute}-button]`)) {
-        const showMoreButton = targetEvent.closest(`[${showMoreAttribute}-button]`)
-        const showMoreBlock = showMoreButton.closest(`[${showMoreAttribute}]`)
+        const showMoreButton = targetEvent.closest(`[${showMoreAttribute}-button]`);
+        const showMoreBlock = showMoreButton.closest(`[${showMoreAttribute}]`);
         const showMoreContent = showMoreBlock.querySelector(
-          `[${showMoreAttribute}-content]`
-        )
-        const showMoreSpeed = showMoreButton.dataset.showmoreButton ?? '500'
-        const hiddenHeight = getHeight(showMoreBlock, showMoreContent)
+          `[${showMoreAttribute}-content]`,
+        );
+        const showMoreSpeed = showMoreButton.dataset.showmoreButton ?? '500';
+        const hiddenHeight = getHeight(showMoreBlock, showMoreContent);
 
         if (!showMoreContent.classList.contains('slide')) {
           showMoreButton.ariaExpanded === 'true'
             ? slideUp(showMoreContent, showMoreSpeed, hiddenHeight)
-            : slideDown(showMoreContent, showMoreSpeed, hiddenHeight)
+            : slideDown(showMoreContent, showMoreSpeed, hiddenHeight);
 
           showMoreButton.ariaExpanded === 'true'
             ? (showMoreButton.ariaExpanded = false)
-            : (showMoreButton.ariaExpanded = true)
+            : (showMoreButton.ariaExpanded = true);
         }
       }
     } else if (targetType === 'resize') {
       if (showMoreBlocksRegular) {
-        initItems(showMoreBlocksRegular)
+        initItems(showMoreBlocksRegular);
       }
 
       if (mdQueriesArray) {
-        initItemsMedia(mdQueriesArray)
+        initItemsMedia(mdQueriesArray);
       }
     }
-  }
+  };
 
   if (showMoreBlocksArray) {
     showMoreBlocksRegular = Array.from(showMoreBlocksArray).filter((item) => {
-      return !item.dataset.showmoreMedia
-    })
+      return !item.dataset.showmoreMedia;
+    });
 
     if (showMoreBlocksRegular) {
-      initItems(showMoreBlocksRegular)
+      initItems(showMoreBlocksRegular);
     }
 
-    document.addEventListener('click', showMoreActions)
-    window.addEventListener('resize', showMoreActions)
-    mdQueriesArray = dataMediaQueries(showMoreBlocksArray, 'showmoreMedia')
+    document.addEventListener('click', showMoreActions);
+    window.addEventListener('resize', showMoreActions);
+    mdQueriesArray = dataMediaQueries(showMoreBlocksArray, 'showmoreMedia');
 
     if (mdQueriesArray) {
       mdQueriesArray.forEach((mdQueriesItem) => {
         mdQueriesItem.matchMedia.addEventListener('change', () => {
-          initItems(mdQueriesItem.itemsArray, mdQueriesItem.matchMedia)
-        })
-      })
-      initItemsMedia(mdQueriesArray)
+          initItems(mdQueriesItem.itemsArray, mdQueriesItem.matchMedia);
+        });
+      });
+      initItemsMedia(mdQueriesArray);
     }
   }
-}
+};
 
-export { showMore }
+export { showMore };

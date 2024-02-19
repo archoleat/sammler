@@ -1,5 +1,5 @@
 const getHash = () => {
-  return location.hash?.replace('#', '')
-}
+  return location.hash?.replace('#', '');
+};
 
-export { getHash }
+export { getHash };

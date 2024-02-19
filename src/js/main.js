@@ -1,4 +1,4 @@
-import '@scss/style'
+import '@scss/style';
 
 // Components
 // import { counter } from '@js/components/counter'
@@ -28,7 +28,7 @@ import '@scss/style'
 // import { colorScheme } from '@js/modules/color-scheme'
 // import { mouseParallax } from '@js/modules/Mouse-parallax'
 // import { teleport } from '@js/modules/Teleport'
-import { checkWebp } from '@js/modules/checkWebp'
+import { checkWebp } from '@js/modules/checkWebp';
 
 // Effects
 // import { ripple } from '@js/effects/ripple'
@@ -52,7 +52,6 @@ import { checkWebp } from '@js/modules/checkWebp'
 // tabs()
 // hamburger()
 
-
 // Scroll
 // headerScroll()
 // pageNavigation()
@@ -73,7 +72,7 @@ import { checkWebp } from '@js/modules/checkWebp'
 // colorScheme()
 // mouseParallax()
 // teleport()
-checkWebp()
+checkWebp();
 
 // Effects
 // ripple()

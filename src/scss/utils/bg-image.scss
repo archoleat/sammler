@@ -3,15 +3,6 @@
 
   overflow: hidden;
 
-  iframe,
-  object,
-  video,
-  embed,
-  img {
-    position: absolute;
-    inset: 0;
-  }
-
   &--contain {
     iframe,
     object,
@@ -20,5 +11,14 @@
     img {
       object-fit: contain;
     }
+  }
+
+  iframe,
+  object,
+  video,
+  embed,
+  img {
+    position: absolute;
+    inset: 0;
   }
 }
