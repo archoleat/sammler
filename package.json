@@ -5,7 +5,7 @@
     "dev": "gulp && webpack serve -c core/src/webpack/webpack.development.js",
     "build": "gulp build",
     "test": "mocha",
-    "test:browsers": "cd browtest && pnpm i && pnpm run test:multiple:desktop",
+    "test:browsers": "cd browtest && pnpm run init && pnpm run test:safari:desktop",
     "zip": "gulp archiver",
     "release": "semantic-release",
     "sprite:update": "gulp generateSprite --update",
