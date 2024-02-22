@@ -38,4 +38,4 @@ jobs:
         run: pnpm i
 
       - name: BEM
-        run: pnpm run bem:lint
+        run: pnpm bem:lint

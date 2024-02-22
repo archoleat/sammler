@@ -38,4 +38,4 @@ jobs:
         run: pnpm i
 
       - name: Check Links
-        run: pnpm run w3c:lint
+        run: pnpm w3c:lint
