@@ -56,10 +56,6 @@
         rotate: $rotate;
       }
 
-      span {
-        opacity: 0;
-      }
-
       + .menu__body {
         transform: translateX(
           calc(
@@ -69,6 +65,10 @@
               )
           )
         );
+      }
+
+      span {
+        opacity: 0;
       }
     }
 
