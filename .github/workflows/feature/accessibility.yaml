@@ -38,4 +38,4 @@ jobs:
         run: pnpm i
 
       - name: Accessibility
-        run: pnpm run a11y:lint
+        run: pnpm a11y:lint
