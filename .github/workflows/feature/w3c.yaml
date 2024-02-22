@@ -38,4 +38,4 @@ jobs:
         run: pnpm i
 
       - name: W3C
-        run: pnpm run w3c:lint
+        run: pnpm w3c:lint
