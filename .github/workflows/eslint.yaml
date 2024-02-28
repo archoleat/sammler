@@ -9,13 +9,9 @@ on:
   pull_request:
     branches:
       - main
-    paths:
-      - src/js/**/*.js
   push:
     branches:
       - main
-    paths:
-      - src/js/**/*.js
 
 jobs:
   eslint:
