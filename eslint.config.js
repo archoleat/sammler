@@ -1,19 +1,33 @@
+import globals from 'globals';
+
+import typescriptParser from '@typescript-eslint/parser';
+import unicorn from 'eslint-plugin-unicorn';
+
+import { resolve } from 'node:path';
+import { FlatCompat } from '@eslint/eslintrc';
+
+const compat = new FlatCompat({
+  baseDirectory: resolve(),
+  resolvePluginsRelativeTo: resolve(),
+});
+
 export default [
+  ...compat.extends(
+    'airbnb-base',
+    'plugin:import/recommended',
+  ),
+  unicorn.configs['flat/recommended'],
   {
-    root: true,
-    env: {
-      browser: true,
-      es6: true,
+    languageOptions: {
+      parser: typescriptParser,
+      globals: {
+        ...globals.browser,
+      },
     },
-    parserOptions: {
-      ecmaVersion: 'latest',
-      sourceType: 'module',
-    },
-    extends: ['airbnb-base', 'plugin:unicorn/recommended'],
-    plugins: ['import', 'unicorn'],
     rules: {
       'import/exports-last': 'error',
-      'import/group-exports': 'warn',
+      'import/extensions': ['error', { js: 'always' }],
+      'import/group-exports': 'error',
       'import/no-commonjs': 'error',
       'import/no-namespace': 'error',
       'import/no-unassigned-import': 'error',
