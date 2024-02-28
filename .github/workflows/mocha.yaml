@@ -9,15 +9,9 @@ on:
   pull_request:
     branches:
       - main
-    paths:
-      - specs/**/*.spec.js
-      - src/js/**/*.js
   push:
     branches:
       - main
-    paths:
-      - specs/**/*.spec.js
-      - src/js/**/*.js
 
 jobs:
   test:
