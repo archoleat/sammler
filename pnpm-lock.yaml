@@ -38,8 +38,8 @@ dependencies:
 
 devDependencies:
   '@archoleat/stylelint-config-extended-scss':
-    specifier: ^1.6.1
-    version: 1.6.1(postcss@8.4.35)(stylelint@16.2.1)
+    specifier: ^1.6.4
+    version: 1.6.4(postcss@8.4.35)(stylelint@16.2.1)
   '@babel/core':
     specifier: ^7.23.9
     version: 7.23.9
@@ -263,9 +263,9 @@ packages:
       '@jridgewell/trace-mapping': 0.3.23
     dev: true
 
-  /@archoleat/stylelint-config-extended-scss@1.6.1(postcss@8.4.35)(stylelint@16.2.1):
-    resolution: {integrity: sha512-RDnB/RnJkx0k9ru/8lQENpbDLD+ZwUT6fFFqZllyfE0CXB+03wjfNsnE3xCk1+21nfaM9afjs8Y7ZGhO5EEm1w==}
-    engines: {node: '>=20.11.0', pnpm: '>=8.15.3'}
+  /@archoleat/stylelint-config-extended-scss@1.6.4(postcss@8.4.35)(stylelint@16.2.1):
+    resolution: {integrity: sha512-y01gzfoAevWnQj/+JAxfiEchcNVLQuMaV+JuCqwANMNpKVF83xoXwJo8m2rgv8jJ7ORVpUZRUwOihVWWIGjQxg==}
+    engines: {node: '>=20.11.0', pnpm: '>=8.15.4'}
     peerDependencies:
       stylelint: ^14.0.0 || ^15.0.0 || ^16.0.0
     dependencies:
@@ -1489,6 +1489,7 @@ packages:
   /@commitlint/config-validator@19.0.3:
     resolution: {integrity: sha512-2D3r4PKjoo59zBc2auodrSCaUnCSALCx54yveOFwwP/i2kfEAQrygwOleFWswLqK0UL/F9r07MFi5ev2ohyM4Q==}
     engines: {node: '>=v18'}
+    requiresBuild: true
     dependencies:
       '@commitlint/types': 19.0.3
       ajv: 8.12.0
@@ -1509,6 +1510,7 @@ packages:
   /@commitlint/execute-rule@19.0.0:
     resolution: {integrity: sha512-mtsdpY1qyWgAO/iOK0L6gSGeR7GFcdW7tIjcNFxcWkfLDF5qVbPHKuGATFqRMsxcO8OUKNj0+3WOHB7EHm4Jdw==}
     engines: {node: '>=v18'}
+    requiresBuild: true
     dev: true
 
   /@commitlint/format@19.0.3:
@@ -1583,6 +1585,7 @@ packages:
   /@commitlint/resolve-extends@19.0.3:
     resolution: {integrity: sha512-18BKmta8OC8+Ub+Q3QGM9l27VjQaXobloVXOrMvu8CpEwJYv62vC/t7Ka5kJnsW0tU9q1eMqJFZ/nN9T/cOaIA==}
     engines: {node: '>=v18'}
+    requiresBuild: true
     dependencies:
       '@commitlint/config-validator': 19.0.3
       '@commitlint/types': 19.0.3
@@ -1613,13 +1616,6 @@ packages:
     engines: {node: '>=v18'}
     dependencies:
       find-up: 7.0.0
-    dev: true
-
-  /@commitlint/types@18.6.1:
-    resolution: {integrity: sha512-gwRLBLra/Dozj2OywopeuHj2ac26gjGkz2cZ+86cTJOdtWfiRRr4+e77ZDAGc6MDWxaWheI+mAV5TLWWRwqrFg==}
-    engines: {node: '>=v18'}
-    dependencies:
-      chalk: 4.1.2
     dev: true
 
   /@commitlint/types@19.0.3:
@@ -6855,6 +6851,7 @@ packages:
   /global-directory@4.0.1:
     resolution: {integrity: sha512-wHTUcDUoZ1H5/0iVqEudYW4/kAlN5cZ3j/bXn0Dpbizl9iaUVeWSHqiOjsgk6OW2bkLclbBjzewBz6weQ1zA2Q==}
     engines: {node: '>=18'}
+    requiresBuild: true
     dependencies:
       ini: 4.1.1
     dev: true
