@@ -1,4 +1,4 @@
-# Archoleat Builder
+# Sammler
 
 > Rapid and modular development.
 
@@ -12,7 +12,7 @@
 
 You can use this repository as a template to quickly create your project.
 
-Below you will learn how to get started with **Archoleat Builder**
+Below you will learn how to get started with **Sammler**
 and what features it has.
 
 ## Contributing
