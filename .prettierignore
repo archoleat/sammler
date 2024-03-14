@@ -1,8 +1,9 @@
+.czrc
 .ecrc
-.eslintignore
+.editorconfig
+.gitattributes
 .gitignore
 .gitmodules
 .prettierignore
-.stylelintignore
 *.md
 pnpm-lock.yaml

@@ -1,7 +1,7 @@
 {
   "check-leaks": true,
   "exit": true,
-  "extension": ["js"],
+  "extension": ["spec.js"],
   "inline-diffs": true,
   "recursive": true,
   "reporter": "mocha-spec-reporter-with-file-names",
