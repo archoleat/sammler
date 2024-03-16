@@ -1,6 +1,8 @@
-export default {
+import { defineConfig } from 'stylelint-define-config';
+
+export default defineConfig({
   extends: ['@archoleat/stylelint-config-extended-scss'],
   rules: {
-    'declaration-empty-line-before': null
+    'declaration-empty-line-before': null,
   },
-};
+});
