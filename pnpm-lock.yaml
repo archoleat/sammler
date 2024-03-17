@@ -41,8 +41,8 @@ dependencies:
 
 devDependencies:
   '@archoleat/stylelint-config-extended-scss':
-    specifier: ^1.6.4
-    version: 1.6.4(postcss@8.4.35)(stylelint@16.2.1)
+    specifier: ^1.6.5
+    version: 1.6.5(postcss@8.4.35)(stylelint@16.2.1)
   '@babel/core':
     specifier: ^7.24.0
     version: 7.24.0
@@ -269,8 +269,8 @@ packages:
       '@jridgewell/trace-mapping': 0.3.25
     dev: true
 
-  /@archoleat/stylelint-config-extended-scss@1.6.4(postcss@8.4.35)(stylelint@16.2.1):
-    resolution: {integrity: sha512-y01gzfoAevWnQj/+JAxfiEchcNVLQuMaV+JuCqwANMNpKVF83xoXwJo8m2rgv8jJ7ORVpUZRUwOihVWWIGjQxg==}
+  /@archoleat/stylelint-config-extended-scss@1.6.5(postcss@8.4.35)(stylelint@16.2.1):
+    resolution: {integrity: sha512-tzB0PNvhKVaKo7kL/q/4pwr8Wuc0HhMzrGBovXzgQKkSigFm39T36e6z/vArB06TGvmql04Sdw0TtBr1EzsZ2A==}
     engines: {node: '>=20.11.0', pnpm: '>=8.15.4'}
     peerDependencies:
       stylelint: ^14.0.0 || ^15.0.0 || ^16.0.0
