@@ -16,6 +16,9 @@ and what features it has.
 
 ## Troubleshooting
 
+> \[!WARNING]
+> Developers Only.
+
 If you are using **npm**, you may get a `peerDependency` error
 that is related to these plugins:
 

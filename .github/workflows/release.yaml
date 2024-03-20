@@ -3,7 +3,7 @@ name: Release
 on:
   workflow_run:
     workflows:
-      - Mocha
+      - Test
       - Stylelint
     types:
       - completed
