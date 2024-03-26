@@ -19,12 +19,12 @@ on:
 
 jobs:
   stylelint:
-    name: Lint
+    name: Stylelint
+
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
 
     runs-on: ubuntu-latest
     timeout-minutes: 10
-
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
 
     steps:
       - name: Checkout
