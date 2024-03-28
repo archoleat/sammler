@@ -1,23 +1,23 @@
-import HELPERS from './core/src/settings/helpers.js';
-import PLUGINS from './core/src/settings/plugins.js';
+import { HELPERS } from './core/src/settings/helpers.js';
+import { PLUGINS } from './core/src/settings/plugins.js';
 
-import archiver from './core/src/utils/archiver.js';
-import reset from './core/src/utils/reset.js';
+import { archiver } from './core/src/utils/archiver.js';
+import { reset } from './core/src/utils/reset.js';
 
-import convertOTFToTTF from './core/src/converters/otf-to-ttf.js';
-import convertTTFToWOFF2 from './core/src/converters/ttf-to-woff2.js';
-import generateFontFacesFile from './core/src/generators/font-faces-file.js';
+import { convertOTFToTTF } from './core/src/converters/otf-to-ttf.js';
+import { convertTTFToWOFF2 } from './core/src/converters/ttf-to-woff2.js';
+import { generateFontFacesFile } from './core/src/generators/font-faces-file.js';
 
-import JSDevelopmentHandler from './core/src/handlers/js/js-development.js';
-import JSProductionHandler from './core/src/handlers/js/js-production.js';
+import { JSDevelopmentHandler } from './core/src/handlers/js/js-development.js';
+import { JSProductionHandler } from './core/src/handlers/js/js-production.js';
 
-import generateSprite from './core/src/generators/sprite.js';
-import imageHandler from './core/src/handlers/images/images.js';
+import { generateSprite } from './core/src/generators/sprite.js';
+import { imageHandler } from './core/src/handlers/images/images.js';
 
-import CSSHandler from './core/src/handlers/css.js';
-import HTMLHandler from './core/src/handlers/html.js';
+import { CSSHandler } from './core/src/handlers/css.js';
+import { HTMLHandler } from './core/src/handlers/html.js';
 
-import PROJECT_CONFIG from './core/src/configs/project.config.js';
+import { PROJECT_CONFIG } from './core/src/configs/project.config.js';
 
 const {
   images: { isWebp },
