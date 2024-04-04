@@ -7,6 +7,3 @@
 [submodule ".vscode"]
   path = .vscode
   url = https://github.com/archoleat/.vscode.git
-[submodule ".husky"]
-  path = .husky
-  url = https://github.com/archoleat/.husky.git
