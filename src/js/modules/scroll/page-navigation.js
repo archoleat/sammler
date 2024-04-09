@@ -9,14 +9,14 @@ const pageNavigation = () => {
       if (targetElement.closest('[data-goto]')) {
         const gotoLink = targetElement.closest('[data-goto]');
         const gotoLinkSelector = gotoLink.dataset.goto ?? '';
-        const noHeader = gotoLink.hasAttribute('data-goto-header');
-        const offsetTop = parseInt(gotoLink.dataset.gotoTop) ?? 0;
+        const noHeader = Object.hasOwn(gotoLink.dataset, 'gotoHeader');
+        const offsetTop = Number.parseInt(gotoLink.dataset.gotoTop) ?? 0;
 
         goToBlock(gotoLinkSelector, noHeader, offsetTop);
         event.preventDefault();
       }
     } else if (event.type === 'watcherCallback' && event.detail) {
-      const entry = event.detail.entry;
+      const {entry} = event.detail;
       const targetElement = entry.target;
 
       if (targetElement.dataset.watch === 'navigator') {
@@ -29,7 +29,7 @@ const pageNavigation = () => {
           navigatorCurrentItem = document.querySelector(
             `[data-goto="#${targetElement.id}"]`,
           );
-        } else if (targetElement.classList.length) {
+        } else if (targetElement.classList.length > 0) {
           for (let index = 0; index < targetElement.classList.length; index++) {
             const element = targetElement.classList[index];
 

@@ -1,7 +1,7 @@
 import { header, headerScrollClass } from '@js/helpers/node-list';
 
 const headerScroll = () => {
-  const headerShow = header.hasAttribute('data-scroll-show');
+  const headerShow = Object.hasOwn(header.dataset, 'scrollShow');
   const headerShowClass = 'header-show';
   const headerShowTimer = header.dataset.scrollShow ?? 500;
   const startPoint = header.dataset.scroll ?? 1;

@@ -2,7 +2,7 @@ import { isMobile } from '@js/helpers/is-mobile';
 
 class MouseParallax {
   constructor() {
-    this.config = isMobile.any() ? false : true;
+    this.config = !isMobile.any();
 
     if (this.config) {
       const parallaxMouse = document.querySelectorAll('[data-parallax-mouse]');
@@ -14,13 +14,13 @@ class MouseParallax {
   }
 
   parallaxMouseInit(parallaxMouse) {
-    parallaxMouse.forEach((el) => {
-      const parallaxMouseWrapper = el.closest('[data-parallax-mouse-wrapper]');
-      const paramCoefficientX = Number(el.dataset.parallaxCx) ?? 100;
-      const paramCoefficientY = Number(el.dataset.parallaxCy) ?? 100;
-      const directionX = el.hasAttribute('data-parallax-dxr') ? -1 : 1;
-      const directionY = el.hasAttribute('data-parallax-dyr') ? -1 : 1;
-      const paramAnimation = Number(el.dataset.parallaxA) ?? 50;
+    for (const element of parallaxMouse) {
+      const parallaxMouseWrapper = element.closest('[data-parallax-mouse-wrapper]');
+      const parameterCoefficientX = Number(element.dataset.parallaxCx) ?? 100;
+      const parameterCoefficientY = Number(element.dataset.parallaxCy) ?? 100;
+      const directionX = Object.hasOwn(element.dataset, 'parallaxDxr') ? -1 : 1;
+      const directionY = Object.hasOwn(element.dataset, 'parallaxDyr') ? -1 : 1;
+      const parameterAnimation = Number(element.dataset.parallaxA) ?? 50;
 
       let positionX = 0;
       let positionY = 0;
@@ -28,24 +28,24 @@ class MouseParallax {
       let percentCoordY = 0;
 
       const setMouseParallaxStyle = () => {
-        const distX = percentCoordX - positionX;
-        const distY = percentCoordY - positionY;
+        const distributionX = percentCoordX - positionX;
+        const distributionY = percentCoordY - positionY;
 
-        positionX = positionX + (distX * paramAnimation) / 1000;
-        positionY = positionY + (distY * paramAnimation) / 1000;
-        el.style.cssText = `transform: translate3D(${
-          (directionX * positionX) / (paramCoefficientX / 10)
-        }%, ${(directionY * positionY) / (paramCoefficientY / 10)}%, 0);`;
+        positionX += (distributionX * parameterAnimation) / 1000;
+        positionY += (distributionY * parameterAnimation) / 1000;
+        element.style.cssText = `transform: translate3D(${
+          (directionX * positionX) / (parameterCoefficientX / 10)
+        }%, ${(directionY * positionY) / (parameterCoefficientY / 10)}%, 0);`;
         requestAnimationFrame(setMouseParallaxStyle);
       };
 
       const mouseMoveParallax = (wrapper = window) => {
         wrapper.addEventListener('mousemove', (event) => {
-          const offsetTop = el.getBoundingClientRect().top + window.scrollY;
+          const offsetTop = element.getBoundingClientRect().top + window.scrollY;
 
           if (
             offsetTop >= window.scrollY ??
-            offsetTop + el.offsetHeight >= window.scrollY
+            offsetTop + element.offsetHeight >= window.scrollY
           ) {
             const parallaxWidth = window.innerWidth;
             const parallaxHeight = window.innerHeight;
@@ -63,7 +63,7 @@ class MouseParallax {
       parallaxMouseWrapper
         ? mouseMoveParallax(parallaxMouseWrapper)
         : mouseMoveParallax();
-    });
+    }
   }
 }
 

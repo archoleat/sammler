@@ -9,29 +9,25 @@ const spoilers = () => {
   const detailsElement = 'details';
   const summaryElement = 'summary';
   const spoilers = document.querySelectorAll(`[${spoilersAttribute}]`);
-  const spoilersRegular = Array.from(spoilers).filter((item) => {
-    return !item.dataset.spoilers.split(',')[0];
-  });
+  const spoilersRegular = [...spoilers].filter((item) => !item.dataset.spoilers.split(',')[0]);
   const defaultSpeed = 500;
 
   const initSpoilerBody = (spoilersBlock, isHideSpoilerBody = true) => {
     let spoilerItems = spoilersBlock.querySelectorAll(detailsElement);
 
-    spoilerItems = Array.from(spoilerItems).filter((item) => {
-      return item.closest(`[${spoilersAttribute}]`) === spoilersBlock;
-    });
-    spoilerItems.forEach((spoilerItem) => {
+    spoilerItems = [...spoilerItems].filter((item) => item.closest(`[${spoilersAttribute}]`) === spoilersBlock);
+    for (const spoilerItem of spoilerItems) {
       const spoilerTrigger = spoilerItem.querySelector(summaryElement);
 
       if (isHideSpoilerBody) {
         spoilerTrigger.removeAttribute('tabindex');
 
-        if (!spoilerItem.hasAttribute('data-open')) {
-          spoilerItem.open = false;
-          spoilerTrigger.nextElementSibling.hidden = true;
-        } else {
+        if (Object.hasOwn(spoilerItem.dataset, 'open')) {
           spoilerTrigger.classList.add(spoilersActiveClass);
           spoilerItem.open = true;
+        } else {
+          spoilerItem.open = false;
+          spoilerTrigger.nextElementSibling.hidden = true;
         }
       } else {
         spoilerTrigger.setAttribute('tabindex', '-1');
@@ -39,11 +35,11 @@ const spoilers = () => {
         spoilerItem.open = true;
         spoilerTrigger.nextElementSibling.hidden = false;
       }
-    });
+    }
   };
 
   const initSpoilers = (spoilers, isMatchMedia = false) => {
-    spoilers.forEach((spoilersBlock) => {
+    for (let spoilersBlock of spoilers) {
       spoilersBlock = isMatchMedia ? spoilersBlock.item : spoilersBlock;
 
       if (isMatchMedia.matches ?? !isMatchMedia) {
@@ -53,7 +49,7 @@ const spoilers = () => {
         spoilersBlock.classList.remove(spoilersInitClass);
         initSpoilerBody(spoilersBlock, false);
       }
-    });
+    }
   };
 
   const hideSpoilersBody = (spoilersBlock) => {
@@ -61,10 +57,10 @@ const spoilers = () => {
       `${detailsElement}[open]`,
     );
 
-    if (spoilerActiveBlock && !spoilersBlock.querySelectorAll('.slide').length) {
+    if (spoilerActiveBlock && spoilersBlock.querySelectorAll('.slide').length === 0) {
       const spoilerActiveTrigger = spoilerActiveBlock.querySelector(summaryElement);
       const spoilerSpeed =
-        parseInt(spoilersBlock.dataset.spoilersSpeed) ?? defaultSpeed;
+        Number.parseInt(spoilersBlock.dataset.spoilersSpeed) ?? defaultSpeed;
 
       spoilerActiveTrigger.classList.remove(spoilersActiveClass);
       slideUp(spoilerActiveTrigger.nextElementSibling, spoilerSpeed);
@@ -91,21 +87,21 @@ const spoilers = () => {
       const spoilerTrigger = targetElement.closest(summaryElement);
       const spoilerBlock = spoilerTrigger.closest(detailsElement);
       const spoilersBlock = spoilerTrigger.closest(`[${spoilersAttribute}]`);
-      const oneSpoiler = spoilersBlock.hasAttribute('data-one-spoiler');
+      const oneSpoiler = Object.hasOwn(spoilersBlock.dataset, 'oneSpoiler');
       const spoilerSpeed =
-        parseInt(spoilersBlock.dataset.spoilersSpeed) ?? defaultSpeed;
+        Number.parseInt(spoilersBlock.dataset.spoilersSpeed) ?? defaultSpeed;
 
-      if (!spoilersBlock.querySelectorAll('.slide').length) {
+      if (spoilersBlock.querySelectorAll('.slide').length === 0) {
         if (oneSpoiler && !spoilerBlock.open) {
           hideSpoilersBody(spoilersBlock);
         }
 
-        if (!spoilerBlock.open) {
-          spoilerBlock.open = true;
-        } else {
+        if (spoilerBlock.open) {
           setTimeout(() => {
             spoilerBlock.open = false;
           }, spoilerSpeed);
+        } else {
+          spoilerBlock.open = true;
         }
 
         spoilerTrigger.classList.toggle(spoilersActiveClass);
@@ -116,13 +112,13 @@ const spoilers = () => {
     if (!targetElement.closest(`[${spoilersAttribute}]`)) {
       const spoilersClose = document.querySelectorAll('[data-spoiler-close]');
 
-      spoilersClose.forEach((spoilerClose) => {
+      for (const spoilerClose of spoilersClose) {
         const spoilersBlock = spoilerClose.closest(`[${spoilersAttribute}]`);
         const spoilerCloseBlock = spoilerClose.parentNode;
 
         if (spoilersBlock.classList.contains(spoilersInitClass)) {
           const spoilerSpeed =
-            parseInt(spoilersBlock.dataset.spoilersSpeed) ?? defaultSpeed;
+            Number.parseInt(spoilersBlock.dataset.spoilersSpeed) ?? defaultSpeed;
 
           spoilerClose.classList.remove(spoilersActiveClass);
 
@@ -132,7 +128,7 @@ const spoilers = () => {
             spoilerCloseBlock.open = false;
           }, spoilerSpeed);
         }
-      });
+      }
     }
   };
 
@@ -145,12 +141,12 @@ const spoilers = () => {
   const mdQueries = dataMediaQueries(spoilers, 'spoilers');
 
   if (mdQueries) {
-    mdQueries.forEach((mdQueriesItem) => {
+    for (const mdQueriesItem of mdQueries) {
       mdQueriesItem.isMatchMedia.addEventListener('change', () => {
         initSpoilers(mdQueriesItem.items, mdQueriesItem.isMatchMedia);
       });
       initSpoilers(mdQueriesItem.items, mdQueriesItem.isMatchMedia);
-    });
+    }
   }
 };
 

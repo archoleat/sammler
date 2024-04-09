@@ -33,13 +33,9 @@ const tabs = () => {
       tabsActiveTrigger?.classList.remove(TriggerActiveClass);
     }
 
-    tabsPanels = Array.from(tabsPanels).filter((panel) => {
-      return panel.closest(`[${tabsAttribute}]`) === tabsBlock;
-    });
-    tabsTriggers = Array.from(tabsTriggers).filter((panel) => {
-      return panel.closest(`[${tabsAttribute}]`) === tabsBlock;
-    });
-    tabsPanels.forEach((tabsPanelsPanel, index) => {
+    tabsPanels = [...tabsPanels].filter((panel) => panel.closest(`[${tabsAttribute}]`) === tabsBlock);
+    tabsTriggers = [...tabsTriggers].filter((panel) => panel.closest(`[${tabsAttribute}]`) === tabsBlock);
+    for (const [index, tabsPanelsPanel] of tabsPanels.entries()) {
       tabsTriggers[index].setAttribute(`${tabsAttribute}-trigger`, '');
       tabsPanelsPanel.setAttribute(`${tabsAttribute}-panel`, '');
 
@@ -49,11 +45,11 @@ const tabs = () => {
 
       tabsPanelsPanel.hidden =
         !tabsTriggers[index].classList.contains(TriggerActiveClass);
-    });
+    }
   };
 
   const setTriggerPosition = (tabsMediaArray, matchMedia) => {
-    tabsMediaArray.forEach((tabsMediaPanel) => {
+    for (let tabsMediaPanel of tabsMediaArray) {
       tabsMediaPanel = tabsMediaPanel.panel;
 
       const tabsTriggers = tabsMediaPanel.querySelector(
@@ -66,13 +62,9 @@ const tabs = () => {
         `[${tabsAttribute}-panel]`,
       );
 
-      tabsTriggerPanels = Array.from(tabsTriggerPanels).filter((panel) => {
-        return panel.closest(`[${tabsAttribute}]`) === tabsMediaPanel;
-      });
-      tabsPanelsPanels = Array.from(tabsPanelsPanels).filter((panel) => {
-        return panel.closest(`[${tabsAttribute}]`) === tabsMediaPanel;
-      });
-      tabsPanelsPanels.forEach((tabsPanelsPanel, index) => {
+      tabsTriggerPanels = [...tabsTriggerPanels].filter((panel) => panel.closest(`[${tabsAttribute}]`) === tabsMediaPanel);
+      tabsPanelsPanels = [...tabsPanelsPanels].filter((panel) => panel.closest(`[${tabsAttribute}]`) === tabsMediaPanel);
+      for (const [index, tabsPanelsPanel] of tabsPanelsPanels.entries()) {
         if (matchMedia.matches) {
           tabsPanels.append(tabsTriggerPanels[index]);
           tabsPanels.append(tabsPanelsPanel);
@@ -81,8 +73,8 @@ const tabs = () => {
           tabsTriggers.append(tabsTriggerPanels[index]);
           tabsMediaPanel.classList.remove('tab-spoiler');
         }
-      });
-    });
+      }
+    }
   };
 
   const setTabsStatus = (tabsBlock) => {
@@ -100,13 +92,9 @@ const tabs = () => {
     const tabsBlockAnimate = isTabsAnimate(tabsBlock);
     const isHash = tabsBlock.hasAttribute(`${tabsAttribute}-hash`);
 
-    tabsPanels = Array.from(tabsPanels).filter((panel) => {
-      return panel.closest(`[${tabsAttribute}]`) === tabsBlock;
-    });
-    tabsTriggers = Array.from(tabsTriggers).filter((panel) => {
-      return panel.closest(`[${tabsAttribute}]`) === tabsBlock;
-    });
-    tabsPanels.forEach((tabsPanelsPanel, index) => {
+    tabsPanels = [...tabsPanels].filter((panel) => panel.closest(`[${tabsAttribute}]`) === tabsBlock);
+    tabsTriggers = [...tabsTriggers].filter((panel) => panel.closest(`[${tabsAttribute}]`) === tabsBlock);
+    for (const [index, tabsPanelsPanel] of tabsPanels.entries()) {
       if (tabsTriggers[index].classList.contains(TriggerActiveClass)) {
         tabsBlockAnimate
           ? slideDown(tabsPanelsPanel, tabsBlockAnimate)
@@ -120,14 +108,14 @@ const tabs = () => {
       } else {
         tabsPanelsPanel.hidden = true;
       }
-    });
+    }
   };
 
   const setTabsAction = (event) => {
-    const el = event.target;
+    const element = event.target;
 
-    if (el.closest(tabsTriggerAttribute)) {
-      const tabTrigger = el.closest(tabsTriggerAttribute);
+    if (element.closest(tabsTriggerAttribute)) {
+      const tabTrigger = element.closest(tabsTriggerAttribute);
       const tabsBlock = tabTrigger.closest(`[${tabsAttribute}]`);
 
       if (
@@ -139,9 +127,7 @@ const tabs = () => {
         );
 
         if (tabActiveTrigger) {
-          tabActiveTrigger = Array.from(tabActiveTrigger).filter((panel) => {
-            return panel.closest(`[${tabsAttribute}]`) === tabsBlock;
-          });
+          tabActiveTrigger = [...tabActiveTrigger].filter((panel) => panel.closest(`[${tabsAttribute}]`) === tabsBlock);
         }
 
         removeClasses(
@@ -158,24 +144,24 @@ const tabs = () => {
     }
   };
 
-  tabsArray.forEach((tabsBlock, index) => {
+  for (const [index, tabsBlock] of tabsArray.entries()) {
     tabsBlock.classList.add('tab-init');
     tabsBlock.setAttribute(`${tabsAttribute}-index`, index);
     tabsBlock.addEventListener('click', setTabsAction);
 
     initTabs(tabsBlock);
-  });
+  }
 
   const mdQueriesArray = dataMediaQueries(tabsArray, 'tabs');
 
   if (mdQueriesArray) {
-    mdQueriesArray.forEach((mdQueriesPanel) => {
+    for (const mdQueriesPanel of mdQueriesArray) {
       mdQueriesPanel.matchMedia.addEventListener('change', () => {
         setTriggerPosition(mdQueriesPanel.PanelsArray, mdQueriesPanel.matchMedia);
       });
 
       setTriggerPosition(mdQueriesPanel.PanelsArray, mdQueriesPanel.matchMedia);
-    });
+    }
   }
 };
 

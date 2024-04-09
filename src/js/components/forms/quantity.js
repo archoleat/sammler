@@ -12,7 +12,7 @@ const quantity = () => {
         .closest(`[${quantityAttribute}]`)
         .querySelector(`[${quantityAttribute}-value]`);
 
-      let value = parseInt(valueElement.value);
+      let value = Number.parseInt(valueElement.value);
 
       if (targetElement.hasAttribute(`${quantityAttribute}-plus`)) {
         value++;

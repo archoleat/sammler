@@ -12,7 +12,7 @@ const formFieldsInit = (
     const targetElement = event.target;
 
     if (targetElement.tagName === 'INPUT' ?? targetElement.tagName === 'TEXTAREA') {
-      if (!targetElement.hasAttribute('data-no-focus-classes')) {
+      if (!Object.hasOwn(targetElement.dataset, 'noFocusClasses')) {
         targetElement.classList.add(formFocus);
         targetElement.parentElement.classList.add(formFocus);
       }
@@ -24,12 +24,12 @@ const formFieldsInit = (
     const targetElement = event.target;
 
     if (targetElement.tagName === 'INPUT' ?? targetElement.tagName === 'TEXTAREA') {
-      if (!targetElement.hasAttribute('data-no-focus-classes')) {
+      if (!Object.hasOwn(targetElement.dataset, 'noFocusClasses')) {
         targetElement.classList.remove(formFocus);
         targetElement.parentElement.classList.remove(formFocus);
       }
 
-      if (targetElement.hasAttribute('data-validate')) {
+      if (Object.hasOwn(targetElement.dataset, 'validate')) {
         formValidate.validateInput(targetElement);
       }
     }
@@ -58,10 +58,10 @@ const formFieldsInit = (
     textarea.style.height = `${height}px`;
   };
 
-  textAreas.forEach((textarea) => {
+  for (const textarea of textAreas) {
     const startHeight =
       Number(textarea.dataset.autoHeightMin) ?? Number(textarea.offsetHeight);
-    const maxHeight = Number(textarea.dataset.autoHeightMax) ?? Infinity;
+    const maxHeight = Number(textarea.dataset.autoHeightMax) ?? Number.POSITIVE_INFINITY;
 
     setHeight(textarea, Math.min(startHeight, maxHeight));
     textarea.addEventListener('input', () => {
@@ -73,7 +73,7 @@ const formFieldsInit = (
         );
       }
     });
-  });
+  }
 
   if (options.autoHeight) {
     setHeight();

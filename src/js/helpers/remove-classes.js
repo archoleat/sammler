@@ -1,7 +1,7 @@
 const removeClasses = (array, className) => {
-  document.querySelectorAll(array).forEach((item) => {
-    return item.classList.remove(className);
-  });
+  for (const item of document.querySelectorAll(array)) {
+     item.classList.remove(className); continue;
+  }
 };
 
 export { removeClasses };

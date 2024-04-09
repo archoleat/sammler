@@ -7,7 +7,7 @@ class Teleport {
     this.objects = [];
     this.daClassName = 'dynamic-adapt';
     this.nodes = [...document.querySelectorAll('[data-da]')];
-    this.nodes.forEach((node) => {
+    for (const node of this.nodes) {
       const data = node.dataset.da.trim();
       const dataArray = data.split(',');
       const object = {
@@ -20,42 +20,36 @@ class Teleport {
       };
 
       this.objects.push(object);
-    });
+    }
     this.arraySort(this.objects);
     this.mediaQueries = this.objects
-      .map(({ breakpoint }) => {
-        return `(${this.type}-width: ${breakpoint}px),${breakpoint}`;
-      })
-      .filter((item, index, self) => {
-        return self.indexOf(item) === index;
-      });
-    this.mediaQueries.forEach((media) => {
+      .map(({ breakpoint }) => `(${this.type}-width: ${breakpoint}px),${breakpoint}`)
+      .filter((item, index, self) => self.indexOf(item) === index);
+    for (const media of this.mediaQueries) {
       const mediaSplit = media.split(',');
       const matchMedia = window.matchMedia(mediaSplit[0]);
       const mediaBreakpoint = mediaSplit[1];
-      const objectsFilter = this.objects.filter(({ breakpoint }) => {
-        return breakpoint === mediaBreakpoint;
-      });
+      const objectsFilter = this.objects.filter(({ breakpoint }) => breakpoint === mediaBreakpoint);
 
       matchMedia.addEventListener('change', () => {
         this.mediaHandler(matchMedia, objectsFilter);
       });
       this.mediaHandler(matchMedia, objectsFilter);
-    });
+    }
   }
 
   mediaHandler(matchMedia, objects) {
     if (matchMedia.matches) {
-      objects.forEach((object) => {
+      for (const object of objects) {
         object.index = this.indexInParent(object.parent, object.element);
         this.moveTo(object.place, object.element, object.destination);
-      });
+      }
     } else {
-      objects.forEach(({ parent, element, index }) => {
+      for (const { parent, element, index } of objects) {
         if (element.classList.contains(this.daClassName)) {
           this.moveBack(parent, element, index);
         }
-      });
+      }
     }
   }
 
@@ -80,10 +74,10 @@ class Teleport {
   moveBack(parent, element, index) {
     element.classList.remove(this.daClassName);
 
-    if (parent.children[index] !== undefined) {
-      parent.children[index].before(element);
-    } else {
+    if (parent.children[index] === undefined) {
       parent.append(element);
+    } else {
+      parent.children[index].before(element);
     }
   }
 
@@ -91,9 +85,9 @@ class Teleport {
     return [...parent.children].indexOf(element);
   }
 
-  arraySort(arr) {
+  arraySort(array) {
     if (this.type === 'min') {
-      arr.sort((start, end) => {
+      array.sort((start, end) => {
         if (start.breakpoint === end.breakpoint) {
           if (start.place === end.place) {
             return 0;
@@ -113,7 +107,7 @@ class Teleport {
         return start.breakpoint - end.breakpoint;
       });
     } else {
-      arr.sort((start, b) => {
+      array.sort((start, b) => {
         if (start.breakpoint === end.breakpoint) {
           if (start.place === end.place) {
             return 0;

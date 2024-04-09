@@ -20,77 +20,75 @@ class ScrollWatcher {
   }
 
   scrollWatcherConstructor(items) {
-    const uniqParams = uniqArray(
-      Array.from(items).map((item) => {
-        return `${item.dataset.watchRoot ?? null}|${
+    const uniqParameters = uniqArray(
+      [...items].map((item) => `${item.dataset.watchRoot ?? null}|${
           item.dataset.watchMargin ?? '0px'
-        }|${item.dataset.watchThreshold ?? 0}`;
-      }),
+        }|${item.dataset.watchThreshold ?? 0}`),
     );
 
-    uniqParams.forEach((uniqParam) => {
-      const uniqParamArray = uniqParam.split('|');
-      const paramsWatch = {
-        root: uniqParamArray[0],
-        margin: uniqParamArray[1],
-        threshold: uniqParamArray[2],
+    for (const uniqParameter of uniqParameters) {
+      const uniqParameterArray = uniqParameter.split('|');
+      const parametersWatch = {
+        root: uniqParameterArray[0],
+        margin: uniqParameterArray[1],
+        threshold: uniqParameterArray[2],
       };
-      const groupItems = Array.from(items).filter((item) => {
+      const groupItems = [...items].filter((item) => {
         const watchRoot = item.dataset.watchRoot ?? null;
         const watchMargin = item.dataset.watchMargin ?? '0px';
         const watchThreshold = item.dataset.watchThreshold ?? 0;
 
         if (
-          String(watchRoot) === paramsWatch.root &&
-          String(watchMargin) === paramsWatch.margin &&
-          String(watchThreshold) === paramsWatch.threshold
+          String(watchRoot) === parametersWatch.root &&
+          String(watchMargin) === parametersWatch.margin &&
+          String(watchThreshold) === parametersWatch.threshold
         ) {
           return item;
         }
       });
-      const configWatcher = this.getScrollWatcherConfig(paramsWatch);
+      const configWatcher = this.getScrollWatcherConfig(parametersWatch);
 
       this.scrollWatcherInit(groupItems, configWatcher);
-    });
+    }
   }
 
-  getScrollWatcherConfig(paramsWatch) {
+  getScrollWatcherConfig(parametersWatch) {
     const configWatcher = {};
 
-    if (document.querySelector(paramsWatch.root)) {
-      configWatcher.root = document.querySelector(paramsWatch.root);
+    if (document.querySelector(parametersWatch.root)) {
+      configWatcher.root = document.querySelector(parametersWatch.root);
     }
 
-    configWatcher.rootMargin = paramsWatch.margin;
+    configWatcher.rootMargin = parametersWatch.margin;
 
-    if (paramsWatch.threshold === 'prx') {
-      paramsWatch.threshold = [];
+    if (parametersWatch.threshold === 'prx') {
+      parametersWatch.threshold = [];
 
-      for (let index = 0; index <= 1.0; index += 0.005) {
-        paramsWatch.threshold.push(index);
+      for (let index = 0; index <= 1; index += 0.005) {
+        parametersWatch.threshold.push(index);
       }
     } else {
-      paramsWatch.threshold = paramsWatch.threshold.split(',');
+      parametersWatch.threshold = parametersWatch.threshold.split(',');
     }
 
-    configWatcher.threshold = paramsWatch.threshold;
+    configWatcher.threshold = parametersWatch.threshold;
 
     return configWatcher;
   }
 
   scrollWatcherCreate(configWatcher) {
     this.observer = new IntersectionObserver((entries, observer) => {
-      entries.forEach((entry) => {
-        return this.scrollWatcherCallback(entry, observer);
-      });
+      for (const entry of entries) {
+         this.scrollWatcherCallback(entry, observer); continue;
+      }
     }, configWatcher);
   }
 
   scrollWatcherInit(items, configWatcher) {
     this.scrollWatcherCreate(configWatcher);
-    items.forEach((item) => {
-      return this.observer.observe(item);
-    });
+    for (const item of items) {
+       this.observer.observe(item); continue;
+    }
   }
 
   scrollWatcherIntersecting(entry, targetElement) {
@@ -114,7 +112,7 @@ class ScrollWatcher {
 
     this.scrollWatcherIntersecting(entry, targetElement);
 
-    if (targetElement.hasAttribute('data-watch-once') && entry.isIntersecting) {
+    if (Object.hasOwn(targetElement.dataset, 'watchOnce') && entry.isIntersecting) {
       this.scrollWatcherOff(targetElement, observer);
     }
 

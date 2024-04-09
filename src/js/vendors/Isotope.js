@@ -4,13 +4,13 @@ const filter = () => {
   const imagesInit = () => {
     const images = document.querySelectorAll('.article__image');
 
-    images.forEach((image) => {
+    for (const image of images) {
       const imageItem = image.querySelector('img');
       const padding = (imageItem.offsetHeight / imageItem.offsetWidth) * 100;
 
       image.style.paddingBottom = `${padding}%`;
       imageItem.classList.add('init');
-    });
+    }
   };
 
   const gridInit = () => {

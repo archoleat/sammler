@@ -10,13 +10,13 @@ const goToBlock = (targetBlock, noHeader = false, offsetTop = 0) => {
     if (noHeader) {
       const headerElement = document.querySelector(header);
 
-      if (!headerElement.classList.contains(headerScrollClass)) {
+      if (headerElement.classList.contains(headerScrollClass)) {
+        headerItemHeight = headerElement.offsetHeight;
+      } else {
         headerElement.style.cssText = 'transition-duration: 0;';
         headerElement.classList.add(headerScrollClass);
         headerItemHeight = headerElement.offsetHeight;
         headerElement.classList.remove(headerScrollClass);
-      } else {
-        headerItemHeight = headerElement.offsetHeight;
       }
     }
 

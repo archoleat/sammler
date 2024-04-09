@@ -1,5 +1,3 @@
-const getIndex = (el) => {
-  return Array.from(el.parentNode.children).indexOf(el);
-};
+const getIndex = (element) => [...element.parentNode.children].indexOf(element);
 
 export { getIndex };
