@@ -1,7 +1,7 @@
 const counter = () => {
   const digitsCountersAnimate = (digitsCounter) => {
-    const duration = parseInt(digitsCounter.dataset.digitsCounter) ?? 1000;
-    const startValue = parseInt(digitsCounter.innerHTML);
+    const duration = Number.parseInt(digitsCounter.dataset.digitsCounter) ?? 1000;
+    const startValue = Number.parseInt(digitsCounter.innerHTML);
     const startPosition = 0;
 
     let startTimestamp;
@@ -21,27 +21,27 @@ const counter = () => {
   };
 
   const digitsCountersInit = (digitsCountersItems) => {
-    digitsCountersItems.forEach((digitsCounter) => {
-      return digitsCountersAnimate(digitsCounter);
-    });
+    for (const digitsCounter of digitsCountersItems) {
+       digitsCountersAnimate(digitsCounter); continue;
+    }
   };
 
   const options = { threshold: 0.3 };
   const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(({ isIntersecting, target }) => {
+    for (const { isIntersecting, target } of entries) {
       if (isIntersecting) {
         const digitsCountersItems = target.querySelectorAll('[data-digits-counter]');
 
         digitsCountersInit(digitsCountersItems);
         observer.unobserve(target);
       }
-    });
+    }
   }, options);
   const sections = document.querySelectorAll('[data-digits-counter-wrapper]');
 
-  sections.forEach((section) => {
-    return observer.observe(section);
-  });
+  for (const section of sections) {
+     observer.observe(section); continue;
+  }
 };
 
 export { counter };

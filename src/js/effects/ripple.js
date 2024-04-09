@@ -29,7 +29,7 @@ const ripple = () => {
         button.querySelector('.ripple').remove();
       }
 
-      button.appendChild(ripple);
+      button.append(ripple);
 
       const timeOut = getAnimationDuration();
 

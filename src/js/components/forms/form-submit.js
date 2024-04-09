@@ -3,11 +3,11 @@ import { popup } from '@js/components/Popup';
 import { goToBlock } from '@js/helpers/go-to-block';
 
 const formSubmit = () => {
-  const forms = document.forms;
+  const {forms} = document;
 
   const formSent = (form) => {
     setTimeout(() => {
-      const popupMessage = form.dataset.popupMessage;
+      const {popupMessage} = form.dataset;
 
       if (popupMessage) {
         popup().open(popupMessage);
@@ -17,12 +17,12 @@ const formSubmit = () => {
   };
 
   const formSubmitAction = async (form, event) => {
-    const error = !form.hasAttribute('data-no-validate')
-      ? formValidate.getErrors(form)
-      : 0;
+    const error = Object.hasOwn(form.dataset, 'noValidate')
+      ? 0
+      : formValidate.getErrors(form);
 
     if (error === 0) {
-      const ajax = form.hasAttribute('data-ajax');
+      const ajax = Object.hasOwn(form.dataset, 'ajax');
 
       if (ajax) {
         event.preventDefault();
@@ -46,7 +46,7 @@ const formSubmit = () => {
           alert('Error');
           form.classList.remove('sending');
         }
-      } else if (form.hasAttribute('data-dev')) {
+      } else if (Object.hasOwn(form.dataset, 'dev')) {
         event.preventDefault();
 
         formSent(form);
@@ -56,7 +56,7 @@ const formSubmit = () => {
 
       if (
         form.querySelector('.form-error') &&
-        form.hasAttribute('data-goto-error')
+        Object.hasOwn(form.dataset, 'gotoError')
       ) {
         const formGoToErrorClass = form.dataset.gotoError ?? '.form-error';
 

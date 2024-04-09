@@ -11,9 +11,9 @@ const hamburger = () => {
   if (burger) {
     document.addEventListener('click', ({ target }) => {
       if (bodyLockStatus && target.closest('.hamburger')) {
-        !html.classList.contains('lock')
-          ? (burger.ariaExpanded = true)
-          : (burger.ariaExpanded = false);
+        html.classList.contains('lock')
+          ? (burger.ariaExpanded = false)
+          : (burger.ariaExpanded = true);
         bodyLockToggle();
       }
 

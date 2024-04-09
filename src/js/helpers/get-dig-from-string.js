@@ -1,5 +1,3 @@
-const getDigFromString = (item) => {
-  return parseInt(item.replace(/\D/g, ''));
-};
+const getDigFromString = (item) => Number.parseInt(item.replaceAll(/\D/g, ''));
 
 export { getDigFromString };

@@ -212,7 +212,7 @@ class Popup {
 
           this.targetOpen.element
             .querySelector(`[${this.options.youtubePlaceAttribute}]`)
-            .appendChild(iframe);
+            .append(iframe);
         }
 
         if (this.options.hashSettings.location) {
@@ -223,13 +223,11 @@ class Popup {
         this.targetOpen.element.classList.add(this.options.classes.popupActive);
         html.classList.add(this.options.classes.overlayShow);
 
-        if (!this.reopen) {
-          if (!this.bodyLock) {
+        if (this.reopen) {
+          this.reopen = false;
+        } else if (!this.bodyLock) {
             bodyLock();
           }
-        } else {
-          this.reopen = false;
-        }
 
         this.targetOpen.element.setAttribute('aria-hidden', 'false');
         this.previousOpen.selector = this.targetOpen.selector;
@@ -336,7 +334,7 @@ class Popup {
     const focusedIndex = focusArray.indexOf(document.activeElement);
 
     if (event.shiftKey && focusedIndex === 0) {
-      focusArray[focusArray.length - 1].focus();
+      focusArray.at(-1).focus();
       event.preventDefault();
     }
 

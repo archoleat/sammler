@@ -5,7 +5,7 @@ const rating = () => {
     let ratingActive;
     let ratingValue;
 
-    const initRatingVars = (rating) => {
+    const initRatingVariables = (rating) => {
       ratingActive = rating.querySelector('.rating__active');
       ratingValue = rating.querySelector('.rating__value');
     };
@@ -17,10 +17,10 @@ const rating = () => {
     };
 
     const setRatingValue = async (rating) => {
-      const ratingSendingClassMod = 'rating--sending';
+      const ratingSendingClassModule = 'rating--sending';
 
-      if (!rating.classList.contains(ratingSendingClassMod)) {
-        rating.classList.add(ratingSendingClassMod);
+      if (!rating.classList.contains(ratingSendingClassModule)) {
+        rating.classList.add(ratingSendingClassModule);
 
         const response = await fetch('rating.json', {
           method: 'GET',
@@ -28,14 +28,14 @@ const rating = () => {
 
         if (response.ok) {
           const result = await response.json();
-          const newRating = result.newRating;
+          const {newRating} = result;
 
           ratingValue.innerHTML = newRating;
           setRatingActiveWidth();
-          rating.classList.remove(ratingSendingClassMod);
+          rating.classList.remove(ratingSendingClassModule);
         } else {
           alert('Error');
-          rating.classList.remove(ratingSendingClassMod);
+          rating.classList.remove(ratingSendingClassModule);
         }
       }
     };
@@ -43,18 +43,17 @@ const rating = () => {
     const setRating = (rating) => {
       const ratingStars = rating.querySelectorAll('.rating__star');
 
-      for (let index = 0; index < ratingStars.length; index++) {
-        const ratingStar = ratingStars[index];
+      for (const [index, ratingStar] of ratingStars.entries()) {
 
         ratingStar.addEventListener('mouseenter', () => {
-          initRatingVars(rating);
+          initRatingVariables(rating);
           setRatingActiveWidth(ratingStar.value);
         });
         ratingStar.addEventListener('mouseleave', () => {
           setRatingActiveWidth();
         });
         ratingStar.addEventListener('click', () => {
-          initRatingVars(rating);
+          initRatingVariables(rating);
 
           if (rating.dataset.ajax) {
             setRatingValue(ratingStar.value);
@@ -67,7 +66,7 @@ const rating = () => {
     };
 
     const initRating = (rating) => {
-      initRatingVars(rating);
+      initRatingVariables(rating);
       setRatingActiveWidth();
 
       if (rating.classList.contains('rating--set')) {
@@ -75,9 +74,9 @@ const rating = () => {
       }
     };
 
-    ratings.forEach((rating) => {
-      return initRating(rating);
-    });
+    for (const rating of ratings) {
+       initRating(rating); continue;
+    }
   };
 
   if (ratings) {

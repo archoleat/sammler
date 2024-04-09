@@ -4,12 +4,12 @@ const scrollBars = document.querySelectorAll('[data-simplebar]');
 
 const scrollBar = () => {
   if (scrollBars) {
-    scrollBars.forEach((scrollBlock) => {
+    for (const scrollBlock of scrollBars) {
       new SimpleBar(scrollBlock, {
         scrollBarMinSize: 100,
         autoHide: false,
       });
-    });
+    }
   }
 };
 

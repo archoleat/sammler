@@ -11,7 +11,7 @@ class FormValidate {
 
     let error = 0;
 
-    formRequiredItems.forEach((formRequiredItem) => {
+    for (const formRequiredItem of formRequiredItems) {
       if (
         (formRequiredItem.offsetParent !== null ??
           formRequiredItem.tagName === 'SELECT') &&
@@ -19,7 +19,7 @@ class FormValidate {
       ) {
         error += this.validateInput(formRequiredItem);
       }
-    });
+    }
 
     return error;
   }
@@ -58,7 +58,7 @@ class FormValidate {
     );
 
     if (inputError) {
-      formRequiredItem.parentElement.removeChild(inputError);
+      inputError.remove();
     }
 
     if (formRequiredItem.dataset.error) {
@@ -78,11 +78,9 @@ class FormValidate {
     if (
       formRequiredItem.parentElement.querySelector(`.${this.formErrorClassElement}`)
     ) {
-      formRequiredItem.parentElement.removeChild(
-        formRequiredItem.parentElement.querySelector(
+      formRequiredItem.parentElement.querySelector(
           `.${this.formErrorClassElement}`,
-        ),
-      );
+        ).remove();
     }
   }
 
@@ -91,24 +89,24 @@ class FormValidate {
     setTimeout(() => {
       const inputs = form.querySelectorAll('input,textarea');
 
-      inputs.forEach((el) => {
-        el.parentElement.classList.remove(this.formErrorClass);
-        el.classList.remove(this.formErrorClass);
-        this.removeError(el);
-      });
+      for (const element of inputs) {
+        element.parentElement.classList.remove(this.formErrorClass);
+        element.classList.remove(this.formErrorClass);
+        this.removeError(element);
+      }
 
       const checkboxes = form.querySelectorAll('.checkbox__input');
 
-      checkboxes.forEach((checkbox) => {
+      for (const checkbox of checkboxes) {
         checkbox.checked = false;
-      });
+      }
 
       const selects = form.querySelectorAll('.select');
 
-      selects.forEach((selectBlock) => {
+      for (const selectBlock of selects) {
         selectBlock.querySelector('select');
         select().selectBuild(selectBlock);
-      });
+      }
     }, 0);
   }
 

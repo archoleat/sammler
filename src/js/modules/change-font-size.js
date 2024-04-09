@@ -6,17 +6,17 @@ const changeFontSize = () => {
   const text = document.querySelector('[data-font-text]');
 
   const addSize = (value) => {
-    text.style.fontSize = `${parseInt(value)}px`;
+    text.style.fontSize = `${Number.parseInt(value)}px`;
   };
 
   if (text) {
     if (range && value) {
       value.innerHTML = range.value;
       addSize(range.value);
-      range.oninput = () => {
+      range.addEventListener('input', () => {
         value.innerHTML = range.value;
         addSize(range.value);
-      };
+      });
     }
 
     document.addEventListener('click', (event) => {

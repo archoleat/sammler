@@ -70,12 +70,8 @@ const showMore = () => {
       `[${showMoreAttribute}-button]`,
     );
 
-    showMoreContent = Array.from(showMoreContent).filter((item) => {
-      return item.closest(`[${showMoreAttribute}]`) === showMoreBlock;
-    })[0];
-    showMoreButton = Array.from(showMoreButton).filter((item) => {
-      return item.closest(`[${showMoreAttribute}]`) === showMoreBlock;
-    })[0];
+    showMoreContent = [...showMoreContent].find((item) => item.closest(`[${showMoreAttribute}]`) === showMoreBlock);
+    showMoreButton = [...showMoreButton].find((item) => item.closest(`[${showMoreAttribute}]`) === showMoreBlock);
 
     const hiddenHeight = getHeight(showMoreBlock, showMoreContent);
 
@@ -91,15 +87,15 @@ const showMore = () => {
   };
 
   const initItems = (showMoreBlocksArray, matchMedia) => {
-    showMoreBlocksArray.forEach((showMoreBlock) => {
-      return initItem(showMoreBlock, matchMedia);
-    });
+    for (const showMoreBlock of showMoreBlocksArray) {
+       initItem(showMoreBlock, matchMedia); continue;
+    }
   };
 
   const initItemsMedia = (mdQueriesArray) => {
-    mdQueriesArray.forEach((mdQueriesItem) => {
-      return initItems(mdQueriesItem.itemsArray, mdQueriesItem.matchMedia);
-    });
+    for (const mdQueriesItem of mdQueriesArray) {
+       initItems(mdQueriesItem.itemsArray, mdQueriesItem.matchMedia); continue;
+    }
   };
 
   const showMoreActions = (event) => {
@@ -138,9 +134,7 @@ const showMore = () => {
   };
 
   if (showMoreBlocksArray) {
-    showMoreBlocksRegular = Array.from(showMoreBlocksArray).filter((item) => {
-      return !item.dataset.showmoreMedia;
-    });
+    showMoreBlocksRegular = [...showMoreBlocksArray].filter((item) => !item.dataset.showmoreMedia);
 
     if (showMoreBlocksRegular) {
       initItems(showMoreBlocksRegular);
@@ -151,11 +145,11 @@ const showMore = () => {
     mdQueriesArray = dataMediaQueries(showMoreBlocksArray, 'showmoreMedia');
 
     if (mdQueriesArray) {
-      mdQueriesArray.forEach((mdQueriesItem) => {
+      for (const mdQueriesItem of mdQueriesArray) {
         mdQueriesItem.matchMedia.addEventListener('change', () => {
           initItems(mdQueriesItem.itemsArray, mdQueriesItem.matchMedia);
         });
-      });
+      }
       initItemsMedia(mdQueriesArray);
     }
   }

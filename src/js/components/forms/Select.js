@@ -3,10 +3,10 @@ import { slideToggle } from '@js/helpers/slide-toggle';
 import { slideUp } from '@js/helpers/slide-up';
 
 class Select {
-  constructor(props, data = null) {
+  constructor(properties, data = null) {
     const defaultConfig = { init: true };
 
-    this.config = Object.assign(defaultConfig, props);
+    this.config = Object.assign(defaultConfig, properties);
     this.selectClasses = {
       classSelect: 'select',
       classSelectBody: 'select__body',
@@ -58,9 +58,9 @@ class Select {
   }
 
   selectsInit(selectItems) {
-    selectItems.forEach((originalSelect, index) => {
+    for (const [index, originalSelect] of selectItems.entries()) {
       this.selectInit(originalSelect, index + 1);
-    });
+    }
     document.addEventListener('click', (event) => {
       this.selectsActions(event);
     });
@@ -81,7 +81,7 @@ class Select {
 
     selectItem.classList.add(this.selectClasses.classSelect);
     originalSelect.parentNode.insertBefore(selectItem, originalSelect);
-    selectItem.appendChild(originalSelect);
+    selectItem.append(originalSelect);
     originalSelect.hidden = true;
 
     if (index) {
@@ -137,7 +137,7 @@ class Select {
     originalSelect.multiple
       ? selectItem.classList.add(this.selectClasses.classSelectMultiple)
       : selectItem.classList.remove(this.selectClasses.classSelectMultiple);
-    originalSelect.hasAttribute('data-checkbox') && originalSelect.multiple
+    Object.hasOwn(originalSelect.dataset, 'checkbox') && originalSelect.multiple
       ? selectItem.classList.add(this.selectClasses.classSelectCheckBox)
       : selectItem.classList.remove(this.selectClasses.classSelectCheckBox);
     this.setSelectTitleValue(selectItem, originalSelect);
@@ -147,7 +147,7 @@ class Select {
       this.searchActions(selectItem);
     }
 
-    if (originalSelect.hasAttribute('data-open')) {
+    if (Object.hasOwn(originalSelect.dataset, 'open')) {
       this.selectAction(selectItem);
     }
 
@@ -171,7 +171,7 @@ class Select {
               ).dataset.selectId
             }"]`,
           );
-      const originalSelect = this.getSelectElement(selectItem).originalSelect;
+      const {originalSelect} = this.getSelectElement(selectItem);
 
       if (targetType === 'click') {
         if (!originalSelect.disabled) {
@@ -233,13 +233,13 @@ class Select {
       )}`,
     );
 
-    selectActiveItems.forEach((selectActiveItem) => {
+    for (const selectActiveItem of selectActiveItems) {
       this.selectClose(selectActiveItem);
-    });
+    }
   }
 
   selectClose(selectItem) {
-    const originalSelect = this.getSelectElement(selectItem).originalSelect;
+    const {originalSelect} = this.getSelectElement(selectItem);
     const selectOptions = this.getSelectElement(
       selectItem,
       this.selectClasses.classSelectOptions,
@@ -252,7 +252,7 @@ class Select {
   }
 
   selectAction(selectItem) {
-    const originalSelect = this.getSelectElement(selectItem).originalSelect;
+    const {originalSelect} = this.getSelectElement(selectItem);
     const selectOptions = this.getSelectElement(
       selectItem,
       this.selectClasses.classSelectOptions,
@@ -293,14 +293,12 @@ class Select {
   getSelectTitleValue(selectItem, originalSelect) {
     let selectTitleValue = this.getSelectedOptionsData(originalSelect, 2).html;
 
-    if (originalSelect.multiple && originalSelect.hasAttribute('data-tags')) {
+    if (originalSelect.multiple && Object.hasOwn(originalSelect.dataset, 'tags')) {
       selectTitleValue = this.getSelectedOptionsData(originalSelect)
-        .elements.map((option) => {
-          return `<span role="button" data-select-id="${
+        .elements.map((option) => `<span role="button" data-select-id="${
             selectItem.dataset.id
           }" data-value="${option.value}"
-						class="select-tag">${this.getSelectElementContent(option)}</span>`;
-        })
+						class="select-tag">${this.getSelectElementContent(option)}</span>`)
         .join('');
 
       if (
@@ -321,14 +319,14 @@ class Select {
     let pseudoAttribute = '';
     let pseudoAttributeClass = '';
 
-    if (originalSelect.hasAttribute('data-pseudo-label')) {
+    if (Object.hasOwn(originalSelect.dataset, 'pseudoLabel')) {
       pseudoAttribute = originalSelect.dataset.pseudoLabel
         ? ` data-pseudo-label="${originalSelect.dataset.pseudoLabel}"`
         : ' data-pseudo-label="Fill in attribute"';
       pseudoAttributeClass = ` ${this.selectClasses.classSelectPseudoLabel}`;
     }
 
-    this.getSelectedOptionsData(originalSelect).values.length
+    this.getSelectedOptionsData(originalSelect).values.length > 0
       ? selectItem.classList.add(this.selectClasses.classSelectActive)
       : selectItem.classList.remove(this.selectClasses.classSelectActive);
 
@@ -346,7 +344,7 @@ class Select {
     }
 
     const customClass =
-      this.getSelectedOptionsData(originalSelect).elements.length &&
+      this.getSelectedOptionsData(originalSelect).elements.length > 0 &&
       this.getSelectedOptionsData(originalSelect).elements[0].dataset.class
         ? ` ${this.getSelectedOptionsData(originalSelect).elements[0].dataset.class}`
         : '';
@@ -369,7 +367,7 @@ class Select {
       ? `${selectOption.dataset.asset}`
       : '';
     const selectOptionDataHTML =
-      selectOptionData.indexOf('img') >= 0
+      selectOptionData.includes('img')
         ? `<img src="${selectOptionData}" alt="">`
         : selectOptionData;
 
@@ -394,16 +392,14 @@ class Select {
   }
 
   getSelectPlaceholder(originalSelect) {
-    const selectPlaceholder = Array.from(originalSelect.options).find((option) => {
-      return !option.value;
-    });
+    const selectPlaceholder = [...originalSelect.options].find((option) => !option.value);
 
     if (selectPlaceholder) {
       return {
         value: selectPlaceholder.textContent,
-        show: selectPlaceholder.hasAttribute('data-show'),
+        show: Object.hasOwn(selectPlaceholder.dataset, 'show'),
         label: {
-          show: selectPlaceholder.hasAttribute('data-label'),
+          show: Object.hasOwn(selectPlaceholder.dataset, 'label'),
           text: selectPlaceholder.dataset.label,
         },
       };
@@ -414,43 +410,31 @@ class Select {
     let selectedOptions = [];
 
     if (originalSelect.multiple) {
-      selectedOptions = Array.from(originalSelect.options)
-        .filter((option) => {
-          return option.value;
-        })
-        .filter((option) => {
-          return option.selected;
-        });
+      selectedOptions = [...originalSelect.options]
+        .filter((option) => option.value)
+        .filter((option) => option.selected);
     } else {
       selectedOptions.push(originalSelect.options[originalSelect.selectedIndex]);
     }
 
     return {
-      elements: selectedOptions.map((option) => {
-        return option;
-      }),
+      elements: selectedOptions.map((option) => option),
       values: selectedOptions
-        .filter((option) => {
-          return option.value;
-        })
-        .map((option) => {
-          return option.value;
-        }),
-      html: selectedOptions.map((option) => {
-        return this.getSelectElementContent(option);
-      }),
+        .filter((option) => option.value)
+        .map((option) => option.value),
+      html: selectedOptions.map((option) => this.getSelectElementContent(option)),
     };
   }
 
   getOptions(originalSelect) {
-    const selectOptionsScroll = originalSelect.hasAttribute('data-scroll')
+    const selectOptionsScroll = Object.hasOwn(originalSelect.dataset, 'scroll')
       ? 'data-simplebar'
       : '';
     const selectOptionsScrollHeight = originalSelect.dataset.scroll
       ? `style="max-height:${originalSelect.dataset.scroll}px"`
       : '';
 
-    let selectOptions = Array.from(originalSelect.options);
+    let selectOptions = [...originalSelect.options];
 
     if (selectOptions) {
       let selectOptionsHTML = '';
@@ -460,18 +444,16 @@ class Select {
           !this.getSelectPlaceholder(originalSelect).show) ??
         originalSelect.multiple
       ) {
-        selectOptions = selectOptions.filter((option) => {
-          return option.value;
-        });
+        selectOptions = selectOptions.filter((option) => option.value);
       }
 
       selectOptionsHTML += selectOptionsScroll
         ? `<div ${selectOptionsScroll} ${selectOptionsScrollHeight}
 						class="${this.selectClasses.classSelectOptionsScroll}">`
         : '';
-      selectOptions.forEach((selectOption) => {
+      for (const selectOption of selectOptions) {
         selectOptionsHTML += this.getOption(selectOption, originalSelect);
-      });
+      }
       selectOptionsHTML += selectOptionsScroll ? '</div>' : '';
 
       return selectOptionsHTML;
@@ -485,13 +467,13 @@ class Select {
         : '';
     const selectOptionHide =
       selectOption.selected &&
-      !originalSelect.hasAttribute('data-show-selected') &&
+      !Object.hasOwn(originalSelect.dataset, 'showSelected') &&
       !originalSelect.multiple
         ? 'hidden'
         : '';
     const selectOptionClass = selectOption.dataset.class ?? '';
     const selectOptionLink = selectOption.dataset.href;
-    const selectOptionLinkTarget = selectOption.hasAttribute('data-href-blank')
+    const selectOptionLinkTarget = Object.hasOwn(selectOption.dataset, 'hrefBlank')
       ? 'target="_blank"'
       : '';
 
@@ -533,9 +515,9 @@ class Select {
       const originalSelectSelectedItems =
         this.getSelectedOptionsData(originalSelect).elements;
 
-      originalSelectSelectedItems.forEach((originalSelectSelectedItem) => {
+      for (const originalSelectSelectedItem of originalSelectSelectedItems) {
         originalSelectSelectedItem.removeAttribute('selected');
-      });
+      }
 
       const selectSelectedItems = selectItem.querySelectorAll(
         this.getSelectClass(this.selectClasses.classSelectOptionSelected),
@@ -547,7 +529,7 @@ class Select {
           .setAttribute('selected', 'selected');
       });
     } else {
-      if (!originalSelect.hasAttribute('data-show-selected')) {
+      if (!Object.hasOwn(originalSelect.dataset, 'showSelected')) {
         if (
           selectItem.querySelector(
             `${this.getSelectClass(this.selectClasses.classSelectOption)}[hidden]`,
@@ -561,7 +543,7 @@ class Select {
         optionItem.hidden = true;
       }
 
-      originalSelect.value = optionItem.hasAttribute('data-value')
+      originalSelect.value = Object.hasOwn(optionItem.dataset, 'value')
         ? optionItem.dataset.value
         : optionItem.textContent;
       this.selectAction(selectItem);
@@ -579,17 +561,17 @@ class Select {
   }
 
   setSelectChange(originalSelect) {
-    if (originalSelect.hasAttribute('data-validate')) {
+    if (Object.hasOwn(originalSelect.dataset, 'validate')) {
       formValidate.validateInput(originalSelect);
     }
 
-    if (originalSelect.hasAttribute('data-submit') && originalSelect.value) {
-      const tempButton = document.createElement('button');
+    if (Object.hasOwn(originalSelect.dataset, 'submit') && originalSelect.value) {
+      const temporaryButton = document.createElement('button');
 
-      tempButton.type = 'submit';
-      originalSelect.closest('form').append(tempButton);
-      tempButton.click();
-      tempButton.remove();
+      temporaryButton.type = 'submit';
+      originalSelect.closest('form').append(temporaryButton);
+      temporaryButton.click();
+      temporaryButton.remove();
     }
   }
 
@@ -624,13 +606,13 @@ class Select {
     const that = this;
 
     selectInput.addEventListener('input', () => {
-      selectOptionsItems.forEach((selectOptionsItem) => {
+      for (const selectOptionsItem of selectOptionsItems) {
         selectOptionsItem.textContent
           .toUpperCase()
-          .indexOf(selectInput.value.toUpperCase()) >= 0
+          .includes(selectInput.value.toUpperCase())
           ? (selectOptionsItem.hidden = false)
           : (selectOptionsItem.hidden = true);
-      });
+      }
 
       if (selectOptions.hidden) {
         that.selectAction(selectItem);

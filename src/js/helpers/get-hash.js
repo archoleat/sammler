@@ -1,5 +1,3 @@
-const getHash = () => {
-  return location.hash?.replace('#', '');
-};
+const getHash = () => location.hash?.replace('#', '');
 
 export { getHash };
