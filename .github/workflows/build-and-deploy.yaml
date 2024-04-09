@@ -3,7 +3,7 @@ name: Build & deploy
 on:
   workflow_run:
     workflows:
-      - Test
+      - Spec
       - Stylelint
     types:
       - completed
