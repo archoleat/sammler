@@ -34,7 +34,7 @@
   "devDependencies": {
     "@archoleat/commitlint-define-config": "^1.0.6",
     "@archoleat/eslint-flat-compatibility": "^1.1.5",
-    "@archoleat/semantic-release-define-config": "^1.1.3",
+    "@archoleat/semantic-release-define-config": "^1.1.4",
     "@archoleat/stylelint-config-extended-scss": "^1.6.7",
     "@babel/core": "^7.24.4",
     "@babel/preset-env": "^7.24.4",
