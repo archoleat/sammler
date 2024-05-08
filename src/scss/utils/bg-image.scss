@@ -3,6 +3,10 @@
 
   overflow: hidden;
 
+  &--link {
+    display: block;
+  }
+
   &--contain {
     iframe,
     object,

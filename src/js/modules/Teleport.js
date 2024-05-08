@@ -5,17 +5,18 @@ class Teleport {
 
   init() {
     this.objects = [];
-    this.daClassName = 'dynamic-adapt';
-    this.nodes = [...document.querySelectorAll('[data-da]')];
+    this.teleportClassName = 'teleport';
+    this.nodes = [...document.querySelectorAll('[data-teleport]')];
+
     for (const node of this.nodes) {
-      const data = node.dataset.da.trim();
+      const data = node.dataset.teleport.trim();
       const dataArray = data.split(',');
       const object = {
         element: node,
         parent: node.parentNode,
         destination: document.querySelector(`${dataArray[0].trim()}`),
         breakpoint: dataArray[1]?.trim() ?? '767',
-        place: dataArray[2]?.trim() ?? 'last',
+        position: dataArray[2]?.trim() ?? 'last',
         index: this.indexInParent(node.parentNode, node),
       };
 
@@ -25,6 +26,7 @@ class Teleport {
     this.mediaQueries = this.objects
       .map(({ breakpoint }) => `(${this.type}-width: ${breakpoint}px),${breakpoint}`)
       .filter((item, index, self) => self.indexOf(item) === index);
+
     for (const media of this.mediaQueries) {
       const mediaSplit = media.split(',');
       const matchMedia = window.matchMedia(mediaSplit[0]);
@@ -46,7 +48,7 @@ class Teleport {
       }
     } else {
       for (const { parent, element, index } of objects) {
-        if (element.classList.contains(this.daClassName)) {
+        if (element.classList.contains(this.teleportClassName)) {
           this.moveBack(parent, element, index);
         }
       }
@@ -54,9 +56,9 @@ class Teleport {
   }
 
   moveTo(place, element, destination) {
-    element.classList.add(this.daClassName);
+    element.classList.add(this.teleportClassName);
 
-    if (place === 'last' ?? place >= destination.children.length) {
+    if (place === 'last') {
       destination.append(element);
 
       return;
@@ -72,7 +74,7 @@ class Teleport {
   }
 
   moveBack(parent, element, index) {
-    element.classList.remove(this.daClassName);
+    element.classList.remove(this.teleportClassName);
 
     if (parent.children[index] === undefined) {
       parent.append(element);
@@ -89,15 +91,15 @@ class Teleport {
     if (this.type === 'min') {
       array.sort((start, end) => {
         if (start.breakpoint === end.breakpoint) {
-          if (start.place === end.place) {
+          if (start.position === end.position) {
             return 0;
           }
 
-          if (start.place === 'first' ?? end.place === 'last') {
+          if (start.position === 'first' ?? end.position === 'last') {
             return -1;
           }
 
-          if (start.place === 'last' ?? end.place === 'first') {
+          if (start.position === 'last' ?? end.position === 'first') {
             return 1;
           }
 
@@ -107,17 +109,17 @@ class Teleport {
         return start.breakpoint - end.breakpoint;
       });
     } else {
-      array.sort((start, b) => {
+      array.sort((start, end) => {
         if (start.breakpoint === end.breakpoint) {
-          if (start.place === end.place) {
+          if (start.position === end.position) {
             return 0;
           }
 
-          if (start.place === 'first' ?? end.place === 'last') {
+          if (start.position === 'first' ?? end.position === 'last') {
             return 1;
           }
 
-          if (start.place === 'last' ?? end.place === 'first') {
+          if (start.position === 'last' ?? end.position === 'first') {
             return -1;
           }
 
