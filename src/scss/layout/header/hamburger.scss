@@ -25,11 +25,11 @@
 
       transition:
         inset-block-start
-          var(--transition-duration-default, #{$transition-duration-default}),
+          var(--default-transition-duration, #{$default-transition-duration}),
         inset-block-end
-          var(--transition-duration-default, #{$transition-duration-default}),
-        opacity var(--transition-duration-default, #{$transition-duration-default}),
-        rotate var(--transition-duration-default, #{$transition-duration-default});
+          var(--default-transition-duration, #{$default-transition-duration}),
+        opacity var(--default-transition-duration, #{$default-transition-duration}),
+        rotate var(--default-transition-duration, #{$default-transition-duration});
     }
 
     &::before {
@@ -59,10 +59,8 @@
       + .menu__body {
         transform: translateX(
           calc(
-            0% - var(
-                --container-padding-inline,
-                #{to-rem($container-padding-inline)}
-              )
+            0% -
+              var(--container-padding-inline, #{to-rem($container-padding-inline)})
           )
         );
       }
