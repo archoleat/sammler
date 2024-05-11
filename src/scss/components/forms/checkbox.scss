@@ -50,7 +50,7 @@
       scale: 0;
 
       transition: scale
-        var(--transition-duration-default, #{$transition-duration-default});
+        var(--default-transition-duration, #{$default-transition-duration});
     }
 
     svg {
@@ -68,7 +68,7 @@
       scale: 0;
 
       transition: scale
-        var(--transition-duration-default, #{$transition-duration-default});
+        var(--default-transition-duration, #{$default-transition-duration});
     }
   }
 

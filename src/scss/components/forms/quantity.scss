@@ -35,7 +35,7 @@
       translate: -50% -50%;
 
       transition: background-color
-        var(--transition-duration-default, #{$transition-duration-default});
+        var(--default-transition-duration, #{$default-transition-duration});
 
       @include media-hover {
         background-color: var(--color-gray, #{$color-gray});

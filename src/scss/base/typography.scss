@@ -7,9 +7,9 @@ body {
   text-rendering: optimizeLegibility;
   text-size-adjust: 100%;
 
-  font-family: var(--font-family-default, #{$font-family-default});
-  font-size: var(--font-size-default, #{to-rem($font-size-default)});
-  font-weight: var(--font-weight-default, #{$font-weight-default});
+  font-family: var(--default-font-family, #{$default-font-family});
+  font-size: var(--default-font-size, #{to-rem($default-font-size)});
+  font-weight: var(--default-font-weight, #{$default-font-weight});
 
   color: var(--text-color-primary, #{$color-secondary});
 }

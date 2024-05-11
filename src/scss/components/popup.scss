@@ -57,8 +57,8 @@
     scale: 0;
 
     transition:
-      opacity var(--transition-duration-default, #{$transition-duration-default}),
-      scale var(--transition-duration-default, #{$transition-duration-default});
+      opacity var(--default-transition-duration, #{$default-transition-duration}),
+      scale var(--default-transition-duration, #{$default-transition-duration});
 
     .lock & {
       opacity: 1;

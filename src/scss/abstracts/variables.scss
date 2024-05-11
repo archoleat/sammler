@@ -1,36 +1,19 @@
-// Container
-$container-max-inline-size: 0;
-$container-padding-inline: 15;
-$container-inline-size: $container-max-inline-size + ($container-padding-inline * 2);
-
-// Widths
-$max-inline-size: 1920;
-$min-inline-size: 320;
-
 // Breakpoints
 $desktop: $container-inline-size;
 $laptop: 992;
 $tablet: 768;
 $phone: 480;
 
-// Z-index
-$z-index-1: 1;
-$z-index-2: 2;
-$z-index-3: 3;
-
-// Header
-$header-min-block-size: 64;
-
 // Font families
 $font-family-roboto: "Roboto";
-$font-family-default: $font-family-roboto;
+$default-font-family: $font-family-roboto;
 
 // Font sizes
 $font-size-title: 35;
-$font-size-subtitle: 28;
+$font-size-sub-title: 28;
 $font-size-text: 16;
 $font-size-label: 14;
-$font-size-default: $font-size-text;
+$default-font-size: $font-size-text;
 
 // Font weights
 $font-weight-100: 100;
@@ -43,10 +26,7 @@ $font-weight-700: 700;
 $font-weight-800: 800;
 $font-weight-900: 900;
 $font-weight-950: 950;
-$font-weight-default: $font-weight-400;
-
-// Text
-$p-max-inline-size: 65ch;
+$default-font-weight: $font-weight-400;
 
 // Colors
 $color-primary: #fff;
@@ -58,5 +38,31 @@ $color-gray: #888;
 // Colors RGB
 $color-primary-rgb: 0 0 0;
 
+// Container
+$container-max-inline-size: 0;
+$container-padding-inline: 15;
+$container-inline-size: $container-max-inline-size + ($container-padding-inline * 2);
+
+// Widths
+$max-inline-size: 1920;
+$min-inline-size: 320;
+
+// Header
+$header-min-block-size: 64;
+
+// Text
+$p-max-inline-size: 65ch;
+
+// Border radiuses
+$default-border-radius: to-rem(10);
+
+// Paddings
+$default-padding-block: to-rem(30);
+
 // Transitions
-$transition-duration-default: 300ms;
+$default-transition-duration: 300ms;
+
+// Z-index
+$z-index-1: 1;
+$z-index-2: 2;
+$z-index-3: 3;
