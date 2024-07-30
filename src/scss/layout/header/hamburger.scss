@@ -59,8 +59,10 @@
       + .menu__body {
         transform: translateX(
           calc(
-            0% -
-              var(--container-padding-inline, #{to-rem($container-padding-inline)})
+            0% - var(
+                --container-padding-inline,
+                #{to-rem($container-padding-inline)}
+              )
           )
         );
       }

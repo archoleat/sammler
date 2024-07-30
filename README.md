@@ -6,6 +6,10 @@
 -   [Contributing](#contributing)
 -   [License](#license)
 
+> ## ⚠️ DEPRECATED ⚠️
+> There will be no more support,
+> a new builder on vite is expected in the near future.
+
 ## Getting Started
 
 You can use this repository as a template to quickly create your project.
